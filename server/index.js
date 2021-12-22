@@ -6,8 +6,8 @@ app.use(express.static(__dirname + '/../client/dist'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('FILL_IN_URL', function(req, res) {
-
+app.get('/', function(req, res) {
+  console.log('ITS WORKING');
 });
 
 let port = 3000;
