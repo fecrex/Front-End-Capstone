@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import QuestionsAnswers from './components/Questions & Answers/index.jsx';
 
 class App extends React.Component {
   constructor(props) {
