@@ -4,7 +4,7 @@ import '../QAstyles.css';
 const Question = function() {
 
   return (
-    <div>
+    <div className="indiviudal-question">
       <span className="question">Q: this is an example question?</span>
       <span className="answer">A: this is an example answer.</span>
       <span className="from-user">User123, current_date</span>
