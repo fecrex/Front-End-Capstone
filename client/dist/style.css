@@ -1,0 +1,13 @@
+.related-item-card {
+  max-width: 200px;
+  border: 1px solid black;
+}
+
+.product-details > *{
+  padding: 5px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
