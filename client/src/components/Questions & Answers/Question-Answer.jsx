@@ -1,5 +1,4 @@
 import React from 'react';
-import '../QAstyles.css';
 
 const Question = function() {
 
