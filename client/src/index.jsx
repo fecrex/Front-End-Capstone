@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ProductInfo from './components/Overview/ProductInfo.jsx';
+import Card from './components/Related Items & Comparison/card.jsx';
 import ReviewList from './components/Ratings & Reviews/reviewList.jsx';
 
 class App extends React.Component {
@@ -13,10 +15,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <>
       <h1>Hello world!</h1>
-        <ReviewList/>
-      </div>
+      <ProductInfo />
+      <Card />
+      <ReviewList />
+      </>
     );
   }
 }
