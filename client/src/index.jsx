@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ProductInfo from './components/Overview/ProductInfo.jsx';
 import Card from './components/Related Items & Comparison/card.jsx';
+import ReviewList from './components/Ratings & Reviews/reviewList.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class App extends React.Component {
       <h1>Hello world!</h1>
       <ProductInfo />
       <Card />
+      <ReviewList />
       </>
     );
   }
