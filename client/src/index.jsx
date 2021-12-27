@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ProductInfo from './Overview/ProductInfo.jsx';
+import ProductInfo from './components/Overview/ProductInfo.jsx';
 import Card from './components/Related Items & Comparison/card.jsx';
 
 class App extends React.Component {

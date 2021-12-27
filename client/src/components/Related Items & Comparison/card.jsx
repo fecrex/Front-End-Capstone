@@ -11,7 +11,8 @@ function Card(props) {
       <div>Price</div>
       <div>Review</div>
     </div>
-  </div>)
+  </div>
+  )
 }
 
 export default Card;
