@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import QuestionsAnswers from './components/Questions & Answers/index.jsx';
+import ProductInfo from './components/Overview/ProductInfo.jsx';
+import Card from './components/Related Items & Comparison/card.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -15,6 +17,11 @@ class App extends React.Component {
     return (
       // <h1>Hello world!</h1>
       <QuestionsAnswers />
+      <>
+      <h1>Hello world!</h1>
+      <ProductInfo />
+      <Card />
+      </>
     );
   }
 }
