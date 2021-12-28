@@ -14,7 +14,9 @@ function ProductInfo(props) {
       <div id='product-title'>Product Category</div>
       <div id='product-title'>Product Title</div>
       <div id='product-price'>Price</div>
-      <div id ='product-overview'>Product Overview</div>
+      <div id ='product-overview'>
+        Product Overview - This is a test paragraph for the product overview.
+      </div>
       <div id='share-social'>Share on Social Media</div>
     </div>
   );
