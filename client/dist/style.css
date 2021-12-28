@@ -17,10 +17,20 @@ img {
 }
 
 .product-info {
+  border: solid 1px #000;
   display: flex;
   flex-direction: column;
-  width: 500px;
-  height: 400px;
   justify-content: space-between;
+  width: 100%;
+  height: 200px
 }
+
+.star-rating, #product-category, #product-title, #product-price {
+  width: 20%;
+  align-self: flex-end;
+  border: solid 1px #000;
+}
+
+
+
 

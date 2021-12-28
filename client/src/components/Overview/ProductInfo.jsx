@@ -20,7 +20,7 @@ class ProductInfo extends React.Component {
             );
           })} Star Rating
         </div>
-        <div id='product-title'>Product Category</div>
+        <div id='product-category'>Product Category</div>
         <div id='product-title'>Product Title</div>
         <div id='product-price'>Price</div>
         <div id ='product-overview'>
