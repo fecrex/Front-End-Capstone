@@ -20,10 +20,10 @@ function Card(props) {
 
   if (relatedDetails) {
     return (
-      relatedDetails.map(item => {
+      relatedDetails.map((item, index) => {
         return(
           <>
-          <div className="related-item-card">
+          <div className="related-item-card" key={index}>
           <img src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1632925545-t-shirts-2021-jgt-ok-1632923427.jpg?crop=1xw:1xh;center,top&resize=768:*" />
           <div className="product-details">
             <div>{item.category}</div>
@@ -39,18 +39,6 @@ function Card(props) {
   } else {
     return <div>loading...</div>
   }
-
-  // return (
-  // <div className="related-item-card">
-  //   <img src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1632925545-t-shirts-2021-jgt-ok-1632923427.jpg?crop=1xw:1xh;center,top&resize=768:*" />
-  //   <div className="product-details">
-  //     <div>Category</div>
-  //     <div>Expanded Product Name With Extra Text</div>
-  //     <div>Price</div>
-  //     <div>Review</div>
-  //   </div>
-  // </div>
-  // )
 }
 
 export default Card;
