@@ -1,25 +1,35 @@
 import React from 'react';
 import axios from 'axios';
 
-function ProductInfo(props) {
-  return (
-    <div className='product-info'>
-      <div className='star-rating'>
-        {[...Array(5)].map((star) => {
-          return (
-            <span className='star'>&#9733;</span>
-          );
-        })} Star Rating
+class ProductInfo extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      rating: 0
+    }
+  }
+
+  render() {
+    return (
+      <div className='product-info'>
+        <div className='star-rating'>
+          {[...Array(5)].map((star) => {
+            return (
+              <span className='star'>&#9733;</span>
+            );
+          })} Star Rating
+        </div>
+        <div id='product-title'>Product Category</div>
+        <div id='product-title'>Product Title</div>
+        <div id='product-price'>Price</div>
+        <div id ='product-overview'>
+          Product Overview - This is a test paragraph for the product overview.
+        </div>
+        <div id='share-social'>Share on Social Media</div>
       </div>
-      <div id='product-title'>Product Category</div>
-      <div id='product-title'>Product Title</div>
-      <div id='product-price'>Price</div>
-      <div id ='product-overview'>
-        Product Overview - This is a test paragraph for the product overview.
-      </div>
-      <div id='share-social'>Share on Social Media</div>
-    </div>
-  );
+    );
+  }
 }
 
 export default ProductInfo;
