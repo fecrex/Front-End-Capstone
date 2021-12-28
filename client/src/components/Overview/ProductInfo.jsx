@@ -14,9 +14,9 @@ class ProductInfo extends React.Component {
     return (
       <div className='product-info'>
         <div className='star-rating'>
-          {[...Array(5)].map((star) => {
+          {[...Array(5)].map((star, index) => {
             return (
-              <span className='star'>&#9733;</span>
+              <span key={index} className='star'>&#9733;</span>
             );
           })} Star Rating
         </div>
