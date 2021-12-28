@@ -29,7 +29,7 @@ img {
   height: 100px;
 
   width: 100%;
-  color: white;
+  background: grey;
   overflow: hidden;
   /* flex-direction: column; */
 }
@@ -71,7 +71,8 @@ img {
 
 .answer-content {
   background: red;
-  line-height: 1.6;
+  height: 50px;
+  /* line-height: 1.6; */
   font-size: 0.85em;
   display: none;
 }
@@ -117,7 +118,7 @@ input:checked + .answer-content {
 
 .answer {
   position: absolute;
-  top: 40px;
+  top: 50px;
 }
 
 .from-user {

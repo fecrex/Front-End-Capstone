@@ -11,7 +11,7 @@ class QuestionsAnswers extends React.Component {
     return (
       <>
       <h5>QUESTIONS & ANSWERS</h5>
-      <QuestionsList productQA={example.results[0]}/>
+      <QuestionsList productQA={example.results}/>
       </>
     )
   }
