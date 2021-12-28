@@ -11,6 +11,7 @@ class ProductInfo extends React.Component {
   }
 
   render() {
+    var product = this.props.products[0];
     return (
       <div className='product-info'>
         <div className='star-rating'>

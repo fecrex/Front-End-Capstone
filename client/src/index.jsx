@@ -57,7 +57,7 @@ class App extends React.Component {
     return (
       <>
       <h1>FEC - Project Catwalk</h1>
-      <ProductInfo />
+      <ProductInfo products={this.state.products}/>
       <div className="related-container">
         <Card relatedinfo={this.state.results}/>
       </div>
