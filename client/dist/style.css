@@ -12,6 +12,9 @@ img {
   height: auto;
 }
 
+.related-container {
+  display: flex;
+}
 .question {
   font-weight: bold;
 }
