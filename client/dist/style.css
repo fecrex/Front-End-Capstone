@@ -58,7 +58,7 @@ img {
 }
 
 .question-label::after {
-  content: "a";
+  content: "";
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
