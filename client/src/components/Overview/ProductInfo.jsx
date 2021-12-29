@@ -1,17 +1,37 @@
 import React from 'react';
 import axios from 'axios';
+import ImageGallery from './ImageGallery.jsx';
 
-function ProductInfo(props) {
-  return (
-    <div className='product-info'>
-      <div>Star Rating - # of Reviews</div>
-      <div>Product Category</div>
-      <div>Product Title</div>
-      <div>Price</div>
-      <div>Product Overview</div>
-      <div>Share on Social Media</div>
-    </div>
-  );
+class ProductInfo extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      rating: 0
+    }
+  }
+
+  render() {
+    return (
+      <div className='product-info'>
+        <div className='star-rating'>
+          {[...Array(5)].map((star) => {
+            return (
+              <span className='star'>&#9733;</span>
+            );
+          })} Star Rating
+        </div>
+        <div id='product-category'>Product Category</div>
+        <div id='product-title'>Product Title</div>
+        <div id='product-price'>Price</div>
+        <ImageGallery />
+        <div id ='product-overview'>
+          Product Overview - This is a test paragraph for the product overview.
+        </div>
+        <div id='share-social'>Share on Social Media</div>
+      </div>
+    );
+  }
 }
 
 export default ProductInfo;

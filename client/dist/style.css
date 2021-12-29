@@ -56,18 +56,6 @@ img {
   background: rgba(0, 0, 0, 0.1);
 }
 
-/* .question-label::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 20px;
-  width: 12px;
-  height: 6px;
-  background-size: contain;
-  transition: transform 0.4s;
-} */
-
 .answer-content {
   background: lightgray;
   position: relative;
@@ -83,37 +71,6 @@ img {
 .accordion:checked ~ .answer-content {
   display: block;
 }
-
-
-
-/* .answer-content {
-  max-height: 0;
-  padding: 0 1em;
-  color: #2c3e50;
-  background: white;
-  -webkit-transition: all .35s;
-  transition: all .35s;
-} */
-
-/* input:checked + .question-label {
-  background: #1a252f;
-}
-
-input:checked + .question-label::after {
-  -webkit-transform: rotate(90deg);
-  transform: rotate(90deg);
-}
-
-input:checked + .answer-content {
-  max-height: 100vh;
-  padding: 1em;
-}
-
-.accordion {
-  position: absolute;
-  opacity: 0;
-  z-index: -1;
-} */
 
 .answer {
   position: relative;
@@ -147,4 +104,33 @@ input:checked + .answer-content {
   bottom: 30px;
   left: 380px;
 }
+.related-container {
+  display: flex;
+}
+.question {
+  font-weight: bold;
+}
+
+.product-info {
+  border: solid 1px #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 30%
+}
+
+.image-gallery {
+  border: solid 1px #000;
+  max-width: 60%;
+}
+
+.star-rating, #product-category, #product-title, #product-price {
+  width: 20%;
+  align-self: flex-end;
+  border: solid 1px #000;
+}
+
+
+
 
