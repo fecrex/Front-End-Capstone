@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import ImageGallery from './ImageGallery.jsx';
 
 class ProductInfo extends React.Component {
   constructor(props) {
@@ -11,18 +12,20 @@ class ProductInfo extends React.Component {
   }
 
   render() {
+    var product = this.props.products[0];
     return (
       <div className='product-info'>
         <div className='star-rating'>
-          {[...Array(5)].map((star) => {
+          {[...Array(5)].map((star, index) => {
             return (
-              <span className='star'>&#9733;</span>
+              <span key={index} className='star'>&#9733;</span>
             );
           })} Star Rating
         </div>
         <div id='product-category'>Product Category</div>
         <div id='product-title'>Product Title</div>
         <div id='product-price'>Price</div>
+        <ImageGallery />
         <div id ='product-overview'>
           Product Overview - This is a test paragraph for the product overview.
         </div>
