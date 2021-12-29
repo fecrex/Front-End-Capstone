@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+import ReviewTile from './reviewTile.jsx';
 
 
 class ReviewList extends React.Component {
@@ -9,7 +11,10 @@ class ReviewList extends React.Component {
   }
   render () {
     return (
-      <div>List of Reviews</div>
+      <div>
+        <h1>Reviews</h1>
+        <ReviewTile/>
+      </div>
     )
   }
 }

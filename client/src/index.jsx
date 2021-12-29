@@ -37,7 +37,7 @@ class App extends React.Component {
       <div className="related-container">
         <Card relatedinfo={this.state.results}/>
       </div>
-      <ReviewList />
+      <ReviewList relatedinfo={this.state.results}/>
       </>
     );
   }
