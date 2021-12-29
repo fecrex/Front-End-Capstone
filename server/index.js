@@ -21,8 +21,6 @@ app.get('/home', function(req, res) {
     .catch(err => {
       console.log('There was an error getting products from the API: ', err);
     })
-  // res.send('this is working');
-  // console.log('ITS WORKING');
 });
 
 let port = 3000;
