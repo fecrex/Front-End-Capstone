@@ -14,35 +14,15 @@ class App extends React.Component {
       products: []
     };
 
-    this.getRelated = this.getRelated.bind(this);
     this.getProducts = this.getProducts.bind(this);
   }
 
   componentDidMount() {
     this.getProducts();
-    this.getRelated();
-  }
-
-  getRelated() {
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40348/related', {
-      headers: {
-        Authorization: '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'
-      }
-    })
-    .then(results => {
-      this.setState({results: results.data});
-    })
-    .catch(err => {
-      console.log(err);
-    })
   }
 
   getProducts() {
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products?count=20', {
-      headers: {
-        Authorization: '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'
-      }
-    })
+    axios.get('http://localhost:3000/home')
     .then(results => {
       this.setState({
         products: results.data
