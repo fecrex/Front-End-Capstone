@@ -11,21 +11,25 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-
+      products: []
     };
+
+    this.getProducts = this.getProducts.bind(this);
   }
 
   componentDidMount() {
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40348/related', {
-      headers: {
-        Authorization: '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'
-      }
-    })
+    this.getProducts();
+  }
+
+  getProducts() {
+    axios.get('http://localhost:3000/home')
     .then(results => {
-      this.setState({results: results.data});
+      this.setState({
+        products: results.data
+      })
     })
     .catch(err => {
-      console.log(err);
+      console.log('There was an error getting products from the API: ', err);
     })
   }
 
@@ -33,10 +37,11 @@ class App extends React.Component {
     return (
       <>
       <h1>FEC - Project Catwalk</h1>
-      <ProductInfo />
+      <ProductInfo products={this.state.products}/>
       <div className="related-container">
         <Card relatedinfo={this.state.results}/>
       </div>
+      <ReviewList relatedinfo={this.state.results}/>
       <QuestionsAnswers />
       <ReviewList />
       </>
