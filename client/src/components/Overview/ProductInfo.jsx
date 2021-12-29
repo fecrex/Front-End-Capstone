@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import ImageGallery from './ImageGallery.jsx';
+import StyleSelector from './StyleSelector.jsx';
 
 class ProductInfo extends React.Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class ProductInfo extends React.Component {
         <div id='product-title'>Product Title</div>
         <div id='product-price'>Price</div>
         <ImageGallery />
+        <StyleSelector />
         <div id ='product-overview'>
           Product Overview - This is a test paragraph for the product overview.
         </div>
