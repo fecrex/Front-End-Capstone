@@ -15,8 +15,10 @@ const Question = function(props) {
 
       {/* <Answer answers={props.answers} answerIds={Object.keys(props.answers)}/> */}
       <div className="answer-content">
+        <p>
         {count === 2 ? Object.keys(props.answers).slice(0,count).map((key, i) => <Answer answer={props.answers[key]} key={i}/>
         ) : Object.keys(props.answers).slice(0, 4).map((key, i) => <Answer answer={props.answers[key]} key={i}/>)}
+        </p>
       </div>
     </div>
   )
