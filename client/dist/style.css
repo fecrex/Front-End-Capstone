@@ -70,8 +70,9 @@ img {
 }
 
 .answer-content {
-  background: red;
-  height: 50px;
+  background: lightgray;
+  height: 50%;
+  position: relative;
   /* line-height: 1.6; */
   font-size: 0.85em;
   display: none;
@@ -129,11 +130,13 @@ input:checked + .answer-content {
 .helpful-question {
   position: absolute;
   right: 100px;
+  bottom: 15px;
 }
 
 .add-answer {
   position: absolute;
   right: 10px;
+  bottom: 15px;
 }
 
 .helpful-answer {
