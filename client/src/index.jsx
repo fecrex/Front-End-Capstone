@@ -38,6 +38,8 @@ class App extends React.Component {
         <Card relatedinfo={this.state.results}/>
       </div>
       <ReviewList relatedinfo={this.state.results}/>
+      <QuestionsAnswers />
+      <ReviewList />
       </>
     );
   }

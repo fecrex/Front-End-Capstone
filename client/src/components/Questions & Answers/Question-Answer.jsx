@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Answer from './Answer.jsx';
 
-const Question = function() {
+const Question = function(props) {
+
+  // no real use for this, was using it to manipulate how many questions showed
+  const [count, setCount] = useState(2);
+  const [showMore, setShowMore] = useState(false);
 
   return (
-    <div className="indiviudal-question">
-      <span className="question">Q: this is an example question?</span>
-      <span className="answer">A: this is an example answer.</span>
-      <span className="from-user">User123, current_date</span>
-      <span className="helpful">Helpful? Yes (number of upvotes)</span>
-      <span className="report-button">Report</span>
+    <div className="individual-question">
+      <input type="radio" id={props.id} className="accordion" name="accordion_input"/>
+      <label className="question-label" htmlFor={props.id}>Q: {props.question_body} <div className="helpful-question">Helpful? Yes ({props.q_helpfulness})</div>
+      <div className="add-answer">| Add Answer</div> </label>
+      <div className="answer-content">
+        <p>
+        {count === 2 ? Object.keys(props.answers).slice(0,count).map((key, i) => <Answer answer={props.answers[key]} key={i}/>
+        ) : Object.keys(props.answers).slice(0, 4).map((key, i) => <Answer answer={props.answers[key]} key={i}/>)}
+        </p>
+      </div>
     </div>
   )
 }
