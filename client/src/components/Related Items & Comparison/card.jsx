@@ -1,4 +1,4 @@
-import React, {useEffect, useState}from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 
 function Card(props) {
@@ -23,6 +23,7 @@ function Card(props) {
       relatedDetails.map((item, index) => {
         return(
           <>
+          <button>x</button>
           <div className="related-item-card" key={index}>
           <img src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1632925545-t-shirts-2021-jgt-ok-1632923427.jpg?crop=1xw:1xh;center,top&resize=768:*" />
           <div className="product-details">

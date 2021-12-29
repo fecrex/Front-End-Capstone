@@ -4,6 +4,7 @@ import QuestionsAnswers from './components/Questions & Answers/QuestionsAnswersM
 import ProductInfo from './components/Overview/ProductInfo.jsx';
 import Card from './components/Related Items & Comparison/card.jsx';
 import ReviewList from './components/Ratings & Reviews/reviewList.jsx';
+import Modal from './components/Related Items & Comparison/cardModal.jsx';
 import axios from 'axios';
 
 class App extends React.Component {
@@ -38,6 +39,7 @@ class App extends React.Component {
         <Card relatedinfo={this.state.results}/>
       </div>
       <ReviewList />
+      <Modal />
       </>
     );
   }
