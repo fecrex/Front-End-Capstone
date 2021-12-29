@@ -11,11 +11,19 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-
+      products: []
     };
+
+    this.getRelated = this.getRelated.bind(this);
+    this.getProducts = this.getProducts.bind(this);
   }
 
   componentDidMount() {
+    this.getProducts();
+    this.getRelated();
+  }
+
+  getRelated() {
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40348/related', {
       headers: {
         Authorization: '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'
@@ -29,11 +37,27 @@ class App extends React.Component {
     })
   }
 
+  getProducts() {
+    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products?count=20', {
+      headers: {
+        Authorization: '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'
+      }
+    })
+    .then(results => {
+      this.setState({
+        products: results.data
+      })
+    })
+    .catch(err => {
+      console.log('There was an error getting products from the API: ', err);
+    })
+  }
+
   render() {
     return (
       <>
       <h1>FEC - Project Catwalk</h1>
-      <ProductInfo />
+      <ProductInfo products={this.state.products}/>
       <div className="related-container">
         <Card relatedinfo={this.state.results}/>
       </div>
