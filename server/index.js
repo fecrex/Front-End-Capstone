@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/home', function(req, res) {
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products?count=5', {
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products?count=1', {
       headers: {
         Authorization: key.TOKEN
       }
@@ -21,8 +21,6 @@ app.get('/home', function(req, res) {
     .catch(err => {
       console.log('There was an error getting products from the API: ', err);
     })
-  // res.send('this is working');
-  // console.log('ITS WORKING');
 });
 
 let port = 3000;
