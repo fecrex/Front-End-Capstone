@@ -20,10 +20,6 @@ const AddQuestion = function(props) {
         </button>
       </div>
     </form>
-    // <div>
-    //    <input type="text" className="question-modal-username-input" onChange={(event) => props.handleUserChange(event)}>What is your username?</input>
-    //   <input type="text" className="question-modal-question-input" onChange={(event) => props.handleQuestionChange(event)}>What is your question?</input>
-    // </div>
   )
 }
 
