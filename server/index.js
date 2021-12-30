@@ -23,6 +23,20 @@ app.get('/home', function(req, res) {
     })
 });
 
+app.get('/reviews', function(req, res) {
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=40344', {
+      headers: {
+        Authorization: key.TOKEN
+      }
+    })
+    .then(results => {
+      res.send(results.data);
+    })
+    .catch(err => {
+      console.log('There was a server error getting reviews from the API: ', err);
+    })
+});
+
 let port = 3000;
 
 app.listen(port, function() {
