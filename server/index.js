@@ -37,6 +37,20 @@ app.get('/reviews', function(req, res) {
     })
 });
 
+app.get('/qa/questions', function(req, res) {
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=40344', {
+    headers: {
+      Authorization: key.TOKEN
+    }
+  })
+  .then(results => {
+    res.send(results.data);
+  })
+  .catch(err => {
+    console.error('Failed to retrieve questions from API: ', err);
+  })
+})
+
 app.get('/styles', function(req, res) {
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40344/styles', {
     headers: {

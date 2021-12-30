@@ -30,17 +30,17 @@ import axios from 'axios';
 
 const QuestionsAnswers = function(props) {
   const modal = useRef(null);
-  console.log(props.product)
 
   const [productId, setProductId] = useState('');
   const [questions, setQuestions] = useState('');
-  const [answers, setAnswers] = useState('');
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
-    getQuestions((results) => {
-      setProductId(props.product.id);
-      setQuestions(results.data);
-    })
-  })
+    getQuestions();
+    // getQuestions((results) => {
+    //   setProductId(props.product.id);
+    //   setQuestions(results.data);
+    // })
+  }, [questions])
 
   // const getQuestions = function(callback) {
   //   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=${productId}`, {
@@ -60,11 +60,22 @@ const QuestionsAnswers = function(props) {
   // }
 
 
+  const getQuestions = async() => {
+    try {
+      var questions = await axios.get('http://localhost:3000/qa/questions');
+      setQuestions(questions.data.results);
+      setLoading(true);
+    } catch(err) {
+      console.error('Error retrieving questions', err);
+    }
+  }
+
+
   return (
           <>
           <h5>QUESTIONS & ANSWERS</h5>
           <button onClick={() => modal.current.open()}>Add Question</button>
-          <QuestionsList productQA={example.results}/>
+          {loading ? <QuestionsList productQA={example.results} questions={questions}/> : null }
           <Modal ref={modal}>
             Hello World
           </Modal>
