@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Thumbnail from './Thumbnail.jsx';
 
 class StyleSelector extends React.Component {
   constructor(props) {
@@ -30,9 +31,16 @@ class StyleSelector extends React.Component {
   }
 
   render() {
+    var results = this.state.styles.results;
+    results.forEach(style =>
+      console.log('hello')
+    )
     return (
       <div className='style-selector'>
         <h2>Placeholder for Style Selector</h2>
+        {/* {results.map((style) => {
+          <Thumbnail />
+        })}; */}
       </div>
     );
   }
