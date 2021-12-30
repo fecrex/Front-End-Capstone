@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import ImageGallery from './ImageGallery.jsx';
+import StyleSelector from './StyleSelector.jsx';
 
 class ProductInfo extends React.Component {
   constructor(props) {
@@ -12,7 +13,6 @@ class ProductInfo extends React.Component {
   }
 
   render() {
-    var product = this.props.products[0];
     return (
       <div className='product-info'>
         <div className='star-rating'>
@@ -22,12 +22,28 @@ class ProductInfo extends React.Component {
             );
           })} Star Rating
         </div>
-        <div id='product-category'>Product Category</div>
-        <div id='product-title'>Product Title</div>
-        <div id='product-price'>Price</div>
+        <div id='product-category'>
+          {this.props.products ? this.props.products.map((product) => {
+            return product.category
+          }) : 'Product Category'}
+        </div>
+        <div id='product-title'>
+          {this.props.products ? this.props.products.map((product) => {
+              return product.name
+            }) : 'Product Title'}
+        </div>
+        <div id='product-price'>
+          {this.props.products ? this.props.products.map((product) => {
+                return product.default_price
+              }) : 'Product Price'}
+        </div>
         <ImageGallery />
+        <StyleSelector />
         <div id ='product-overview'>
-          Product Overview - This is a test paragraph for the product overview.
+          {this.props.products ? this.props.products.map((product) => {
+                  return product.description
+                }) : 'Product Description'}
+          {/* Product Overview - This is a test paragraph for the product overview. */}
         </div>
         <div id='share-social'>Share on Social Media</div>
       </div>
