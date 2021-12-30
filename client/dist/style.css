@@ -150,10 +150,6 @@ img {
   width: 50px
 }
 
-.thumbnail-pic {
-  max-height: 100%;
-  max-width: 100%;
-}
 
 #product-image {
   max-height: 100%;
@@ -161,11 +157,14 @@ img {
 }
 
 .selected-thumbnail {
-  border: 5px solid blue
+  border: 5px solid blue;
+  max-height: 100%;
+  max-width: 100%;
 }
 
 .normal-thumbnail {
-  background: white
+  max-height: 100%;
+  max-width: 100%;
 }
 
 

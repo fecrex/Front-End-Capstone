@@ -27,7 +27,9 @@ class StyleSelector extends React.Component {
       var resp = await axios.get('http://localhost:3000/styles');
       this.setState({
         styles: resp.data,
-        loaded: true
+        loaded: true,
+        imageSelected: resp.data.results[0].photos[0].thumbnail_url,
+        styleSelected: resp.data.results[0].name
       })
     } catch (err) {
       console.log('There was an error in your catch block');
