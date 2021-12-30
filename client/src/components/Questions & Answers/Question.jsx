@@ -13,10 +13,8 @@ const Question = function(props) {
       <label className="question-label" htmlFor={props.id}>Q: {props.question_body} <div className="helpful-question">Helpful? Yes ({props.q_helpfulness})</div>
       <div className="add-answer">| Add Answer</div> </label>
       <div className="answer-content">
-        <p>
         {count === 2 ? Object.keys(props.answers).slice(0,count).map((key, i) => <Answer answer={props.answers[key]} key={i}/>
         ) : Object.keys(props.answers).slice(0, 4).map((key, i) => <Answer answer={props.answers[key]} key={i}/>)}
-        </p>
       </div>
     </div>
   )

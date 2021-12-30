@@ -42,7 +42,9 @@ class App extends React.Component {
       <div className="related-container">
         <Card relatedinfo={this.state.results}/>
       </div>
-      <QuestionsAnswers />
+      <ReviewList relatedinfo={this.state.results}/>
+      <QuestionsAnswers product={this.state.products[0]}/>
+      <ReviewList />
       <ReviewList productId={this.state.products.map((product) => {
       return product.id})}/>
       </>
