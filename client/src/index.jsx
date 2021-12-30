@@ -35,7 +35,6 @@ class App extends React.Component {
 
   render() {
     return (
-      <>
       <h1>FEC - Project Catwalk</h1>
       <ProductInfo products={this.state.products}/>
       <div className="related-container">
