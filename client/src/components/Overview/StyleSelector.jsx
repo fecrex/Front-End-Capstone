@@ -8,10 +8,12 @@ class StyleSelector extends React.Component {
 
     this.state = {
       styles: [],
-      loaded: false
+      loaded: false,
+      imageSelected: undefined
     }
 
     this.getStyles = this.getStyles.bind(this);
+    this.setSelected = this.setSelected.bind(this);
   }
 
   componentDidMount() {
@@ -31,14 +33,22 @@ class StyleSelector extends React.Component {
     }
   }
 
+  setSelected() {
+    this.setState({
+      imageSelected: event.target.src
+    })
+  }
+
   render() {
-    console.log(this.state.styles.results);
+    // console.log(this.state.styles.results);
     return (
       <div className='style-selector'>
-        <h2>Style Selector</h2>
+        <h2>Style > Selected Style</h2>
         <div className='thumbnail-container'>
           {this.state.loaded ? this.state.styles.results.map((style, index) => {
-            return <Thumbnail pic={this.state.styles.results[index].photos[0].thumbnail_url}/>
+            return <Thumbnail pic={this.state.styles.results[index].photos[0].thumbnail_url}
+            setSelected={this.setSelected} imageSelected={this.state.imageSelected}
+            />
           }) : null}
         </div>
       </div>
