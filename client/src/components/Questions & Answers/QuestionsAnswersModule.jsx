@@ -30,7 +30,7 @@ import axios from 'axios';
 // }
 
 const QuestionsAnswers = function(props) {
-  const modal = useRef(null);
+  const question_modal = useRef(null);
 
   const [productId, setProductId] = useState('');
   const [questions, setQuestions] = useState('');
@@ -97,9 +97,9 @@ const QuestionsAnswers = function(props) {
   return (
           <>
           <h5>QUESTIONS & ANSWERS</h5>
-          <button onClick={() => modal.current.open()}>Add Question</button>
+          <button onClick={() => question_modal.current.open()}>Add Question</button>
           {loading ? <QuestionsList productQA={example.results} questions={questions}/> : null }
-          <Modal ref={modal}>
+          <Modal ref={question_modal}>
             <AddQuestion onSubmit={onSubmit}/>
           </Modal>
           </>
