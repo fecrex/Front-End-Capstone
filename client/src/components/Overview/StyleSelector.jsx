@@ -7,7 +7,8 @@ class StyleSelector extends React.Component {
     super(props);
 
     this.state = {
-      styles: []
+      styles: [],
+      loaded: false
     }
 
     this.getStyles = this.getStyles.bind(this);
@@ -18,26 +19,45 @@ class StyleSelector extends React.Component {
     this.getStyles();
   }
 
-  getStyles() {
-    axios.get('http://localhost:3000/styles')
-    .then(results => {
+  // getStyles() {
+  //   axios.get('http://localhost:3000/styles')
+  //   .then(results => {
+  //     this.setState({
+  //       styles: results.data,
+  //       false: true
+  //     })
+  //   })
+  //   .catch(err => {
+  //     console.log('There was an error loading the styles: ', err);
+  //   })
+  // }
+
+  getStyles = async() => {
+    try {
+      var resp = await axios.get('http://localhost:3000/styles');
       this.setState({
-        styles: results.data
+        styles: resp.data,
+        loaded: true
       })
-    })
-    .catch(err => {
-      console.log('There was an error loading the styles: ', err);
-    })
+    } catch (err) {
+      console.log('There was an error in your catch block');
+    }
   }
 
+
+
+
   render() {
-    var results = this.state.styles.results;
+    console.log(this.state.styles.results);
     return (
       <div className='style-selector'>
         <h2>Placeholder for Style Selector</h2>
-        {/* {results.map((style) => {
-          <Thumbnail />
-        })}; */}
+        {this.state.loaded ? this.state.styles.results.map((style) => {
+          return <Thumbnail />
+        }) : null};
+
+
+        {/* <Thumbnail /> */}
       </div>
     );
   }
