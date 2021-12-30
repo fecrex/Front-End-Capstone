@@ -43,7 +43,6 @@ class ProductInfo extends React.Component {
           {this.props.products ? this.props.products.map((product) => {
                   return product.description
                 }) : 'Product Description'}
-          {/* Product Overview - This is a test paragraph for the product overview. */}
         </div>
         <div id='share-social'>Share on Social Media</div>
       </div>

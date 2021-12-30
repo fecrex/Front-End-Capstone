@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import QuestionsAnswers from './components/Questions & Answers/QuestionsAnswersModule.jsx';
 import ProductInfo from './components/Overview/ProductInfo.jsx';
+import Overview from './components/Overview/Overview.jsx';
 import Card from './components/Related Items & Comparison/card.jsx';
 import ReviewList from './components/Ratings & Reviews/reviewList.jsx';
 import axios from 'axios';
@@ -37,7 +38,7 @@ class App extends React.Component {
     return (
       <>
       <h1>FEC - Project Catwalk</h1>
-      <ProductInfo products={this.state.products}/>
+      <Overview products={this.state.products}/>
       <div className="related-container">
         <Card relatedinfo={this.state.results}/>
       </div>
