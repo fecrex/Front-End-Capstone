@@ -19,19 +19,6 @@ class StyleSelector extends React.Component {
     this.getStyles();
   }
 
-  // getStyles() {
-  //   axios.get('http://localhost:3000/styles')
-  //   .then(results => {
-  //     this.setState({
-  //       styles: results.data,
-  //       false: true
-  //     })
-  //   })
-  //   .catch(err => {
-  //     console.log('There was an error loading the styles: ', err);
-  //   })
-  // }
-
   getStyles = async() => {
     try {
       var resp = await axios.get('http://localhost:3000/styles');
@@ -44,9 +31,6 @@ class StyleSelector extends React.Component {
     }
   }
 
-
-
-
   render() {
     console.log(this.state.styles.results);
     return (
@@ -55,9 +39,6 @@ class StyleSelector extends React.Component {
         {this.state.loaded ? this.state.styles.results.map((style) => {
           return <Thumbnail />
         }) : null};
-
-
-        {/* <Thumbnail /> */}
       </div>
     );
   }
