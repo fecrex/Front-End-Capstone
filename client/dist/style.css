@@ -122,7 +122,8 @@ img {
 
 .image-gallery {
   border: solid 1px #000;
-  max-width: 60%;
+  height: 200px;
+  max-width: 30%
 }
 
 .star-rating, #product-category, #product-title, #product-price {
@@ -131,6 +132,41 @@ img {
   border: solid 1px #000;
 }
 
+
+.style-selector {
+  max-width: 30%
+}
+
+.thumbnail-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  height: 200px;
+  width: 200px
+}
+
+.thumbnail {
+  flex: 1 0 calc(25% - 10px);
+  margin: 5px;
+  height: 50px;
+}
+
+
+#product-image {
+  max-height: 100%;
+  max-width: 100%
+}
+
+.selected-thumbnail {
+  border: 5px solid blue;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.normal-thumbnail {
+  max-height: 100%;
+  max-width: 100%;
+}
 
 
 

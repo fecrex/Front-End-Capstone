@@ -37,9 +37,11 @@ class ProductInfo extends React.Component {
                 return product.default_price
               }) : 'Product Price'}
         </div>
+
         <ImageGallery />
         <StyleSelector />
-        <div id ='product-overview'>
+
+        <div id='product-overview'>
           {this.props.products ? this.props.products.map((product) => {
                   return product.description
                 }) : 'Product Description'}
