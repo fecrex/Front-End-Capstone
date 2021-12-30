@@ -32,9 +32,6 @@ class StyleSelector extends React.Component {
 
   render() {
     var results = this.state.styles.results;
-    results.forEach(style =>
-      console.log('hello')
-    )
     return (
       <div className='style-selector'>
         <h2>Placeholder for Style Selector</h2>
