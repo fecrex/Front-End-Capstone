@@ -35,10 +35,12 @@ class StyleSelector extends React.Component {
     console.log(this.state.styles.results);
     return (
       <div className='style-selector'>
-        <h2>Placeholder for Style Selector</h2>
-        {this.state.loaded ? this.state.styles.results.map((style) => {
-          return <Thumbnail />
-        }) : null};
+        <h2>Style Selector</h2>
+        <div className='thumbnail-container'>
+          {this.state.loaded ? this.state.styles.results.map((style, index) => {
+            return <Thumbnail pic={this.state.styles.results[index].photos[0].thumbnail_url}/>
+          }) : null}
+        </div>
       </div>
     );
   }
