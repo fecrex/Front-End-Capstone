@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import QuestionsList from './QuestionsList.jsx';
+import AddQuestion from './AddQuestion.jsx';
 import Modal from './AddQuestionModal.jsx';
 import example from'./example_data.js';
 import key from '../../../../config.js';
@@ -34,6 +35,25 @@ const QuestionsAnswers = function(props) {
   const [productId, setProductId] = useState('');
   const [questions, setQuestions] = useState('');
   const [loading, setLoading] = useState(false);
+  const [questionInput, setQuestionInput] = useState('');
+  const [usernameInput, setUsernameInput] = useState('');
+
+  // const handleQuestionChange = function(event) {
+  //   setQuestionInput(event.target.value);
+  // }
+
+  // const handleUserChange = function(event) {
+  //   setUsernameInput(event.target.value);
+  // }
+
+  const onSubmit = (event) => {
+    console.log(event)
+    event.preventDefault(event);
+    console.log(event.target.username.value);
+    console.log(event.target.question.value);
+  }
+
+
   useEffect(() => {
     getQuestions();
     // getQuestions((results) => {
@@ -61,10 +81,13 @@ const QuestionsAnswers = function(props) {
 
 
   const getQuestions = async() => {
+    let isMounted = true;
     try {
       var questions = await axios.get('http://localhost:3000/qa/questions');
-      setQuestions(questions.data.results);
-      setLoading(true);
+      if (isMounted) {
+        setQuestions(questions.data.results);
+        setLoading(true);
+      }
     } catch(err) {
       console.error('Error retrieving questions', err);
     }
@@ -77,7 +100,7 @@ const QuestionsAnswers = function(props) {
           <button onClick={() => modal.current.open()}>Add Question</button>
           {loading ? <QuestionsList productQA={example.results} questions={questions}/> : null }
           <Modal ref={modal}>
-            Hello World
+            <AddQuestion onSubmit={onSubmit}/>
           </Modal>
           </>
         )
