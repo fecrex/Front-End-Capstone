@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import ImageGallery from './ImageGallery.jsx';
+import StyleSelector from './StyleSelector.jsx';
 
 class ProductInfo extends React.Component {
   constructor(props) {
@@ -37,6 +38,7 @@ class ProductInfo extends React.Component {
               }) : 'Product Price'}
         </div>
         <ImageGallery />
+        <StyleSelector />
         <div id ='product-overview'>
           {this.props.products ? this.props.products.map((product) => {
                   return product.description
