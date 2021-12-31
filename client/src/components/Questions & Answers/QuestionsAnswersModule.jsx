@@ -71,11 +71,6 @@ const QuestionsAnswers = function(props) {
       } catch(err) {
         console.error('Error retrieving questions', err);
       }
-    // getQuestions();
-    // getQuestions((results) => {
-    //   setProductId(props.product.id);
-    //   setQuestions(results.data);
-    // })
   }
   getQuestions();
 }, [])
