@@ -3,7 +3,8 @@ import QuestionsList from './QuestionsList.jsx';
 import AddQuestion from './AddQuestion.jsx';
 import Modal from './AddQuestionModal.jsx';
 import AddAnswer from './AddAnswer.jsx';
-import AnswerModal from './AddAnswerModal.jsx'
+import AnswerModal from './AddAnswerModal.jsx';
+import Search from './Search.jsx';
 import example from'./example_data.js';
 import key from '../../../../config.js';
 import axios from 'axios';
@@ -36,6 +37,7 @@ const QuestionsAnswers = function(props) {
   const answer_modal = useRef(null);
 
   const [productId, setProductId] = useState('');
+  const [searched, setSearched] = useState('');
   const [questions, setQuestions] = useState('');
   const [loading, setLoading] = useState(false);
   const [questionInput, setQuestionInput] = useState('');
@@ -54,6 +56,12 @@ const QuestionsAnswers = function(props) {
     event.preventDefault(event);
     console.log(event.target.username.value);
     console.log(event.target.question.value);
+  }
+
+  const onSearchChange = (event) => {
+    // will have to filter through the questions based on what was just typed after 3 characters.
+    setSearched(event.target.value);
+
   }
 
 
@@ -111,6 +119,7 @@ const QuestionsAnswers = function(props) {
   return (
           <>
           <h5>QUESTIONS & ANSWERS</h5>
+          <Search handleChange={onSearchChange}/>
           <button onClick={() => question_modal.current.open()}>Add Question</button>
           <button onClick={() => answer_modal.current.open()}>Add Answer</button>
           {loading ? <QuestionsList productQA={example.results} questions={questions}/> : null }
