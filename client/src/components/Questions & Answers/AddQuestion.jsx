@@ -11,6 +11,10 @@ const AddQuestion = function(props) {
         <input className="form-control" id="username"></input>
       </div>
       <div className="form-group">
+        <label htmlFor="email">Email: </label>
+        <input className="form-control" id="email" placeholder="Example: jack@email.com"></input>
+      </div>
+      <div className="form-group">
         <label htmlFor="question">Question</label>
         <input className="form-control" id="question" placeholder="Type your question here."></input>
       </div>
