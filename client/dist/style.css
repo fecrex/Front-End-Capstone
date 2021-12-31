@@ -253,6 +253,7 @@ img {
 }
 
 .review-images {
+  margin-top: 5px;
   height: 250px;
   width: 250px;
 }
@@ -270,7 +271,6 @@ img {
 .response-from-seller {
   margin-top: 5px;
   margin-left: 2px;
-
 }
 
 .rating-helpfulness {
