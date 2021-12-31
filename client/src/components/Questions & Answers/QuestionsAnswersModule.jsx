@@ -43,13 +43,6 @@ const QuestionsAnswers = function(props) {
   const [questionInput, setQuestionInput] = useState('');
   const [usernameInput, setUsernameInput] = useState('');
 
-  // const handleQuestionChange = function(event) {
-  //   setQuestionInput(event.target.value);
-  // }
-
-  // const handleUserChange = function(event) {
-  //   setUsernameInput(event.target.value);
-  // }
 
   const onSubmit = (event) => {
     console.log(event)
@@ -60,8 +53,17 @@ const QuestionsAnswers = function(props) {
 
   const onSearchChange = (event) => {
     // will have to filter through the questions based on what was just typed after 3 characters.
+    // https://dev.to/shubhamtiwari909/real-time-searching-in-reactjs-3mfm
+    // prolly will have to setState of the newly filtered questions
     setSearched(event.target.value);
-
+    var filteredQuestions = questions.filter((question) => {
+      if (searched === '') {
+        return question;
+      } else if (question.question_body.toLowerCase().includes(searched.toLowerCase())) {
+        return question;
+      }
+    })
+    setQuestions(filteredQuestions);
   }
 
 
@@ -98,21 +100,6 @@ const QuestionsAnswers = function(props) {
   //   .catch((err) => {
   //     console.error(err);
   //   })
-  // }
-
-
-  // const getQuestions = async() => {
-  //   let isMounted = true;
-  //   try {
-  //     var questions = await axios.get('http://localhost:3000/qa/questions');
-  //     if (isMounted) {
-  //       setQuestions(questions.data.results);
-  //       setLoading(true);
-  //       isMounted = false;
-  //     }
-  //   } catch(err) {
-  //     console.error('Error retrieving questions', err);
-  //   }
   // }
 
 
