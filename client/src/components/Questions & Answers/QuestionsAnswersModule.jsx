@@ -2,6 +2,8 @@ import React, { useRef, useState, useEffect } from 'react';
 import QuestionsList from './QuestionsList.jsx';
 import AddQuestion from './AddQuestion.jsx';
 import Modal from './AddQuestionModal.jsx';
+import AddAnswer from './AddAnswer.jsx';
+import AnswerModal from './AddAnswerModal.jsx'
 import example from'./example_data.js';
 import key from '../../../../config.js';
 import axios from 'axios';
@@ -31,6 +33,7 @@ import axios from 'axios';
 
 const QuestionsAnswers = function(props) {
   const question_modal = useRef(null);
+  const answer_modal = useRef(null);
 
   const [productId, setProductId] = useState('');
   const [questions, setQuestions] = useState('');
@@ -98,10 +101,14 @@ const QuestionsAnswers = function(props) {
           <>
           <h5>QUESTIONS & ANSWERS</h5>
           <button onClick={() => question_modal.current.open()}>Add Question</button>
+          <button onClick={() => answer_modal.current.open()}>Add Answer</button>
           {loading ? <QuestionsList productQA={example.results} questions={questions}/> : null }
           <Modal ref={question_modal}>
             <AddQuestion onSubmit={onSubmit}/>
           </Modal>
+          <AnswerModal ref={answer_modal}>
+            <AddAnswer onSubmit={onSubmit}/>
+          </AnswerModal>
           </>
         )
 }
