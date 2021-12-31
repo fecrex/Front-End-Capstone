@@ -27,9 +27,9 @@ class ProductInfo extends React.Component {
       for (var i = 0; i < resp.data.results.length; i++) {
         ratingTotal += resp.data.results[i].rating;
       }
-      var averageRating = Math.round((ratingTotal / countRatings) * 100) / 100;
+      var averageRating = ratingTotal / countRatings
       this.setState({
-        rating: averageRating,
+        rating: averageRating.toFixed(2),
         numberRatings: countRatings
       })
     } catch (err) {
