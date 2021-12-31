@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import ImageGallery from './ImageGallery.jsx';
 import StyleSelector from './StyleSelector.jsx';
+import AddToCart from './AddToCart.jsx';
 
 class ProductInfo extends React.Component {
   constructor(props) {
@@ -66,6 +67,7 @@ class ProductInfo extends React.Component {
 
         <ImageGallery />
         <StyleSelector />
+        <AddToCart />
 
         <div id='product-overview'>
           {this.props.products ? this.props.products.map((product) => {

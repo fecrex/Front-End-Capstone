@@ -307,6 +307,16 @@ img {
   max-width: 100%;
 }
 
+.size-selector {
+  margin: 10px;
+  max-width: 10%
+}
+
+.quantity-selector {
+  margin: 10px;
+  max-width: 10%
+}
+
 
 
 
