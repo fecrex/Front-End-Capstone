@@ -200,9 +200,15 @@ img {
 }
 
 .image-gallery {
-  border: solid 1px #000;
-  height: 200px;
-  max-width: 30%
+  /* border: solid 1px #000; */
+  max-width: 50%;
+  height: 300px;
+  text-align: center
+}
+
+#product-image {
+  max-height: 100%;
+  max-width: 100%
 }
 
 .star-rating, #product-category, #product-title, #product-price {
@@ -291,11 +297,6 @@ img {
 }
 
 
-#product-image {
-  max-height: 100%;
-  max-width: 100%
-}
-
 .selected-thumbnail {
   border: 5px solid blue;
   max-height: 100%;
@@ -305,6 +306,16 @@ img {
 .normal-thumbnail {
   max-height: 100%;
   max-width: 100%;
+}
+
+.size-selector {
+  margin: 10px;
+  max-width: 10%
+}
+
+.quantity-selector {
+  margin: 10px;
+  max-width: 10%
 }
 
 
