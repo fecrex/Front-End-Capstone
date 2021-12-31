@@ -6,11 +6,15 @@ const AddAnswer = function(props) {
   return (
     <form onSubmit={(event) => props.onSubmit(event)}>
       <div className="form-group">
-        <label htmlFor="username">Username</label>
+        <label htmlFor="username">Username: </label>
         <input className="form-control" id="username"></input>
       </div>
       <div className="form-group">
-        <label htmlFor="answer">Answer</label>
+        <label htmlFor="email">Email: </label>
+        <input className="form-control" id="email" placeholder="Example: jack@email.com"></input>
+      </div>
+      <div className="form-group">
+        <label htmlFor="answer">Answer: </label>
         <input className="form-control" id="answer" placeholder="Type your answer here."></input>
       </div>
       <div className="form-group">

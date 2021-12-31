@@ -58,12 +58,27 @@ const QuestionsAnswers = function(props) {
 
 
   useEffect(() => {
-    getQuestions();
+    const getQuestions = async() => {
+      let isMounted = true;
+      try {
+        var questions = await axios.get('http://localhost:3000/qa/questions');
+        if (isMounted) {
+          console.log(questions.data.results);
+          setQuestions(questions.data.results);
+          setLoading(true);
+          isMounted = false;
+        }
+      } catch(err) {
+        console.error('Error retrieving questions', err);
+      }
+    // getQuestions();
     // getQuestions((results) => {
     //   setProductId(props.product.id);
     //   setQuestions(results.data);
     // })
-  }, [questions])
+  }
+  getQuestions();
+}, [])
 
   // const getQuestions = function(callback) {
   //   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=${productId}`, {
@@ -83,18 +98,19 @@ const QuestionsAnswers = function(props) {
   // }
 
 
-  const getQuestions = async() => {
-    let isMounted = true;
-    try {
-      var questions = await axios.get('http://localhost:3000/qa/questions');
-      if (isMounted) {
-        setQuestions(questions.data.results);
-        setLoading(true);
-      }
-    } catch(err) {
-      console.error('Error retrieving questions', err);
-    }
-  }
+  // const getQuestions = async() => {
+  //   let isMounted = true;
+  //   try {
+  //     var questions = await axios.get('http://localhost:3000/qa/questions');
+  //     if (isMounted) {
+  //       setQuestions(questions.data.results);
+  //       setLoading(true);
+  //       isMounted = false;
+  //     }
+  //   } catch(err) {
+  //     console.error('Error retrieving questions', err);
+  //   }
+  // }
 
 
   return (
