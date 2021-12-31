@@ -211,6 +211,60 @@ img {
   border: solid 1px #000;
 }
 
+.review-header {
+  margin-bottom: 0px;
+}
+
+.individual-review {
+  margin-top: 10px;
+  border:1px solid grey;
+}
+
+.review-star-rating {
+  margin-top: 1px;
+  margin-left: 2px;
+}
+
+.review-date {
+  margin-top: 5px;
+  margin-left: 2px;
+}
+
+.review-summary {
+  margin-top: 5px;
+  margin-left: 2px;
+}
+
+.review-full-body {
+  margin-top: 5px;
+  margin-left: 2px;
+}
+
+.review-images {
+  height: 250px;
+  width: 250px;
+}
+
+.recommend-this-product {
+  margin-top: 5px;
+  margin-left: 2px;
+}
+
+.reviewer-name {
+  margin-top: 5px;
+  margin-left: 2px;
+}
+
+.response-from-seller {
+  margin-top: 5px;
+  margin-left: 2px;
+
+}
+
+.rating-helpfulness {
+  margin-top: 5px;
+  margin-left: 2px;
+}
 
 .style-selector {
   max-width: 30%
