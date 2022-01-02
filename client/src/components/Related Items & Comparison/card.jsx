@@ -2,21 +2,28 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 
 function Card(props) {
+  const [relatedList, setRelatedList] = useState([]);
   const [relatedDetails, setDetails] = useState([]);
+
   useEffect(() => {
-    if (props.relatedinfo) {
-      props.relatedinfo.forEach(element => {
-        axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${element}`, {
-          headers: {
-            Authorization: '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'
-          }
-        })
-        .then(data => {
-          setDetails(oldArray => [...oldArray, data.data]);
-        })
+    if (props.relatedinfo[0]) {
+      axios.post('http://localhost:3000/related', {
+        id: props.relatedinfo[0].id
+      })
+      .then(relprod => {
+        setRelatedList(relprod.data);
+      })
+      .catch(err => {
+        console.log('error getting related list: ', err);
       })
     }
   }, [props.relatedinfo]);
+
+  useEffect(() => {
+    relatedList.forEach(item => {
+      axios.get()
+    })
+  })
 
   if (relatedDetails) {
     return (

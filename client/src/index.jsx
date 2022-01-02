@@ -40,7 +40,7 @@ class App extends React.Component {
       <h1>FEC - Project Catwalk</h1>
       <ProductInfo products={this.state.products}/>
       <div className="related-container">
-        <Card relatedinfo={this.state.results}/>
+        <Card relatedinfo={this.state.products}/>
       </div>
       <ReviewList relatedinfo={this.state.results}/>
       <QuestionsAnswers />
