@@ -94,7 +94,7 @@ img {
 
 
 .questions-list {
-  max-width: 800px;
+  width: auto;
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
@@ -153,17 +153,20 @@ img {
 
 .answer {
   position: relative;
+
 }
 
 .from-user {
   position: relative;
   /* top: 80px; */
+  top: 10px;
 }
 
 .helpful-question {
   position: absolute;
+  top: 12px;
   right: 100px;
-  bottom: 15px;
+
 }
 
 .add-answer {
@@ -174,15 +177,25 @@ img {
 
 .helpful-answer {
   position: relative;
-  bottom: 15px;
+  bottom: 5px;
   left: 270px;
 }
 
 .report-answer {
   position: relative;
-  bottom: 30px;
+  bottom: 20px;
   left: 380px;
 }
+
+.question {
+  font-weight: bold;
+}
+
+/* .btn-answer-modal {
+  border: none;
+  background: none;
+  outline: none;
+} */
 
 .search-form-control {
   width: 600px;
@@ -196,9 +209,7 @@ img {
   gap: 10px;
 }
 
-.question {
-  font-weight: bold;
-}
+
 
 .product-info {
   /* border: solid 1px #000; */
