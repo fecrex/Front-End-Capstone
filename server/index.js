@@ -72,7 +72,7 @@ app.get('/qa/questions', function(req, res) {
 })
 
 app.get('/styles', function(req, res) {
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40355/styles', {
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40344/styles', {
     headers: {
       Authorization: key.TOKEN
     }
