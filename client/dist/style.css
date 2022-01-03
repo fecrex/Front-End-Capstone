@@ -153,17 +153,20 @@ img {
 
 .answer {
   position: relative;
+
 }
 
 .from-user {
   position: relative;
   /* top: 80px; */
+  top: 10px;
 }
 
 .helpful-question {
   position: absolute;
+  top: 12px;
   right: 100px;
-  bottom: 15px;
+
 }
 
 .add-answer {
@@ -174,23 +177,26 @@ img {
 
 .helpful-answer {
   position: relative;
-  bottom: 15px;
+  bottom: 5px;
   left: 270px;
 }
 
 .report-answer {
   position: relative;
-  bottom: 30px;
+  bottom: 20px;
   left: 380px;
-}
-.related-container {
-  display: flex;
-  gap: 10px;
 }
 
 .question {
   font-weight: bold;
 }
+
+.related-container {
+  display: flex;
+  gap: 10px;
+}
+
+
 
 .product-info {
   /* border: solid 1px #000; */
