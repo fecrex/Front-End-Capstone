@@ -51,6 +51,9 @@ const QuestionsAnswers = function(props) {
     console.log(event.target.question.value);
   }
 
+  const openQuestionModal = () => question_modal.current.open()
+
+
   const onSearchChange = (event) => {
     // will have to filter through the questions based on what was just typed after 3 characters.
     // https://dev.to/shubhamtiwari909/real-time-searching-in-reactjs-3mfm
@@ -71,8 +74,13 @@ const QuestionsAnswers = function(props) {
     const getQuestions = async() => {
       let isMounted = true;
       try {
-        var questions = await axios.get('http://localhost:3000/qa/questions');
+        var questions = await axios.get('http://localhost:3000/qa/questions', {
+          params: {
+            product_id: '40345'
+          }
+        });
         if (isMounted) {
+          console.log(questions);
           console.log(questions.data.results);
           setQuestions(questions.data.results);
           setLoading(true);
@@ -107,9 +115,9 @@ const QuestionsAnswers = function(props) {
           <>
           <h5>QUESTIONS & ANSWERS</h5>
           <Search handleChange={onSearchChange}/>
-          <button onClick={() => question_modal.current.open()}>Add Question</button>
+          {/* <button onClick={() => question_modal.current.open()}>Add Question</button> */}
           <button onClick={() => answer_modal.current.open()}>Add Answer</button>
-          {loading ? <QuestionsList productQA={example.results} questions={questions}/> : null }
+          {loading ? <QuestionsList openModal={openQuestionModal} productQA={example.results} questions={questions}/> : null }
           <Modal ref={question_modal}>
             <AddQuestion onSubmit={onSubmit}/>
           </Modal>

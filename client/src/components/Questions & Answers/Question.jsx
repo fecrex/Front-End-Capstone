@@ -6,6 +6,25 @@ const Question = function(props) {
   // no real use for this, was using it to manipulate how many questions showed
   const [count, setCount] = useState(2);
   const [showMore, setShowMore] = useState(false);
+  const [message, setMessage] = useState('Load more answers');
+
+
+  const show = (message) => {
+    if (message === 'Load more answers') {
+      setCount(4);
+      setMessage('Show Less');
+    } else {
+      setCount(2);
+      setMessage('Load more answers');
+    }
+  }
+
+  // const showLessAnswers = () => {
+  //   setCount(2);
+  //   setMessage('Load more answers');
+  // }
+
+
 
   return (
     <div className="individual-question">
@@ -13,8 +32,8 @@ const Question = function(props) {
       <label className="question-label" htmlFor={props.id}>Q: {props.question_body} <div className="helpful-question">Helpful? Yes ({props.q_helpfulness})</div>
       <div className="add-answer">| Add Answer</div> </label>
       <div className="answer-content">
-        {count === 2 ? Object.keys(props.answers).slice(0,count).map((key, i) => <Answer answer={props.answers[key]} key={i}/>
-        ) : Object.keys(props.answers).slice(0, 4).map((key, i) => <Answer answer={props.answers[key]} key={i}/>)}
+        {count === 2 ? Object.keys(props.answers).slice(0,count).map((key, i) => <Answer answer={props.answers[key]} key={i} show={show} message={message}/>
+        ) : Object.keys(props.answers).slice(0, count).map((key, i) => <Answer answer={props.answers[key]} key={i} show={show} message={message}/>)}
       </div>
     </div>
   )

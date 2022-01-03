@@ -38,7 +38,7 @@ app.get('/reviews', function(req, res) {
 });
 
 app.get('/qa/questions', function(req, res) {
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=40344', {
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=40346', {
     headers: {
       Authorization: key.TOKEN
     }
