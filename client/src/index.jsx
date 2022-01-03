@@ -5,6 +5,7 @@ import ProductInfo from './components/Overview/ProductInfo.jsx';
 import Overview from './components/Overview/Overview.jsx';
 import Card from './components/Related Items & Comparison/card.jsx';
 import ReviewList from './components/Ratings & Reviews/reviewList.jsx';
+import Modal from './components/Related Items & Comparison/cardModal.jsx';
 import axios from 'axios';
 
 class App extends React.Component {
@@ -40,8 +41,12 @@ class App extends React.Component {
       <h1>FEC - Project Catwalk</h1>
       <Overview products={this.state.products}/>
       <div className="related-container">
-        <Card relatedinfo={this.state.results}/>
+        <Card relatedinfo={this.state.products}/>
       </div>
+      <ReviewList relatedinfo={this.state.results}/>
+      <QuestionsAnswers />
+      <ReviewList />
+      {/* <Modal /> */}
       <QuestionsAnswers product={this.state.products[0]}/>
       <ReviewList productId={this.state.products.map((product) => {
       return product.id})}/>
