@@ -183,6 +183,14 @@ img {
   bottom: 30px;
   left: 380px;
 }
+
+.search-form-control {
+  width: 600px;
+  height: 30px;
+  position: relative;
+  left: 100px;
+}
+/* questions answers css end */
 .related-container {
   display: flex;
   gap: 10px;
@@ -207,6 +215,7 @@ img {
   height: 300px;
   text-align: center
 }
+
 
 #product-image {
   max-height: 100%;
