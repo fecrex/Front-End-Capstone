@@ -3,13 +3,20 @@ import Rating from '@mui/material/Rating';
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 import styled from 'styled-components';
 
-const Checked = styled.div`
-  color: green;
-`;
 
-const ReviewTile = function(props) {
+class ReviewTile extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      reviewText: '',
+      reviewSum: '',
+      reviewShown: false,
+      showMoreText: 'Show More'
+    };
+    this.showFullReviewHandler = this.showFullReviewHandler.bind(this);
+  }
 
-  var monthConverter= function(num) {
+  monthConverter= function(num) {
     var monthsObj = {
       '01': 'January',
       '02': 'February',
@@ -23,46 +30,60 @@ const ReviewTile = function(props) {
       '10': 'October',
       '11': 'November',
       '12': 'December'
-    };
+    }
     return monthsObj[num.toString()];
-  }
+  };
 
-  var reviewSummarizer = function(str) {
-    var truncatedStr = str.slice(0, 251);
-    return truncatedStr
-  }
 
-  var showFullReviewHandler = function(e) {
-    e.preventDefault();
-    console.log(e.target.innerHTML);
-    console.log('HA HA! You clicked me loser!!!');
-  }
+reviewSummarizer = function(str) {
+  var truncatedStr = str.slice(0, 251);
+  return truncatedStr
+}
 
-  return (
+showFullReviewHandler = function(e) {
+  e.preventDefault();
+  if (this.state.reviewShown === false) {
+    this.setState({
+      reviewText: this.props.reviewBody,
+      reviewShown: true,
+      showMoreText: 'Show Less'
+    })
+  } else {
+    this.setState({
+      reviewText: this.reviewSummarizer(this.props.reviewBody),
+      reviewShown: false,
+      showMoreText: 'Show More'
+    })
+  }
+}
+
+  render () {
+    return (
     <div className="individual-review">
-      <Rating className="review-star-rating" defaultValue={props.starRating} precision={0.5} />
-      <div className="review-date">{monthConverter(props.reviewDate.substring(5, 7)) + ' ' + props.reviewDate.substring(8, 10) + ', ' + props.reviewDate.substring(0, 4)}</div>
-      <div className="review-summary">{props.reviewSummary}</div>
+      <Rating className="review-star-rating" defaultValue={this.props.starRating} precision={0.5} />
+      <div className="review-date">{this.monthConverter(this.props.reviewDate.substring(5, 7)) + ' ' + this.props.reviewDate.substring(8, 10) + ', ' + this.props.reviewDate.substring(0, 4)}</div>
+      <div className="review-summary">{this.props.reviewSummary}</div>
       <div className="review-full-body">
         <div>
-          {props.reviewBody.length <= 250 ?
-          <div className="review-full-text">{props.reviewBody}</div> :
-          <div>{reviewSummarizer(props.reviewBody)},
-          <button onClick={showFullReviewHandler}>Show More</button></div>}
+          {this.props.reviewBody.length <= 250 ?
+          <div className="review-full-text">{this.props.reviewBody}</div> :
+          <div>{this.state.reviewText.length === 0 ? this.reviewSummarizer(this.props.reviewBody) : this.state.reviewText},
+          <button onClick={this.showFullReviewHandler}>{this.state.showMoreText}</button></div>}
         </div>
         <div>
-          {props.reviewImages.map((image) => {
+          {this.props.reviewImages.map((image) => {
             return <img className="review-images" key={image.id} src={image.url}></img>
           })}
         </div>
       </div>
-      {props.reviewRecommendation ? <div>I recommend this product<Checked><CheckRoundedIcon/></Checked>
+      {this.props.reviewRecommendation ? <div>I recommend this product<div className="review-check"><CheckRoundedIcon/></div>
       </div> : null}
-      <div className="reviewer-name">Username: {props.reviewerName}</div>
-      <div className="response-from-seller">{(props.reviewResponse ? 'Response from Seller: ' : null)}</div>
-      <div className="rating-helpfulness">Was this review helpful? Yes: {props.reviewHelpfulness}</div>
+      <div className="reviewer-name">Username: {this.props.reviewerName}</div>
+      <div className="response-from-seller">{(this.props.reviewResponse ? 'Response from Seller: ' : null)}</div>
+      <div className="rating-helpfulness">Was this review helpful? Yes: {this.props.reviewHelpfulness}</div>
     </div>
-  )
+    )
+  }
 }
 
 export default ReviewTile;

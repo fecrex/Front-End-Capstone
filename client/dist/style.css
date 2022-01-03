@@ -264,6 +264,10 @@ img {
   width: 250px;
 }
 
+.review-check {
+  color: green;
+}
+
 .recommend-this-product {
   margin-top: 5px;
   margin-left: 2px;
