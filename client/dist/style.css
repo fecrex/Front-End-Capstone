@@ -240,8 +240,12 @@ img {
 
 .review-list {
   max-width: auto;
-  max-height: 500px;
+  max-height: 625px;
   overflow-y: auto;
+}
+
+.review-list::-webkit-scrollbar {
+  display: none;
 }
 
 .individual-review {
@@ -263,6 +267,7 @@ img {
   margin-top: 5px;
   margin-left: 2px;
   font-weight: bold;
+  font-size: large;
 }
 
 .review-full-body {
@@ -349,68 +354,6 @@ img {
 #product-title {
   font-size: 16px;
   font-size: 2.5vw
-}
-
-.review-header {
-  margin-bottom: 0px;
-}
-
-.individual-review {
-  margin-top: 10px;
-  border:1px solid grey;
-}
-
-.review-star-rating {
-  margin-top: 1px;
-  margin-left: 2px;
-}
-
-.review-date {
-  margin-top: 5px;
-  margin-left: 2px;
-}
-
-.review-summary {
-  margin-top: 5px;
-  margin-left: 2px;
-  font-weight: bold;
-}
-
-.review-full-body {
-  margin-top: 5px;
-  margin-left: 2px;
-}
-
-.review-full-text {
-  margin-top: 5px;
-  margin-left: 2px;
-}
-
-.review-images {
-  margin-top: 5px;
-  height: 250px;
-  width: 250px;
-}
-
-.recommend-this-product {
-  margin-top: 5px;
-  margin-left: 2px;
-  /* color: red; */
-}
-
-.reviewer-name {
-  margin-top: 5px;
-  margin-left: 2px;
-}
-
-.response-from-seller {
-  margin-top: 5px;
-  margin-left: 2px;
-}
-
-.rating-helpfulness {
-  margin-top: 5px;
-  margin-left: 2px;
 }
 
 .style-selector {

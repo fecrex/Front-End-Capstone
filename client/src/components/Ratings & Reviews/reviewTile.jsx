@@ -60,7 +60,7 @@ showFullReviewHandler = function(e) {
   render () {
     return (
     <div className="individual-review">
-      <Rating className="review-star-rating" defaultValue={this.props.starRating} precision={0.5} />
+      <Rating className="review-star-rating" defaultValue={this.props.starRating} precision={0.5} readOnly />
       <div className="review-date">{this.monthConverter(this.props.reviewDate.substring(5, 7)) + ' ' + this.props.reviewDate.substring(8, 10) + ', ' + this.props.reviewDate.substring(0, 4)}</div>
       <div className="review-summary">{this.props.reviewSummary}</div>
       <div className="review-full-body">
@@ -79,7 +79,7 @@ showFullReviewHandler = function(e) {
       {this.props.reviewRecommendation ? <div className="recommend-this-product">I recommend this product<div className="review-check"><CheckRoundedIcon/></div>
       </div> : null}
       <div className="reviewer-name">Username: {this.props.reviewerName}</div>
-      <div className="response-from-seller">{(this.props.reviewResponse ? 'Response from Seller: ' + this.props.reviewResponse : null)}</div>
+      <div className="response-from-seller">{(this.props.reviewResponse ? 'Response from Seller: ' + this.props.reviewResponse.substring(1, this.props.reviewResponse.length -1) : null)}</div>
       <div className="rating-helpfulness">Was this review helpful? Yes: {this.props.reviewHelpfulness}</div>
     </div>
     )

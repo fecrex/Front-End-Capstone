@@ -44,7 +44,7 @@ app.post('/related', (req, res) => {
 })
 
 app.get('/reviews', function(req, res) {
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=40355', {
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=40361', {
       headers: {
         Authorization: key.TOKEN
       }
