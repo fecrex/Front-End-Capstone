@@ -68,6 +68,7 @@ class ProductInfo extends React.Component {
               }) : 'Product Price'}
         </div>
 
+
         <ImageGallery />
         <StyleSelector />
         <AddToCart />
