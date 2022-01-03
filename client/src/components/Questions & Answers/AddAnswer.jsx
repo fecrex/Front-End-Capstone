@@ -7,7 +7,7 @@ const AddAnswer = function(props) {
     <form onSubmit={(event) => props.onSubmit(event)}>
       <div className="form-group title-bar">
         <h1>Submit your Answer</h1>
-        <h3>[Product Name]: [Question Body]</h3>
+        <h3>{`${props.product.name} : ${props.currQuestion}`}</h3>
       </div>
       <div className="form-group">
         <label htmlFor="answer">Your Answer</label>
