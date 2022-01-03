@@ -1,11 +1,45 @@
 import React from 'react';
+import axios from 'axios';
 
-function ImageGallery() {
-  return (
-    <div className='image-gallery'>
-      <img id='product-image' src='https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80'/>
-    </div>
-  )
+class ImageGallery extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      styles: [],
+      loaded: false,
+      imageSelected: undefined,
+      styleSelected: undefined
+    }
+
+    this.getStyles = this.getStyles.bind(this);
+  }
+
+  componentDidMount() {
+    this.getStyles();
+  }
+
+  getStyles = async() => {
+    try {
+      var resp = await axios.get('http://localhost:3000/styles');
+      this.setState({
+        styles: resp.data,
+        loaded: true,
+        imageSelected: resp.data.results[0].photos[0].thumbnail_url,
+        styleSelected: resp.data.results[0].name
+      })
+    } catch (err) {
+      console.log('There was an error in your catch block');
+    }
+  }
+
+  render() {
+    return (
+      <div className='image-gallery'>
+        <img id='product-image' src={this.state.imageSelected}/>
+      </div>
+    );
+  }
 }
 
 export default ImageGallery;
