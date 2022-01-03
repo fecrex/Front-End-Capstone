@@ -50,7 +50,7 @@ class ProductInfo extends React.Component {
           })}  */}
           {/* Star Rating : {this.state.rating} - Read all {this.state.numberRatings} reviews */}
           { this.state.numberRatings ?
-          <Rating className="product-info-star-rating" defaultValue={Number(this.state.rating)} precision={0.25} /> : null}
+          <Rating className="product-info-star-rating" defaultValue={Number(this.state.rating)} precision={0.25} readOnly/> : null}
         </div>
         <div id='product-category'>
           {this.props.products ? this.props.products.map((product) => {
