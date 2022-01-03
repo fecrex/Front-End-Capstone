@@ -42,18 +42,23 @@ const QuestionsAnswers = function(props) {
   const [loading, setLoading] = useState(false);
   const [questionInput, setQuestionInput] = useState('');
   const [usernameInput, setUsernameInput] = useState('');
+  const [currQuestion, setCurrQuestion] = useState('');
 
 
   const onSubmit = (event) => {
-    console.log(event)
+    // console.log(event)
     event.preventDefault(event);
-    console.log(event.target.username.value);
-    console.log(event.target.question.value);
+    // console.log(event.target.username.value);
+    // console.log(event.target.question.value);
   }
 
   const openQuestionModal = () => question_modal.current.open();
 
   const openAnswerModal = () => answer_modal.current.open();
+
+  const onAddAnswerClick = (question_body) => {
+    setCurrQuestion(question_body);
+  }
 
 
   const onSearchChange = (event) => {
@@ -82,8 +87,6 @@ const QuestionsAnswers = function(props) {
           }
         });
         if (isMounted) {
-          console.log(questions);
-          console.log(questions.data.results);
           setQuestions(questions.data.results);
           setLoading(true);
           isMounted = false;
@@ -117,15 +120,15 @@ const QuestionsAnswers = function(props) {
           <>
           <h5>QUESTIONS & ANSWERS</h5>
           <Search handleChange={onSearchChange}/>
-          {/* <button onClick={() => question_modal.current.open()}>Add Question</button> */}
           <button className="btn-answer-modal" onClick={() => answer_modal.current.open()}>Add Answer</button>
-          {loading ? <QuestionsList openAnswerModal={openAnswerModal} openModal={openQuestionModal} productQA={example.results} questions={questions}/> : null }
+          {loading ? <QuestionsList addAnswer={onAddAnswerClick} openAnswerModal={openAnswerModal} openModal={openQuestionModal} productQA={example.results} questions={questions}/> : null }
           <Modal ref={question_modal}>
-            <AddQuestion onSubmit={onSubmit}/>
+            <AddQuestion onSubmit={onSubmit} product={props.product}/>
           </Modal>
           <AnswerModal ref={answer_modal}>
-            <AddAnswer onSubmit={onSubmit}/>
+            <AddAnswer onSubmit={onSubmit} currQuestion={currQuestion} product={props.product}/>
           </AnswerModal>
+          <button onClick={() => question_modal.current.open()}>Add Question</button>
           </>
         )
 }
