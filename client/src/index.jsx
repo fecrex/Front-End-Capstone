@@ -46,7 +46,7 @@ class App extends React.Component {
       <ReviewList relatedinfo={this.state.results}/>
       <QuestionsAnswers />
       <ReviewList />
-      <Modal />
+      {/* <Modal /> */}
       <QuestionsAnswers product={this.state.products[0]}/>
       <ReviewList productId={this.state.products.map((product) => {
       return product.id})}/>

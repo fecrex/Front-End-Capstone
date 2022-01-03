@@ -218,8 +218,6 @@ img {
   align-self: flex-end;
   /* border: solid 1px #000; */
   margin: 10px
-<<<<<<< HEAD
-=======
 }
 
 #product-title {
@@ -327,7 +325,6 @@ img {
 .quantity-selector {
   margin: 10px;
   max-width: 10%
->>>>>>> 9815e5d800c4845481c641848feca77850d9eb6e
 }
 
 #product-title {
@@ -469,3 +466,6 @@ img {
   box-sizing: border-box;
 }
 
+table, th, td {
+  border: 1px solid black;
+}
