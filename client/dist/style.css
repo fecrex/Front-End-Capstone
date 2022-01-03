@@ -191,6 +191,12 @@ img {
   font-weight: bold;
 }
 
+/* .btn-answer-modal {
+  border: none;
+  background: none;
+  outline: none;
+} */
+
 .related-container {
   display: flex;
   gap: 10px;

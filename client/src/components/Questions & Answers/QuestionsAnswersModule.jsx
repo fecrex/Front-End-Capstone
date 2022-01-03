@@ -51,7 +51,9 @@ const QuestionsAnswers = function(props) {
     console.log(event.target.question.value);
   }
 
-  const openQuestionModal = () => question_modal.current.open()
+  const openQuestionModal = () => question_modal.current.open();
+
+  const openAnswerModal = () => answer_modal.current.open();
 
 
   const onSearchChange = (event) => {
@@ -116,8 +118,8 @@ const QuestionsAnswers = function(props) {
           <h5>QUESTIONS & ANSWERS</h5>
           <Search handleChange={onSearchChange}/>
           {/* <button onClick={() => question_modal.current.open()}>Add Question</button> */}
-          <button onClick={() => answer_modal.current.open()}>Add Answer</button>
-          {loading ? <QuestionsList openModal={openQuestionModal} productQA={example.results} questions={questions}/> : null }
+          <button className="btn-answer-modal" onClick={() => answer_modal.current.open()}>Add Answer</button>
+          {loading ? <QuestionsList openAnswerModal={openAnswerModal} openModal={openQuestionModal} productQA={example.results} questions={questions}/> : null }
           <Modal ref={question_modal}>
             <AddQuestion onSubmit={onSubmit}/>
           </Modal>

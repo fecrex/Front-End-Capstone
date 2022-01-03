@@ -30,10 +30,10 @@ const Question = function(props) {
     <div className="individual-question">
       <input type="radio" id={props.id} className="accordion" name="accordion_input"/>
       <label className="question-label" htmlFor={props.id}>Q: {props.question_body} <div className="helpful-question">Helpful? Yes ({props.q_helpfulness})</div>
-      <div className="add-answer">| Add Answer</div> </label>
+      <div className="add-answer" onClick={() => props.openModal()}>| Add Answer</div> </label>
       <div className="answer-content">
-        {count === 2 ? Object.keys(props.answers).slice(0,count).map((key, i) => <Answer answer={props.answers[key]} key={i} show={show} message={message}/>
-        ) : Object.keys(props.answers).slice(0, count).map((key, i) => <Answer answer={props.answers[key]} key={i} show={show} message={message}/>)}
+        {count === 2 ? Object.keys(props.answers).slice(0,count).map((key, i) => <Answer openModal={props.openModal} answer={props.answers[key]} key={i} show={show} message={message}/>
+        ) : Object.keys(props.answers).slice(0, count).map((key, i) => <Answer openModal={props.openModal} answer={props.answers[key]} key={i} show={show} message={message}/>)}
       </div>
     </div>
   )
