@@ -3,6 +3,7 @@ import axios from 'axios';
 import ImageGallery from './ImageGallery.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import AddToCart from './AddToCart.jsx';
+import Rating from '@mui/material/Rating';
 
 class ProductInfo extends React.Component {
   constructor(props) {
@@ -47,7 +48,9 @@ class ProductInfo extends React.Component {
               <span key={index} className='star'>&#9733;</span>
             );
           })}  */}
-          Star Rating : {this.state.rating} - Read all {this.state.numberRatings} reviews
+          {/* Star Rating : {this.state.rating} - Read all {this.state.numberRatings} reviews */}
+          { this.state.numberRatings ?
+          <Rating className="product-info-star-rating" defaultValue={Number(this.state.rating)} precision={0.25} /> : null}
         </div>
         <div id='product-category'>
           {this.props.products ? this.props.products.map((product) => {
@@ -64,6 +67,7 @@ class ProductInfo extends React.Component {
                 return '$' + product.default_price
               }) : 'Product Price'}
         </div>
+
 
         <ImageGallery />
         <StyleSelector />

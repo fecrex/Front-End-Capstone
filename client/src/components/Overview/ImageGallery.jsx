@@ -13,6 +13,7 @@ class ImageGallery extends React.Component {
     }
 
     this.getStyles = this.getStyles.bind(this);
+    this.setSelected = this.setSelected.bind(this);
   }
 
   componentDidMount() {
@@ -31,6 +32,13 @@ class ImageGallery extends React.Component {
     } catch (err) {
       console.log('There was an error in your catch block');
     }
+  }
+
+  setSelected() {
+    this.setState({
+      imageSelected: event.target.src,
+      styleSelected: event.target.alt
+    })
   }
 
   render() {
