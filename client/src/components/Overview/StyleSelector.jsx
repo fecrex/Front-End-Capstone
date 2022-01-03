@@ -50,7 +50,7 @@ class StyleSelector extends React.Component {
         <h2>Style > {this.state.styleSelected}</h2>
         <div className='thumbnail-container'>
           {this.state.loaded ? this.state.styles.results.map((style, index) => {
-            return <Thumbnail pic={this.state.styles.results[index].photos[0].thumbnail_url}
+            return <Thumbnail key={index} pic={this.state.styles.results[index].photos[0].thumbnail_url}
             setSelected={this.setSelected} imageSelected={this.state.imageSelected}
             name={this.state.styles.results[index].name}
             />
