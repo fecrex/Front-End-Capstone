@@ -76,10 +76,10 @@ showFullReviewHandler = function(e) {
           })}
         </div>
       </div>
-      {this.props.reviewRecommendation ? <div>I recommend this product<div className="review-check"><CheckRoundedIcon/></div>
+      {this.props.reviewRecommendation ? <div className="recommend-this-product">I recommend this product<div className="review-check"><CheckRoundedIcon/></div>
       </div> : null}
       <div className="reviewer-name">Username: {this.props.reviewerName}</div>
-      <div className="response-from-seller">{(this.props.reviewResponse ? 'Response from Seller: ' : null)}</div>
+      <div className="response-from-seller">{(this.props.reviewResponse ? 'Response from Seller: ' + this.props.reviewResponse : null)}</div>
       <div className="rating-helpfulness">Was this review helpful? Yes: {this.props.reviewHelpfulness}</div>
     </div>
     )

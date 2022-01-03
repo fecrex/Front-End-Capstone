@@ -7,8 +7,11 @@ class ReviewList extends React.Component {
     super(props);
     this.state = {
       reviewData: [],
-      loading: false
+      displayData: [],
+      loading: false,
+      reviewCount: 2
     }
+    this.showMoreReviews = this.showMoreReviews.bind(this);
   }
 
   componentDidMount() {
@@ -20,6 +23,8 @@ class ReviewList extends React.Component {
       var resp = await axios.get('http://localhost:3000/reviews');
       this.setState({
         reviewData: resp.data,
+        displayData: resp.data.results.slice(0, 2),
+        reviewCount: this.state.reviewCount + 2,
         loading: true
       })
     } catch(err) {
@@ -27,16 +32,28 @@ class ReviewList extends React.Component {
     }
   }
 
+  showMoreReviews = function(e) {
+    e.preventDefault();
+    this.setState({
+      reviewCount: this.state.reviewCount + 2,
+      displayData: this.state.reviewData.results.slice(0, this.state.reviewCount)
+    })
+  }
+
   render () {
-    // {this.state.reviewData.results ? console.log(this.state.reviewData.results[0]) : null};
-    // {this.state.reviewData.results ? console.log(this.state.reviewData.results[0].body) : null};
       return (
-        <div>
-    <h1 className="review-header">Reviews</h1>
-    {this.state.loading && this.state.reviewData.results.length >= 2 ? this.state.reviewData.results.map((review, index) => {
-    return <ReviewTile key={index}starRating={review.rating} reviewDate={review.date} reviewSummary={review.summary} reviewBody={review.body} reviewRecommendation={review.recommend} reviewerName={review.reviewer_name} reviewResponse={review.response} reviewHelpfulness={review.helpfulness} reviewImages={review.photos}/>
-      }) : null };
-      </div>
+    <div>
+      <h1 className="review-header">Reviews</h1>
+        <div className="review-list">
+        {this.state.loading ? this.state.displayData.map((review, index) => {
+        return <ReviewTile key={index}starRating={review.rating} reviewDate={review.date} reviewSummary={review.summary} reviewBody={review.body} reviewRecommendation={review.recommend} reviewerName={review.reviewer_name} reviewResponse={review.response} reviewHelpfulness={review.helpfulness} reviewImages={review.photos}/>
+          }) : null }
+        </div>
+        <div className="show-more-reviews">
+          {this.state.loading && (this.state.reviewCount - 2 < this.state.reviewData.results.length) ?
+          <button onClick={this.showMoreReviews}>Load More Reviews</button> : null}
+        </div>
+    </div>
     );
   }
 }

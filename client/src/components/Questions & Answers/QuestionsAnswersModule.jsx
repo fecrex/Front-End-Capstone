@@ -62,7 +62,7 @@ const QuestionsAnswers = function(props) {
     // prolly will have to setState of the newly filtered questions
     setSearched(event.target.value);
     var filteredQuestions = questions.filter((question) => {
-      if (searched === '') {
+      if (searched.length < 2) {
         return question;
       } else if (question.question_body.toLowerCase().includes(searched.toLowerCase())) {
         return question;

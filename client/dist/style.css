@@ -197,6 +197,13 @@ img {
   outline: none;
 } */
 
+.search-form-control {
+  width: 600px;
+  height: 30px;
+  position: relative;
+  left: 100px;
+}
+/* questions answers css end */
 .related-container {
   display: flex;
   gap: 10px;
@@ -220,6 +227,7 @@ img {
   text-align: center
 }
 
+
 #product-image {
   max-height: 100%;
   max-width: 100%
@@ -239,6 +247,12 @@ img {
 
 .review-header {
   margin-bottom: 0px;
+}
+
+.review-list {
+  max-width: auto;
+  max-height: 500px;
+  overflow-y: auto;
 }
 
 .individual-review {
@@ -274,8 +288,9 @@ img {
 
 .review-images {
   margin-top: 5px;
-  height: 250px;
-  width: 250px;
+  height: 100px;
+  width: 100px;
+  margin-left: 2px;
 }
 
 .review-check {
@@ -285,7 +300,6 @@ img {
 .recommend-this-product {
   margin-top: 5px;
   margin-left: 2px;
-  /* color: red; */
 }
 
 .reviewer-name {
