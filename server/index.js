@@ -43,8 +43,8 @@ app.post('/related', (req, res) => {
   })
 })
 
-app.post('/reviews', function(req, res) {
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${req.body.id}`, {
+app.get('/reviews', function(req, res) {
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=40355', {
       headers: {
         Authorization: key.TOKEN
       }
@@ -106,7 +106,43 @@ app.post('/qa/questions', function(req, res) {
       console.error('Failed to retrieve questions from API: ', err);
     })
   }
-})
+});
+
+app.post('/reviews/avg', function(req, res) {
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${req.body.id}`, {
+      headers: {
+        Authorization: key.TOKEN
+      }
+    })
+    .then(reviews => {
+      const count = reviews.data.count;
+      let total = 0;
+      for (let i = 0; i < count; i++) {
+        if (reviews.data.results[i]) {
+          total += reviews.data.results[i].rating;
+        }
+      }
+      res.send(String(total/count));
+    })
+    .catch(err => {
+      console.log('There was a server error getting reviews from the API: ', err);
+    })
+  });
+
+
+// app.get('/qa/questions', function(req, res) {
+//   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=40355', {
+//     headers: {
+//       Authorization: key.TOKEN
+//     }
+//   })
+//   .then(results => {
+//     res.send(results.data);
+//   })
+//   .catch(err => {
+//     console.error('Failed to retrieve questions from API: ', err);
+//   })
+// })
 
 app.post('/styles', function(req, res) {
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${req.body.id}/styles`, {
