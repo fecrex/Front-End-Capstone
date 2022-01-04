@@ -6,6 +6,22 @@ function Card(props) {
   const modal = useRef(null);
   const [relatedList, setRelatedList] = useState([]);
   const [relatedDetails, setDetails] = useState([]);
+  const [relatedReviews, setRelatedReviews] = useState({});
+
+  useEffect(() => {
+    relatedList.forEach(item => {
+      axios.post('http://localhost:3000/reviews/avg', {
+        id: item
+      })
+      .then(response => {
+        let newObj = {};
+        newObj[item] = response.data;
+        let pp = Object.assign(relatedReviews, newObj);
+        setRelatedReviews(pp);
+      })
+      .catch(err => {console.log('error setting state', err)});
+    })
+  }, [relatedList])
 
   useEffect(() => {
     if (props.relatedinfo[0]) {
@@ -27,9 +43,9 @@ function Card(props) {
         id: item
       })
       .then(response => {
-        setDetails(oldarray => [...oldarray, response])
+        setDetails(oldarray => [...oldarray, response.data])
       })
-      .catch(err => {console.log('error setting state', err)})
+      .catch(err => {console.log('error setting state', err)});
     })
   }, [relatedList])
 
@@ -39,14 +55,14 @@ function Card(props) {
         return(
           <>
           <button onClick={() => modal.current.open()}>x</button>
-          <Modal ref={modal} related={item.data} original={props.relatedinfo[0]}/>
+          <Modal ref={modal} related={item} original={props.relatedinfo[0]}/>
           <div className="related-item-card" key={index}>
           <img src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1632925545-t-shirts-2021-jgt-ok-1632923427.jpg?crop=1xw:1xh;center,top&resize=768:*" />
           <div className="product-details">
-            <div>{item.data.category}</div>
-            <div>{item.data.description}</div>
-            <div>${item.data.default_price}</div>
-            <div>Star rating</div>
+            <div>{item.category}</div>
+            <div>{item.description}</div>
+            <div>${item.default_price}</div>
+            <div>{relatedReviews[item.id]}</div>
           </div>
           </div>
           </>
