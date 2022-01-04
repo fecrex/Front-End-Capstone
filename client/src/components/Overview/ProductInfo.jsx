@@ -16,13 +16,15 @@ class ProductInfo extends React.Component {
     this.getStarRating = this.getStarRating.bind(this);
   }
 
-  componentDidMount() {
-    this.getStarRating();
+  componentDidUpdate() {
+    if (this.props.products && this.state.rating !== undefined) {
+      this.getStarRating();
+    }
   }
 
   getStarRating = async() => {
     try {
-      var resp = await axios.get('http://localhost:3000/reviews');
+      var resp = await axios.post('http://localhost:3000/reviews', {id: this.props.product[0].id});
       var countRatings = resp.data.count;
       var ratingTotal = 0;
       for (var i = 0; i < resp.data.results.length; i++) {
