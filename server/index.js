@@ -43,8 +43,8 @@ app.post('/related', (req, res) => {
   })
 })
 
-app.get('/reviews', function(req, res) {
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=40361', {
+app.post('/reviews', function(req, res) {
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${req.body.id}`, {
       headers: {
         Authorization: key.TOKEN
       }
@@ -57,8 +57,8 @@ app.get('/reviews', function(req, res) {
     })
 });
 
-app.get('/qa/questions', function(req, res) {
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=40355', {
+app.post('/qa/questions', function(req, res) {
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=${req.body.id}`, {
     headers: {
       Authorization: key.TOKEN
     }
@@ -71,8 +71,8 @@ app.get('/qa/questions', function(req, res) {
   })
 })
 
-app.get('/styles', function(req, res) {
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40344/styles', {
+app.post('/styles', function(req, res) {
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${req.body.id}/styles`, {
     headers: {
       Authorization: key.TOKEN
     }

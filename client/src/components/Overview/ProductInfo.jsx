@@ -69,8 +69,8 @@ class ProductInfo extends React.Component {
         </div>
 
 
-        <ImageGallery />
-        <StyleSelector />
+        <ImageGallery products={this.props.products[0]}/>
+        <StyleSelector products={this.props.products[0]}/>
         <AddToCart />
 
         <div id='product-overview'>

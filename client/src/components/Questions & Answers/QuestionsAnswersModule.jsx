@@ -79,24 +79,21 @@ const QuestionsAnswers = function(props) {
 
   useEffect(() => {
     const getQuestions = async() => {
-      let isMounted = true;
       try {
-        var questions = await axios.get('http://localhost:3000/qa/questions', {
-          params: {
-            product_id: '40345'
-          }
+        var questions = await axios.post('http://localhost:3000/qa/questions', {
+          id: props.product.id
         });
-        if (isMounted) {
-          setQuestions(questions.data.results);
-          setLoading(true);
-          isMounted = false;
-        }
+        setQuestions(questions.data.results);
+        setLoading(true);
       } catch(err) {
         console.error('Error retrieving questions', err);
       }
   }
-  getQuestions();
-}, [])
+  if (props.product) {
+    getQuestions();
+  }
+}, [props.product])
+
 
   // const getQuestions = function(callback) {
   //   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=${productId}`, {
