@@ -220,18 +220,26 @@ img {
 .product-info {
   /* border: solid 1px #000; */
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-direction: row;
+  flex-flow: row wrap;
+  align-items: stretch;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+  justify-content: center;
   width: 100%;
   height: 30%
 }
 
 .image-gallery {
   /* border: solid 1px #000; */
-  max-width: 50%;
+  width: 66.6%;
   height: 400px;
-  text-align: center
+  text-align: center;
+
 }
+
+
 
 
 #product-image {
@@ -329,7 +337,8 @@ img {
 }
 
 .style-selector {
-  max-width: 30%
+  width: 33.4%;
+  overflow-y: hidden
 }
 
 .thumbnail-container {
