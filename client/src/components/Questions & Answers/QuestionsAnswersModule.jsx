@@ -43,6 +43,7 @@ const QuestionsAnswers = function(props) {
   const [questionInput, setQuestionInput] = useState('');
   const [usernameInput, setUsernameInput] = useState('');
   const [currQuestion, setCurrQuestion] = useState('');
+  const [questionId, setCurrQuestionId] = useState('');
 
   const [count, setCount] = useState(2);
   const [message, setMessage] = useState('Load more answers');
@@ -62,19 +63,43 @@ const QuestionsAnswers = function(props) {
 
 
 
-  const onSubmit = (event) => {
-    // console.log(event)
+  const onQuestionSubmit = (event, {id}) => {
     event.preventDefault(event);
-    // console.log(event.target.username.value);
-    // console.log(event.target.question.value);
+    axios.post('http://localhost:3000/qa/questions', {
+        body: event.target.question.value,
+        name: event.target.username.value,
+        email: event.target.email.value,
+        product_id: id
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+
+  const onAnswerSubmit = (event, {id}) => {
+    event.preventDefault(event);
+    axios.post('http://localhost:3000/qa/questions', {
+      question_id: questionId,
+      body: event.target.answer.value,
+      name: event.target.username.value,
+      email: event.target.email.value
+    })
   }
 
   const openQuestionModal = () => question_modal.current.open();
 
   const openAnswerModal = () => answer_modal.current.open();
 
-  const onAddAnswerClick = (question_body) => {
+  const onAddAnswerClick = (question_body, id) => {
     setCurrQuestion(question_body);
+    setCurrQuestionId(id);
+  }
+
+  const questionHelpfulnessClicked = (id, question_helpfulness) => {
+
   }
 
 
@@ -135,12 +160,12 @@ const QuestionsAnswers = function(props) {
           <h5>QUESTIONS & ANSWERS</h5>
           <Search handleChange={onSearchChange}/>
           <button className="btn-answer-modal" onClick={() => answer_modal.current.open()}>Add Answer</button>
-          {loading ? <QuestionsList show={show} message={message} setMessage={setMessage} count={count} setCount={setCount} addAnswer={onAddAnswerClick} openAnswerModal={openAnswerModal} openModal={openQuestionModal} productQA={example.results} questions={questions}/> : null }
+          {loading ? <QuestionsList show={show} message={message} setMessage={setMessage} count={count} setCount={setCount} handleHelpfulnessClick={questionHelpfulnessClicked} addAnswer={onAddAnswerClick} openAnswerModal={openAnswerModal} openModal={openQuestionModal} productQA={example.results} questions={questions}/> : null }
           <Modal ref={question_modal}>
-            <AddQuestion onSubmit={onSubmit} product={props.product}/>
+            <AddQuestion onSubmit={onQuestionSubmit} product={props.product}/>
           </Modal>
           <AnswerModal ref={answer_modal}>
-            <AddAnswer onSubmit={onSubmit} currQuestion={currQuestion} product={props.product}/>
+            <AddAnswer onSubmit={onAnswerSubmit} currQuestion={currQuestion} product={props.product}/>
           </AnswerModal>
           <button onClick={() => question_modal.current.open()}>Add Question</button>
           </>
