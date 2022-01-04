@@ -13,15 +13,18 @@ class ImageGallery extends React.Component {
     }
 
     this.getStyles = this.getStyles.bind(this);
+    this.setSelected = this.setSelected.bind(this);
   }
 
-  componentDidMount() {
-    this.getStyles();
+  componentDidUpdate() {
+    if (this.props.products && this.state.styles.length === 0) {
+      this.getStyles();
+    }
   }
 
   getStyles = async() => {
     try {
-      var resp = await axios.get('http://localhost:3000/styles');
+      var resp = await axios.post('http://localhost:3000/styles', {id: this.props.products.id});
       this.setState({
         styles: resp.data,
         loaded: true,
@@ -31,6 +34,13 @@ class ImageGallery extends React.Component {
     } catch (err) {
       console.log('There was an error in your catch block');
     }
+  }
+
+  setSelected() {
+    this.setState({
+      imageSelected: event.target.src,
+      styleSelected: event.target.alt
+    })
   }
 
   render() {

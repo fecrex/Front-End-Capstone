@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Thumbnail from './Thumbnail.jsx';
+import AddToCart from './AddToCart.jsx';
 
 class StyleSelector extends React.Component {
   constructor(props) {
@@ -17,14 +18,16 @@ class StyleSelector extends React.Component {
     this.setSelected = this.setSelected.bind(this);
   }
 
-  componentDidMount() {
+  componentDidUpdate() {
     // update styles state
-    this.getStyles();
+    if (this.props.products && this.state.styles.length === 0) {
+      this.getStyles();
+    }
   }
 
   getStyles = async() => {
     try {
-      var resp = await axios.get('http://localhost:3000/styles');
+      var resp = await axios.post('http://localhost:3000/styles', { id: this.props.products.id});
       this.setState({
         styles: resp.data,
         loaded: true,
@@ -56,6 +59,7 @@ class StyleSelector extends React.Component {
             />
           }) : null}
         </div>
+        <AddToCart />
       </div>
     );
   }
