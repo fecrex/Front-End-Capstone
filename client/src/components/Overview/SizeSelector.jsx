@@ -12,8 +12,17 @@ class SizeSelector extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.selected !== prevProps.selected) {
+      var selectedSizes = [];
+      var selection = this.props.sizes[0];
+
+      for (var key in selection.skus) {
+        if (selection.skus[key].quantity !== 0) {
+          selectedSizes.push(selection.skus[key].size)
+        }
+      }
+
       this.setState({
-        sizes: this.props.sizes,
+        sizes: selectedSizes,
         loaded: true
       })
     }
@@ -28,11 +37,9 @@ class SizeSelector extends React.Component {
 
 
 
-        {/* {this.state.loaded ? Object.keys(this.state.sizes.skus).forEach((key) => {
-          var sku = this.state.sizes.skus[key]
-          var size = sku.size;
-          return <option>{size}</option>
-        }) : <option></option>} */}
+        {this.state.sizes.map((size, index) =>
+          <option key={index} value={size}>{size}</option>
+        )}
 
       </select>
     );
