@@ -58,7 +58,25 @@ app.post('/reviews', function(req, res) {
 });
 
 app.post('/qa/questions', function(req, res) {
-  if (req.body.body) {
+  if (req.body.question_helpfulness) {
+
+  } else if (req.body.question_id) {
+    axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${req.body.question_id}/answers`, {
+      body: req.body.body,
+      name: req.body.name,
+      email: req.body.email
+    }, {
+      headers: {
+        Authorization: key.TOKEN
+      }
+    })
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((err) => {
+      console.error(err, 'this is not an error');
+    })
+  } else if (req.body.body) {
     axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=${req.body.product_id}`, {
         body: req.body.body,
         name: req.body.name,

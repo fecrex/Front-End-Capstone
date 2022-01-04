@@ -30,9 +30,9 @@ const Question = function(props) {
   return (
     <div className="individual-question">
       <input type="radio" id={props.id} className="accordion" name="accordion_input" onClick={() => setShowButton(true)}/>
-      <label className="question-label" htmlFor={props.id}>Q: {props.question_body} <div className="helpful-question">Helpful? Yes ({props.q_helpfulness})</div>
+      <label className="question-label" htmlFor={props.id}>Q: {props.question_body} <div onClick={() => props.handleHelpfulnessClick(props.id, props.q_helpfulness)} className="helpful-question">Helpful? Yes ({props.q_helpfulness})</div>
       <div className="add-answer" onClick={() => {
-        props.addAnswer(props.question_body)
+        props.addAnswer(props.question_body, props.id)
         props.openModal();
       }
       }>| Add Answer</div> </label>
