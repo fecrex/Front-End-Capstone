@@ -92,6 +92,12 @@ img {
 
 /* /////////////// end testing modal css //////////// */
 
+/* more modal css */
+.title-bar {
+  border-bottom: white;
+}
+/* */
+
 
 .questions-list {
   width: auto;
