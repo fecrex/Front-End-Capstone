@@ -14,13 +14,15 @@ class ReviewList extends React.Component {
     this.showMoreReviews = this.showMoreReviews.bind(this);
   }
 
-  componentDidMount() {
+  componentDidUpdate() {
+      if (this.props.productId[0] && this.state.reviewData.length === 0) {
         this.getReviews();
       }
+  }
 
   getReviews = async() => {
     try {
-      var resp = await axios.get('http://localhost:3000/reviews');
+      var resp = await axios.post('http://localhost:3000/reviews', { id: this.props.productId[0]});
       this.setState({
         reviewData: resp.data,
         displayData: resp.data.results.slice(0, 2),
