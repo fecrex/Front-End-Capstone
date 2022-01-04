@@ -37,7 +37,7 @@ const Question = function(props) {
       }
       }>| Add Answer</div> </label>
       <div className="answer-content">
-        {showButton ? <button onClick={() => props.show(props.message)}>{props.message}</button> : null}
+        {showButton ? <button id="show-answers" onClick={() => props.show(props.message)}>{props.message}</button> : null}
         {props.count === 2 ? Object.keys(props.answers).slice(0, props.count).map((key, i) => <Answer openModal={props.openModal} answer={props.answers[key]} key={i}/>
         ) : Object.keys(props.answers).slice(0, props.count).map((key, i) => <Answer openModal={props.openModal} answer={props.answers[key]} key={i}/>)}
       </div>

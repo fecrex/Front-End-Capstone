@@ -62,11 +62,23 @@ const QuestionsAnswers = function(props) {
 
 
 
-  const onSubmit = (event) => {
-    // console.log(event)
+  const onSubmit = (event, {id}) => {
+    console.log(event.target.username.value);
+    console.log(event.target.question.value);
+    console.log(event.target.email.value);
     event.preventDefault(event);
-    // console.log(event.target.username.value);
-    // console.log(event.target.question.value);
+    axios.post('http://localhost:3000/qa/questions', {
+        body: event.target.question.value,
+        name: event.target.username.value,
+        email: event.target.email.value,
+        product_id: id
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
   }
 
   const openQuestionModal = () => question_modal.current.open();

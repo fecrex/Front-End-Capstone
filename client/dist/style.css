@@ -98,6 +98,10 @@ img {
 }
 /* */
 
+#show-answers {
+  position: relative;
+  left: 550px;
+}
 
 .questions-list {
   width: auto;

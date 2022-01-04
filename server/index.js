@@ -58,17 +58,36 @@ app.post('/reviews', function(req, res) {
 });
 
 app.post('/qa/questions', function(req, res) {
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=${req.body.id}`, {
-    headers: {
-      Authorization: key.TOKEN
-    }
-  })
-  .then(results => {
-    res.send(results.data);
-  })
-  .catch(err => {
-    console.error('Failed to retrieve questions from API: ', err);
-  })
+  if (req.body.body) {
+    axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=${req.body.product_id}`, {
+        body: req.body.body,
+        name: req.body.name,
+        email: req.body.email,
+        product_id: req.body.product_id
+    }, {
+      headers: {
+        Authorization: key.TOKEN
+      }
+    })
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((err) => {
+      console.error(err, 'this is not an eerror');
+    })
+  } else {
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=${req.body.id}`, {
+      headers: {
+        Authorization: key.TOKEN
+      }
+    })
+    .then(results => {
+      res.send(results.data);
+    })
+    .catch(err => {
+      console.error('Failed to retrieve questions from API: ', err);
+    })
+  }
 })
 
 app.post('/styles', function(req, res) {
