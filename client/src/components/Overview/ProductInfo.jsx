@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import ImageGallery from './ImageGallery.jsx';
 import StyleSelector from './StyleSelector.jsx';
-import AddToCart from './AddToCart.jsx';
 import Rating from '@mui/material/Rating';
 
 class ProductInfo extends React.Component {
@@ -42,6 +41,7 @@ class ProductInfo extends React.Component {
   render() {
     return (
       <div className='product-info'>
+
         <div className='star-rating'>
           {/* {[...Array(5)].map((star, index) => {
             return (
@@ -71,7 +71,6 @@ class ProductInfo extends React.Component {
 
         <ImageGallery products={this.props.products[0]}/>
         <StyleSelector products={this.props.products[0]}/>
-        <AddToCart />
 
         <div id='product-overview'>
           {this.props.products ? this.props.products.map((product) => {
