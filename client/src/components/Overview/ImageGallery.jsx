@@ -16,13 +16,15 @@ class ImageGallery extends React.Component {
     this.setSelected = this.setSelected.bind(this);
   }
 
-  componentDidMount() {
-    this.getStyles();
+  componentDidUpdate() {
+    if (this.props.products && this.state.styles.length === 0) {
+      this.getStyles();
+    }
   }
 
   getStyles = async() => {
     try {
-      var resp = await axios.get('http://localhost:3000/styles');
+      var resp = await axios.post('http://localhost:3000/styles', {id: this.props.products.id});
       this.setState({
         styles: resp.data,
         loaded: true,
