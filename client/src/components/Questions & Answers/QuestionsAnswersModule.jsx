@@ -44,6 +44,23 @@ const QuestionsAnswers = function(props) {
   const [usernameInput, setUsernameInput] = useState('');
   const [currQuestion, setCurrQuestion] = useState('');
 
+  const [count, setCount] = useState(2);
+  const [message, setMessage] = useState('Load more answers');
+
+
+
+  const show = (message) => {
+    if (message === 'Load more answers') {
+      setCount(4);
+      setMessage('Show Less');
+    } else {
+      setCount(2);
+      setMessage('Load more answers');
+    }
+  }
+
+
+
 
   const onSubmit = (event) => {
     // console.log(event)
@@ -118,7 +135,7 @@ const QuestionsAnswers = function(props) {
           <h5>QUESTIONS & ANSWERS</h5>
           <Search handleChange={onSearchChange}/>
           <button className="btn-answer-modal" onClick={() => answer_modal.current.open()}>Add Answer</button>
-          {loading ? <QuestionsList addAnswer={onAddAnswerClick} openAnswerModal={openAnswerModal} openModal={openQuestionModal} productQA={example.results} questions={questions}/> : null }
+          {loading ? <QuestionsList show={show} message={message} setMessage={setMessage} count={count} setCount={setCount} addAnswer={onAddAnswerClick} openAnswerModal={openAnswerModal} openModal={openQuestionModal} productQA={example.results} questions={questions}/> : null }
           <Modal ref={question_modal}>
             <AddQuestion onSubmit={onSubmit} product={props.product}/>
           </Modal>
