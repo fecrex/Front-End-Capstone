@@ -7,6 +7,7 @@ function Card(props) {
   const [relatedList, setRelatedList] = useState([]);
   const [relatedDetails, setDetails] = useState([]);
   const [relatedReviews, setRelatedReviews] = useState({});
+  const [currentCards, setCurrentCards] = useState(2);
 
   useEffect(() => {
     relatedList.forEach(item => {
@@ -50,6 +51,7 @@ function Card(props) {
   }, [relatedList])
 
   if (relatedDetails) {
+    let carousel = relatedDetails.slice(0, currentCards);
     return (
       relatedDetails.map((item, index) => {
         return(
@@ -57,10 +59,10 @@ function Card(props) {
           <button onClick={() => modal.current.open()}>x</button>
           <Modal ref={modal} related={item} original={props.relatedinfo[0]}/>
           <div className="related-item-card" key={index}>
-          <img src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1632925545-t-shirts-2021-jgt-ok-1632923427.jpg?crop=1xw:1xh;center,top&resize=768:*" />
+          <img src={props.styles[item.id][0].photos[0].thumbnail_url} />
           <div className="product-details">
             <div>{item.category}</div>
-            <div>{item.description}</div>
+            <div>{item.name}</div>
             <div>${item.default_price}</div>
             <div>{relatedReviews[item.id]}</div>
           </div>
