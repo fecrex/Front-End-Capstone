@@ -37,7 +37,9 @@ class AddToCart extends React.Component {
         <SizeSelector selected={this.state.styleSelected}
         sizes={this.state.sizes}
         />
-        <QuantitySelector />
+        <QuantitySelector selected={this.state.styleSelected}
+        sizes={this.state.sizes}
+        />
       </div>
 
     );
