@@ -6,15 +6,16 @@ class ImageGallery extends React.Component {
     super(props);
 
     this.state = {
-      styles: [],
       loaded: false,
       imageShown: undefined,
-      styleSelected: undefined
+      styleSelected: undefined,
+      styleSelectedImages: []
     }
 
     // this.getStyles = this.getStyles.bind(this);
     // this.setSelected = this.setSelected.bind(this);
     this.setShown = this.setShown.bind(this);
+    // this.updateImageSet = this.updateImageSet.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -23,9 +24,24 @@ class ImageGallery extends React.Component {
     }
   }
 
+  // updateImageSet() {
+  //   var imagesForStyle = [];
+  //   var styleImages = resp.data.results[0].photos;
+
+  //   for (var i = 0; i < styleImages.length; i++) {
+  //     imagesForStyle.push(styleImages[i].thumbnail_url);
+  //   }
+
+  //   this.setState({
+  //     styleSelectedImages: imagesForStyle
+  //   })
+  // }
+
+
   setShown() {
     this.setState({
-      imageShown: this.props.imageSelected
+      imageShown: this.props.imageSelected,
+      styleSelectedImages: this.props.styleImageSet
     })
   }
 
@@ -43,17 +59,13 @@ class ImageGallery extends React.Component {
   //   }
   // }
 
-  // setSelected() {
-  //   this.setState({
-  //     imageSelected: event.target.src,
-  //     styleSelected: event.target.alt
-  //   })
-  // }
 
   render() {
     return (
-      <div className='image-gallery-component'>
-        <img id='product-image' src={this.state.imageShown}/>
+      <div className='parent-image-gallery-component'>
+        <div className='slide-reel'>
+          <img id='product-image' src={this.state.imageShown}/>
+        </div>
       </div>
     );
   }
