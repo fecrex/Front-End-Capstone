@@ -1,13 +1,34 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useState, useRef, forwardRef, useImperativeHandle} from 'react';
 import Modal from './cardModal.jsx';
 import axios from 'axios';
 
-function Card(props) {
+function Card(props, ref) {
   const modal = useRef(null);
   const [relatedList, setRelatedList] = useState([]);
   const [relatedDetails, setDetails] = useState([]);
   const [relatedReviews, setRelatedReviews] = useState({});
-  const [currentCards, setCurrentCards] = useState(2);
+  const [slicedList, setSlicedList] = useState([]);
+  const [upperCards, setUpperCards] = useState(3);
+  const [lowerCards, setLowerCards] = useState(0);
+
+
+  useImperativeHandle(ref, () => ({
+    left: () => {
+      if (lowerCards !== 0) {
+        setLowerCards(lowerCards-1)
+        setUpperCards(upperCards-1)
+      }
+    },
+
+    right: () => {
+      if (upperCards !== relatedDetails.length) {
+        setLowerCards(lowerCards+1)
+        setUpperCards(upperCards+1)
+        console.log(upperCards, lowerCards);
+      }
+    }
+  }))
+
 
   useEffect(() => {
     relatedList.forEach(item => {
@@ -50,16 +71,19 @@ function Card(props) {
     })
   }, [relatedList])
 
+  useEffect(() => {
+    setSlicedList(relatedDetails.slice(lowerCards, upperCards));
+  }, [relatedDetails, upperCards])
+
   if (relatedDetails) {
-    let carousel = relatedDetails.slice(0, currentCards);
     return (
-      relatedDetails.map((item, index) => {
+      slicedList.map((item, index) => {
         return(
           <>
           <button onClick={() => modal.current.open()}>x</button>
           <Modal ref={modal} related={item} original={props.relatedinfo[0]}/>
           <div className="related-item-card" key={index}>
-          <img src={props.styles[item.id][0].photos[0].thumbnail_url} />
+          <img className="related-img" src={props.styles[item.id][0].photos[0].thumbnail_url} />
           <div className="product-details">
             <div>{item.category}</div>
             <div>{item.name}</div>
@@ -76,4 +100,4 @@ function Card(props) {
   }
 }
 
-export default Card;
+export default forwardRef(Card);

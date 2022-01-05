@@ -1,11 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import Card from './card.jsx';
 import axios from 'axios';
+import Outfit from './Outfit.jsx';
 
 function RelatedProducts (props) {
   const [test, setTest] = useState([]);
+  const [mainStyle, setMainStyle] = useState();
   const [relatedStyles, setRelatedStyles] = useState();
-
+  const carousel = useRef(null);
 
   useEffect(() => {
     if (props.relatedinfo[0]) {
@@ -17,6 +19,16 @@ function RelatedProducts (props) {
       })
       .catch(err => {
         console.log('error getting related list: ', err);
+      })
+
+      axios.post('http://localhost:3000/styles', {
+        id: props.relatedinfo[0].id
+      })
+      .then(resp => {
+        setMainStyle(resp.data);
+      })
+      .catch(err => {
+        console.log(err);
       })
     }
   }, [props.relatedinfo]);
@@ -41,7 +53,17 @@ function RelatedProducts (props) {
   }, [test])
 
   if (relatedStyles) {
-    return (<Card relatedinfo={props.relatedinfo} styles={relatedStyles}/>)
+    return (
+    <>
+    <div className="related-container">
+      <button onClick={()=> carousel.current.left()}>left</button>
+      <Card ref={carousel} relatedinfo={props.relatedinfo} styles={relatedStyles}/>
+      <button onClick={()=> carousel.current.right()}>right</button>
+    </div>
+    <Outfit item={props.relatedinfo} style={mainStyle}/>
+    </>
+
+    )
   } else {
     return <div>loading</div>
   }
