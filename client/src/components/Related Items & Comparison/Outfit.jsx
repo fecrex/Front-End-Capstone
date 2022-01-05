@@ -26,7 +26,6 @@ function Outfit(props) {
 
   const deleteHandler = (e) => {
     outfits.forEach(item => {
-      console.log(item.id, e.target.id);
       if (item.id === Number(e.target.id)) {
         let index = outfits.indexOf(item);
         let newarr = [...outfits];

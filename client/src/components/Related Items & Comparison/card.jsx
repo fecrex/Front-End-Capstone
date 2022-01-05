@@ -24,7 +24,6 @@ function Card(props, ref) {
       if (upperCards !== relatedDetails.length) {
         setLowerCards(lowerCards+1)
         setUpperCards(upperCards+1)
-        console.log(upperCards, lowerCards);
       }
     }
   }))
