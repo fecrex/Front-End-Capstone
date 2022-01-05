@@ -12,7 +12,6 @@ class SizeSelector extends React.Component {
       sizeSelected: 'Select Size'
     }
 
-    this.setSizeSelected = this.setSizeSelected.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -34,14 +33,10 @@ class SizeSelector extends React.Component {
     }
   }
 
-  setSizeSelected(event) {
+  handleChange() {
     this.setState({
       sizeSelected: event.target.value
     })
-  }
-
-  handleChange() {
-
   }
 
   render() {
@@ -54,13 +49,15 @@ class SizeSelector extends React.Component {
 
 
         {this.state.sizes.map((size, index) =>
-          <option key={index} onClick={this.setSizeSelected} value={size}>{size}</option>
+          <option key={index} value={size}>{size}</option>
         )}
 
       </select>
 
       <div className='quantity-selector-container'>
-        <QuantitySelector selected={this.props.selected} sizes={this.props.sizes}/>
+        <QuantitySelector selected={this.props.selected} sizes={this.props.sizes}
+        sizeSelected={this.state.sizeSelected}
+        />
       </div>
 
       </div>
