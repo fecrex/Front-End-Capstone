@@ -1,4 +1,6 @@
 import React from 'react';
+import QuantitySelector from './QuantitySelector.jsx';
+
 
 class SizeSelector extends React.Component {
   constructor(props) {
@@ -45,8 +47,8 @@ class SizeSelector extends React.Component {
   render() {
     return (
 
-
-      <select className='size-selector' value={this.state.sizeSelected} onChange={this.handleChange} >
+      <div className='size-quantity-container'>
+        <select className='size-selector' value={this.state.sizeSelected} onChange={this.handleChange} >
         <option>Select Size</option>
 
 
@@ -56,6 +58,14 @@ class SizeSelector extends React.Component {
         )}
 
       </select>
+
+      <div className='quantity-selector-container'>
+        <QuantitySelector selected={this.props.selected} sizes={this.props.sizes}/>
+      </div>
+
+      </div>
+
+
     );
   }
 }

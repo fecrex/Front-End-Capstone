@@ -1,6 +1,6 @@
 import React from 'react';
 import SizeSelector from './SizeSelector.jsx';
-import QuantitySelector from './QuantitySelector.jsx';
+// import QuantitySelector from './QuantitySelector.jsx';
 
 class AddToCart extends React.Component {
   constructor(props) {
@@ -37,9 +37,9 @@ class AddToCart extends React.Component {
         <SizeSelector selected={this.state.styleSelected}
         sizes={this.state.sizes}
         />
-        <QuantitySelector selected={this.state.styleSelected}
+        {/* <QuantitySelector selected={this.state.styleSelected}
         sizes={this.state.sizes}
-        />
+        /> */}
       </div>
 
     );
