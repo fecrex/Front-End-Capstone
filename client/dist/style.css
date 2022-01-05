@@ -98,6 +98,10 @@ img {
 }
 /* */
 
+#show-answers {
+  position: relative;
+  left: 550px;
+}
 
 .questions-list {
   width: auto;
@@ -144,6 +148,9 @@ img {
 .answer-content {
   background: lightgray;
   position: relative;
+  overflow-x: scroll;
+  height: 240px;
+  width: 100%;
   /* line-height: 1.6; */
   font-size: 0.85em;
   display: none;
@@ -217,47 +224,134 @@ img {
 
 
 
+/* ------- OVERVIEW COMPONENT CSS STYLES --------- */
+
 .product-info {
   /* border: solid 1px #000; */
   display: flex;
   flex-direction: row;
-  flex-flow: row wrap;
-  align-items: stretch;
+  flex-wrap: wrap;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 50px;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
-  height: 30%
+  max-height: 40%
 }
 
 .image-gallery {
   /* border: solid 1px #000; */
   width: 66.6%;
-  height: 400px;
+  height: 500px;
   text-align: center;
-
 }
-
-
-
 
 #product-image {
   max-height: 100%;
   max-width: 100%
 }
 
-.star-rating, #product-category, #product-title, #product-price {
+.product-info-star-rating, #product-category, #product-title, #product-price {
   width: 40%;
-  align-self: flex-end;
   /* border: solid 1px #000; */
-  margin: 10px
+  margin: auto
 }
 
 #product-title {
   font-size: 16px;
   font-size: 2.5vw
 }
+
+.style-selector {
+  width: 33.4%;
+  overflow-y: hidden
+}
+
+.thumbnail-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  height: 500px;
+  width: 300px
+}
+
+.thumbnail {
+  flex: 1 0 calc(25% - 10px);
+  margin: 5px;
+  height: 100px;
+}
+
+
+.selected-thumbnail {
+  border: 5px solid blue;
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 50%;
+}
+
+.normal-thumbnail {
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 50%;
+}
+
+.size-selector {
+  margin: 10px;
+  max-width: 40%
+}
+
+.quantity-selector {
+  margin: 10px;
+  max-width: 20%
+}
+
+#product-title {
+  font-size: 16px;
+  font-size: 2.5vw
+}
+
+.style-selector {
+  max-width: 30%
+}
+
+.thumbnail-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  height: 200px;
+  width: 200px
+}
+
+.thumbnail {
+  flex: 1 0 calc(25% - 10px);
+  margin: 5px;
+  height: 50px;
+}
+
+
+.selected-thumbnail {
+  border: 5px solid blue;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.normal-thumbnail {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.size-selector {
+  margin-left: 10px;
+  margin-right: 40px;
+  max-width: 250px
+}
+
+.quantity-selector {
+  margin: 10px;
+  max-width: 50px
+}
+
+/* ----- END OVERVIEW COMPONENT CSS STYLES ----- */
 
 .review-header {
   margin-bottom: 0px;
@@ -391,93 +485,6 @@ img {
   outline: none;
  } */
 
-.style-selector {
-  width: 33.4%;
-  overflow-y: hidden
-}
-
-.thumbnail-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  height: 500px;
-  width: 300px
-}
-
-.thumbnail {
-  flex: 1 0 calc(25% - 10px);
-  margin: 5px;
-  height: 100px;
-}
-
-
-.selected-thumbnail {
-  border: 5px solid blue;
-  max-height: 100%;
-  max-width: 100%;
-  border-radius: 50%;
-}
-
-.normal-thumbnail {
-  max-height: 100%;
-  max-width: 100%;
-  border-radius: 50%;
-}
-
-.size-selector {
-  margin: 10px;
-  max-width: 10%
-}
-
-.quantity-selector {
-  margin: 10px;
-  max-width: 10%
-}
-
-#product-title {
-  font-size: 16px;
-  font-size: 2.5vw
-}
-
-.style-selector {
-  max-width: 30%
-}
-
-.thumbnail-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  height: 200px;
-  width: 200px
-}
-
-.thumbnail {
-  flex: 1 0 calc(25% - 10px);
-  margin: 5px;
-  height: 50px;
-}
-
-
-.selected-thumbnail {
-  border: 5px solid blue;
-  max-height: 100%;
-  max-width: 100%;
-}
-
-.normal-thumbnail {
-  max-height: 100%;
-  max-width: 100%;
-}
-
-.size-selector {
-  margin: 10px;
-  max-width: 10%
-}
-
-.quantity-selector {
-  margin: 10px;
-  max-width: 10%
-}
 
 .modal-root {
   z-index: 2;
