@@ -6,8 +6,12 @@ class SizeSelector extends React.Component {
 
     this.state = {
       sizes: [],
-      loaded: false
+      loaded: false,
+      sizeSelected: 'Select Size'
     }
+
+    this.setSizeSelected = this.setSizeSelected.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -28,17 +32,27 @@ class SizeSelector extends React.Component {
     }
   }
 
+  setSizeSelected(event) {
+    this.setState({
+      sizeSelected: event.target.value
+    })
+  }
+
+  handleChange() {
+
+  }
+
   render() {
     return (
 
 
-      <select className='size-selector'>
+      <select className='size-selector' value={this.state.sizeSelected} onChange={this.handleChange} >
         <option>Select Size</option>
 
 
 
         {this.state.sizes.map((size, index) =>
-          <option key={index} value={size}>{size}</option>
+          <option key={index} onClick={this.setSizeSelected} value={size}>{size}</option>
         )}
 
       </select>
