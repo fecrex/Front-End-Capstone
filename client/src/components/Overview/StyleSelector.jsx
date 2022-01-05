@@ -11,7 +11,7 @@ class StyleSelector extends React.Component {
       styles: [],
       loaded: false,
       imageSelected: undefined,
-      styleSelected: undefined
+      styleSelected: undefined,
     }
 
     this.getStyles = this.getStyles.bind(this);
@@ -59,7 +59,9 @@ class StyleSelector extends React.Component {
             />
           }) : null}
         </div>
-        <AddToCart />
+        <AddToCart styles={this.state.styles} imageSelected={this.state.imageSelected}
+        styleSelected={this.state.styleSelected}
+        />
       </div>
     );
   }
