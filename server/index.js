@@ -16,13 +16,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/home', function(req, res) {
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products?count=1', {
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40355', {
       headers: {
         Authorization: key.TOKEN
       }
     })
     .then(results => {
-      res.send(results.data);
+      res.send([results.data]);
     })
     .catch(err => {
       console.log('There was an error getting products from the API: ', err);
@@ -44,7 +44,7 @@ app.post('/related', (req, res) => {
 })
 
 app.post('/reviews', function(req, res) {
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=40355', {
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${req.body.id}`, {
       headers: {
         Authorization: key.TOKEN
       }
