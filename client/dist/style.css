@@ -148,6 +148,9 @@ img {
 .answer-content {
   background: lightgray;
   position: relative;
+  overflow-x: scroll;
+  height: 240px;
+  width: 100%;
   /* line-height: 1.6; */
   font-size: 0.85em;
   display: none;
@@ -368,13 +371,7 @@ img {
   max-width: 50px
 }
 
-
-
 /* ----- END OVERVIEW COMPONENT CSS STYLES ----- */
-
-
-
-
 
 .review-header {
   margin-bottom: 0px;
@@ -453,6 +450,51 @@ img {
   margin-left: 2px;
 }
 
+.show-and-submit-review-buttons {
+  display: flex;
+}
+
+.show-more-reviews {
+  flex: 1;
+  margin-right: auto;
+}
+
+.submit-review {
+  flex: 2;
+  margin-left: auto;
+}
+
+ #review-modal-root {
+  z-index: 2;
+  position: relative;
+  margin: 0 auto;
+  background-color: #303030;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 3px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 100%;
+  padding: 15px 20px;
+  color: #c3c0c0;
+}
+
+.review-modal {
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5em 1em;
+  z-index: 999999;
+  box-sizing: border-box;
+}
 
 
 .modal-root {

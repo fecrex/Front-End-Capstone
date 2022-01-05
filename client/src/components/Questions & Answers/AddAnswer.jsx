@@ -4,7 +4,7 @@ const AddAnswer = function(props) {
   // probably should make a post request upon submission of the question
 
   return (
-    <form onSubmit={(event) => props.onSubmit(event, props.product, props.currQuestion)}>
+    <form onSubmit={(event) => props.onSubmit(event, props.product)}>
       <div className="form-group title-bar">
         <h1>Submit your Answer</h1>
         <h3>{`${props.product.name} : ${props.currQuestion}`}</h3>
