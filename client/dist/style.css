@@ -344,13 +344,13 @@ img {
 
 .thumbnail {
   flex: 1 0 calc(25% - 10px);
-  margin: 5px;
+  margin: 1px;
   height: 50px;
 }
 
 
 .selected-thumbnail {
-  border: 5px solid blue;
+  border: 3px solid blue;
   max-height: 100%;
   max-width: 100%;
 }
