@@ -44,8 +44,10 @@ class App extends React.Component {
         <RelatedProducts relatedinfo={this.state.products}/>
       </div>
       <QuestionsAnswers product={this.state.products[0]}/>
+      <div id="review-modal-root">
       <ReviewList productId={this.state.products.map((product) => {
       return product.id})}/>
+      </div>
       </>
     );
   }
