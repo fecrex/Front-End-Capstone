@@ -16,13 +16,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/home', function(req, res) {
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products?count=1', {
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40361', {
       headers: {
         Authorization: key.TOKEN
       }
     })
     .then(results => {
-      res.send(results.data);
+      res.send([results.data]);
     })
     .catch(err => {
       console.log('There was an error getting products from the API: ', err);
@@ -43,8 +43,8 @@ app.post('/related', (req, res) => {
   })
 })
 
-app.get('/reviews', function(req, res) {
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=40355', {
+app.post('/reviews', function(req, res) {
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${req.body.id}`, {
       headers: {
         Authorization: key.TOKEN
       }
@@ -55,6 +55,57 @@ app.get('/reviews', function(req, res) {
     .catch(err => {
       console.log('There was a server error getting reviews from the API: ', err);
     })
+});
+
+app.post('/qa/questions', function(req, res) {
+  if (req.body.question_helpfulness) {
+
+  } else if (req.body.question_id) {
+    axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${req.body.question_id}/answers`, {
+      body: req.body.body,
+      name: req.body.name,
+      email: req.body.email
+    }, {
+      headers: {
+        Authorization: key.TOKEN
+      }
+    })
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((err) => {
+      console.error(err, 'this is not an error');
+    })
+  } else if (req.body.body) {
+    axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=${req.body.product_id}`, {
+        body: req.body.body,
+        name: req.body.name,
+        email: req.body.email,
+        product_id: req.body.product_id
+    }, {
+      headers: {
+        Authorization: key.TOKEN
+      }
+    })
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((err) => {
+      console.error(err, 'this is not an eerror');
+    })
+  } else {
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=${req.body.id}`, {
+      headers: {
+        Authorization: key.TOKEN
+      }
+    })
+    .then(results => {
+      res.send(results.data);
+    })
+    .catch(err => {
+      console.error('Failed to retrieve questions from API: ', err);
+    })
+  }
 });
 
 app.post('/reviews/avg', function(req, res) {
@@ -76,21 +127,22 @@ app.post('/reviews/avg', function(req, res) {
     .catch(err => {
       console.log('There was a server error getting reviews from the API: ', err);
     })
-});
+  });
 
-app.get('/qa/questions', function(req, res) {
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=40355', {
-    headers: {
-      Authorization: key.TOKEN
-    }
-  })
-  .then(results => {
-    res.send(results.data);
-  })
-  .catch(err => {
-    console.error('Failed to retrieve questions from API: ', err);
-  })
-})
+
+// app.get('/qa/questions', function(req, res) {
+//   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=40355', {
+//     headers: {
+//       Authorization: key.TOKEN
+//     }
+//   })
+//   .then(results => {
+//     res.send(results.data);
+//   })
+//   .catch(err => {
+//     console.error('Failed to retrieve questions from API: ', err);
+//   })
+// })
 
 app.post('/styles', function(req, res) {
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${req.body.id}/styles`, {

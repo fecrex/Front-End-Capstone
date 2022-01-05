@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import Thumbnail from './Thumbnail.jsx';
 import AddToCart from './AddToCart.jsx';
+import ImageGallery from './ImageGallery.jsx';
+
 
 class StyleSelector extends React.Component {
   constructor(props) {
@@ -11,7 +13,7 @@ class StyleSelector extends React.Component {
       styles: [],
       loaded: false,
       imageSelected: undefined,
-      styleSelected: undefined
+      styleSelected: undefined,
     }
 
     this.getStyles = this.getStyles.bind(this);
@@ -49,18 +51,28 @@ class StyleSelector extends React.Component {
   render() {
     // console.log(this.state.styles.results);
     return (
-      <div className='style-selector'>
-        <h2>Style > {this.state.styleSelected}</h2>
-        <div className='thumbnail-container'>
-          {this.state.loaded ? this.state.styles.results.map((style, index) => {
-            return <Thumbnail key={index} pic={this.state.styles.results[index].photos[0].thumbnail_url}
-            setSelected={this.setSelected} imageSelected={this.state.imageSelected}
-            name={this.state.styles.results[index].name}
-            />
-          }) : null}
+      <div className='image-gallery-style-selector-container'>
+
+        <div className='image-gallery-container'>
+          <ImageGallery products={this.props.products} imageSelected={this.state.imageSelected}/>
         </div>
-        <AddToCart />
+
+        <div className='style-selector'>
+          <h2>Style > {this.state.styleSelected}</h2>
+          <div className='thumbnail-container'>
+            {this.state.loaded ? this.state.styles.results.map((style, index) => {
+              return <Thumbnail key={index} pic={this.state.styles.results[index].photos[0].thumbnail_url}
+              setSelected={this.setSelected} imageSelected={this.state.imageSelected}
+              name={this.state.styles.results[index].name}
+              />
+            }) : null}
+          </div>
+          <AddToCart styles={this.state.styles} imageSelected={this.state.imageSelected}
+          styleSelected={this.state.styleSelected}
+          />
+        </div>
       </div>
+
     );
   }
 

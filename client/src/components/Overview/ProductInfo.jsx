@@ -64,7 +64,7 @@ class ProductInfo extends React.Component {
               }) : 'Product Price'}
         </div>
 
-        <ImageGallery products={this.props.products[0]}/>
+        {/* <ImageGallery products={this.props.products[0]}/> */}
         <StyleSelector products={this.props.products[0]}/>
 
         <div id='product-overview'>
