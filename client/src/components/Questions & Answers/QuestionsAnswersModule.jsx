@@ -47,6 +47,7 @@ const QuestionsAnswers = function(props) {
 
   const [count, setCount] = useState(2);
   const [message, setMessage] = useState('Load more answers');
+  const [showAll, setShowAll] = useState('Show All Answers')
 
 
 
@@ -57,6 +58,16 @@ const QuestionsAnswers = function(props) {
     } else {
       setCount(2);
       setMessage('Load more answers');
+    }
+  }
+
+  const showAllAnswers = (showAll, max) => {
+    if (showAll === 'Show All Answers') {
+      setCount(max)
+      setShowAll('Show Less')
+    } else if (showAll === 'Show Less') {
+      setCount(4)
+      setShowAll('Show All Answers')
     }
   }
 
@@ -160,7 +171,7 @@ const QuestionsAnswers = function(props) {
           <h5>QUESTIONS & ANSWERS</h5>
           <Search handleChange={onSearchChange}/>
           <button className="btn-answer-modal" onClick={() => answer_modal.current.open()}>Add Answer</button>
-          {loading ? <QuestionsList show={show} message={message} setMessage={setMessage} count={count} setCount={setCount} handleHelpfulnessClick={questionHelpfulnessClicked} addAnswer={onAddAnswerClick} openAnswerModal={openAnswerModal} openModal={openQuestionModal} productQA={example.results} questions={questions}/> : null }
+          {loading ? <QuestionsList showAllAnswers={showAllAnswers} showAllMsg={showAll} show={show} message={message} setMessage={setMessage} count={count} setCount={setCount} handleHelpfulnessClick={questionHelpfulnessClicked} addAnswer={onAddAnswerClick} openAnswerModal={openAnswerModal} openModal={openQuestionModal} productQA={example.results} questions={questions}/> : null }
           <Modal ref={question_modal}>
             <AddQuestion onSubmit={onQuestionSubmit} product={props.product}/>
           </Modal>
