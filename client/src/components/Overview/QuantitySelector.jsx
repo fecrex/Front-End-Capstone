@@ -7,6 +7,7 @@ class QuantitySelector extends React.Component {
     this.state = {
       quantitySelected: undefined,
       sizeSelected: undefined,
+      loaded: false
     }
 
     this.buildOptionsGreater = this.buildOptionsGreater.bind(this);
@@ -26,7 +27,8 @@ class QuantitySelector extends React.Component {
 
       this.setState({
         sizeSelected: this.props.sizeSelected,
-        quantitySelected: quantity
+        quantitySelected: quantity,
+        loaded: true
       })
     }
   }
@@ -53,7 +55,8 @@ class QuantitySelector extends React.Component {
 
   render() {
     return (
-      <select className='quantity-selector'>
+      <select className='quantity-selector' >
+        <option value='-'>-</option>
 
         {this.state.quantitySelected >= 15 ? this.buildOptionsGreater() : this.buildOptionsLess() }
 

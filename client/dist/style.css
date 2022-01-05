@@ -292,14 +292,34 @@ img {
   border-radius: 50%;
 }
 
-.size-selector {
-  margin: 10px;
-  max-width: 40%
+.size-quantity-container {
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: auto;
+  margin-right: auto;
+  /* border: 1px solid black */
 }
 
+.size-selector {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+/* .quantity-selector-container {
+  margin-left: 5px;
+  margin-right: 5px;
+  border: 1px solid black
+} */
+
 .quantity-selector {
-  margin: 10px;
-  max-width: 20%
+  width: 75px
+}
+
+.add-to-cart-button {
+  margin-left: 5px;
+  margin-top: 20px;
+  width: 150px;
+  height: 25px
 }
 
 #product-title {

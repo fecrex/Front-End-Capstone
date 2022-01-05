@@ -52,9 +52,9 @@ class SizeSelector extends React.Component {
           <option key={index} value={size}>{size}</option>
         )}
 
-      </select>
+        </select>
 
-      <div className='quantity-selector-container'>
+      <div >
         <QuantitySelector selected={this.props.selected} sizes={this.props.sizes}
         sizeSelected={this.state.sizeSelected}
         />
