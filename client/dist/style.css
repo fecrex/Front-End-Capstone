@@ -431,8 +431,15 @@
 
 .review-images {
   margin-top: 5px;
-  height: 100px;
-  width: 100px;
+  height: auto;
+  width: auto;
+  margin-left: 2px;
+}
+
+.review-thumbnail-images {
+  margin-top: 5px;
+  height: 50px;
+  width: 50px;
   margin-left: 2px;
 }
 
@@ -456,6 +463,11 @@
 }
 
 .rating-helpfulness {
+  margin-top: 5px;
+  margin-left: 2px;
+}
+
+.review-helpful-buttons {
   margin-top: 5px;
   margin-left: 2px;
 }
@@ -504,21 +516,6 @@
   padding: 1.5em 1em;
   z-index: 999999;
   box-sizing: border-box;
-}
-
-
-.modal-root {
-  z-index: 2;
-  position: relative;
-  margin: 0 auto;
-  background-color: #303030;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 3px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  max-height: 100%;
-  padding: 15px 20px;
-  color: #c3c0c0;
 }
 
 .modal {

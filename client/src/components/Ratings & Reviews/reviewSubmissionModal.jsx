@@ -11,7 +11,7 @@ class ReviewSubmitModal extends React.Component {
 
   render () {
     return (
-      <PortalWithState className="review-modal" closeOnOutsideClick closeOnEsc>
+      <PortalWithState closeOnOutsideClick closeOnEsc>
         {({ openPortal, closePortal, isOpen, portal }) => (
           <React.Fragment>
             <button className="review-modal-open" onClick={openPortal}>
