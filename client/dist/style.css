@@ -336,6 +336,61 @@ img {
   margin-left: 2px;
 }
 
+.show-and-submit-review-buttons {
+  display: flex;
+}
+
+.show-more-reviews {
+  flex: 1;
+  margin-right: auto;
+}
+
+.submit-review {
+  flex: 2;
+  margin-left: auto;
+}
+
+/* .review-modal {
+  background: #fff;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 300px;
+  height: 300px;
+  box-shadow: 0 5px 10px 2px rgba(195,192,192,.5);
+  padding: 20px;
+  text-align: center;
+ }
+
+ .review-modal-close {
+  position: absolute;
+  right: 6px;
+  top: 9px;
+  cursor: pointer;
+  border: none;
+  font-size: 20px;
+ }
+
+ .review-modal-open {
+  cursor: pointer;
+  background-color: purple;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 20px;
+ }
+
+ .review-modal-open:focus {
+  outline: none;
+ } */
+
 .style-selector {
   width: 33.4%;
   overflow-y: hidden
