@@ -45,9 +45,14 @@ const QuestionsAnswers = function(props) {
   const [currQuestion, setCurrQuestion] = useState('');
   const [questionId, setCurrQuestionId] = useState('');
 
+  const [page, setPage] = useState(2);
+  const [questionCount, setQuestionCount] = useState(4);
+
   const [count, setCount] = useState(2);
   const [message, setMessage] = useState('Load more answers');
-  const [showAll, setShowAll] = useState('Show All Answers')
+  const [showAll, setShowAll] = useState('Show All Answers');
+
+  const [isThereMore, setIsThereMore] = useState(true);
 
 
 
@@ -147,6 +152,35 @@ const QuestionsAnswers = function(props) {
   }
 }, [props.product])
 
+  const getMoreQuestions = async() => {
+    try {
+      var moreQuestions = await axios.get('http://localhost:3000/qa/questions', {
+        params: {
+          product_id: props.product.id,
+          page: page,
+          count: 10,
+        }
+      });
+      if (moreQuestions.data.length !== 0) {
+        console.log(page);
+        var newQuestions = [...questions, ...moreQuestions.data];
+        setQuestions(newQuestions);
+        setQuestionCount(questionCount + 2);
+        setPage(page+1);
+      } else {
+        var qs = [...questions];
+        setQuestions(qs);
+        setQuestionCount(qs.length);
+        setIsThereMore(false);
+      }
+
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+
+
 
   // const getQuestions = function(callback) {
   //   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=${productId}`, {
@@ -171,7 +205,7 @@ const QuestionsAnswers = function(props) {
           <h5>QUESTIONS & ANSWERS</h5>
           <Search handleChange={onSearchChange}/>
           <button className="btn-answer-modal" onClick={() => answer_modal.current.open()}>Add Answer</button>
-          {loading ? <QuestionsList showAllAnswers={showAllAnswers} showAllMsg={showAll} show={show} message={message} setMessage={setMessage} count={count} setCount={setCount} handleHelpfulnessClick={questionHelpfulnessClicked} addAnswer={onAddAnswerClick} openAnswerModal={openAnswerModal} openModal={openQuestionModal} productQA={example.results} questions={questions}/> : null }
+          {loading ? <QuestionsList question_count={questionCount} showAllAnswers={showAllAnswers} showAllMsg={showAll} show={show} message={message} setMessage={setMessage} count={count} setCount={setCount} handleHelpfulnessClick={questionHelpfulnessClicked} addAnswer={onAddAnswerClick} openAnswerModal={openAnswerModal} openModal={openQuestionModal} productQA={example.results} questions={questions}/> : null }
           <Modal ref={question_modal}>
             <AddQuestion onSubmit={onQuestionSubmit} product={props.product}/>
           </Modal>
@@ -179,7 +213,9 @@ const QuestionsAnswers = function(props) {
             <AddAnswer onSubmit={onAnswerSubmit} currQuestion={currQuestion} product={props.product}/>
           </AnswerModal>
           <button onClick={() => question_modal.current.open()}>Add Question</button>
+          {isThereMore ? <button onClick={() => getMoreQuestions()}>Load More Questions</button> : null }
           </>
+
         )
 }
 
