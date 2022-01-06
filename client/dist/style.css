@@ -280,7 +280,7 @@
 .thumbnail-overlay {
   height: 10%;
   width: 10%;
-  margin: 1px
+  margin: 5px
 }
 
 .product-image-slide-thumbnail-container {
@@ -288,7 +288,8 @@
   flex-direction: column;
   justify-content: center;
   height: 300px;
-  align-items: flex-start
+  align-items: flex-start;
+  margin-left: 15px
 }
 
 #product-image {
