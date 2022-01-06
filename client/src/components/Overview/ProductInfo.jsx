@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import ImageGallery from './ImageGallery.jsx';
 import StyleSelector from './StyleSelector.jsx';
-import AddToCart from './AddToCart.jsx';
+import Rating from '@mui/material/Rating';
 
 class ProductInfo extends React.Component {
   constructor(props) {
@@ -16,13 +16,15 @@ class ProductInfo extends React.Component {
     this.getStarRating = this.getStarRating.bind(this);
   }
 
-  componentDidMount() {
-    this.getStarRating();
+  componentDidUpdate(prevProps) {
+    if (this.props.products !== prevProps.products) {
+      this.getStarRating();
+    }
   }
 
   getStarRating = async() => {
     try {
-      var resp = await axios.get('http://localhost:3000/reviews');
+      var resp = await axios.post('http://localhost:3000/reviews', {id: this.props.products[0].id});
       var countRatings = resp.data.count;
       var ratingTotal = 0;
       for (var i = 0; i < resp.data.results.length; i++) {
@@ -41,13 +43,10 @@ class ProductInfo extends React.Component {
   render() {
     return (
       <div className='product-info'>
-        <div className='star-rating'>
-          {/* {[...Array(5)].map((star, index) => {
-            return (
-              <span key={index} className='star'>&#9733;</span>
-            );
-          })}  */}
-          Star Rating : {this.state.rating} - Read all {this.state.numberRatings} reviews
+
+        <div className='product-info-star-rating'>
+          { this.state.numberRatings ?
+          <Rating defaultValue={Number(this.state.rating)} precision={0.25} readOnly/> : null}
         </div>
         <div id='product-category'>
           {this.props.products ? this.props.products.map((product) => {
@@ -65,9 +64,8 @@ class ProductInfo extends React.Component {
               }) : 'Product Price'}
         </div>
 
-        <ImageGallery />
-        <StyleSelector />
-        <AddToCart />
+        {/* <ImageGallery products={this.props.products[0]}/> */}
+        <StyleSelector products={this.props.products[0]}/>
 
         <div id='product-overview'>
           {this.props.products ? this.props.products.map((product) => {

@@ -1,6 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import Thumbnail from './Thumbnail.jsx';
+import AddToCart from './AddToCart.jsx';
+import ImageGallery from './ImageGallery.jsx';
+
 
 class StyleSelector extends React.Component {
   constructor(props) {
@@ -10,21 +13,23 @@ class StyleSelector extends React.Component {
       styles: [],
       loaded: false,
       imageSelected: undefined,
-      styleSelected: undefined
+      styleSelected: undefined,
     }
 
     this.getStyles = this.getStyles.bind(this);
     this.setSelected = this.setSelected.bind(this);
   }
 
-  componentDidMount() {
+  componentDidUpdate() {
     // update styles state
-    this.getStyles();
+    if (this.props.products && this.state.styles.length === 0) {
+      this.getStyles();
+    }
   }
 
   getStyles = async() => {
     try {
-      var resp = await axios.get('http://localhost:3000/styles');
+      var resp = await axios.post('http://localhost:3000/styles', { id: this.props.products.id});
       this.setState({
         styles: resp.data,
         loaded: true,
@@ -46,17 +51,28 @@ class StyleSelector extends React.Component {
   render() {
     // console.log(this.state.styles.results);
     return (
-      <div className='style-selector'>
-        <h2>Style > {this.state.styleSelected}</h2>
-        <div className='thumbnail-container'>
-          {this.state.loaded ? this.state.styles.results.map((style, index) => {
-            return <Thumbnail pic={this.state.styles.results[index].photos[0].thumbnail_url}
-            setSelected={this.setSelected} imageSelected={this.state.imageSelected}
-            name={this.state.styles.results[index].name}
-            />
-          }) : null}
+      <div className='image-gallery-style-selector-container'>
+
+        <div className='image-gallery-container'>
+          <ImageGallery products={this.props.products} imageSelected={this.state.imageSelected}/>
+        </div>
+
+        <div className='style-selector'>
+          <h2>Style > {this.state.styleSelected}</h2>
+          <div className='thumbnail-container'>
+            {this.state.loaded ? this.state.styles.results.map((style, index) => {
+              return <Thumbnail key={index} pic={this.state.styles.results[index].photos[0].thumbnail_url}
+              setSelected={this.setSelected} imageSelected={this.state.imageSelected}
+              name={this.state.styles.results[index].name}
+              />
+            }) : null}
+          </div>
+          <AddToCart styles={this.state.styles} imageSelected={this.state.imageSelected}
+          styleSelected={this.state.styleSelected}
+          />
         </div>
       </div>
+
     );
   }
 

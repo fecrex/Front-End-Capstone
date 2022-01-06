@@ -12,7 +12,7 @@ function Modal (props, ref) {
   }), [close])
 
   const handleEscape = useCallback(event => {
-    if (event.keyCode === 27) {setIsOpen(false); console.log('escape detected:', event)}
+    if (event.keyCode === 27) {setIsOpen(false)}
   }, [])
 
   useEffect(() => {
@@ -25,16 +25,20 @@ function Modal (props, ref) {
   return createPortal(
     isOpen ? <div className="modal">
       <table>
-        <tr>
-          <th>{props.original.name}</th>
-          <th></th>
-          <th>{props.related.name}</th>
-        </tr>
-        <tr>
-          <td>{props.original.default_price}</td>
-          <td>Price</td>
-          <td>{props.related.default_price}</td>
-        </tr>
+        <thead>
+          <tr>
+            <th>{props.original.name}</th>
+            <th></th>
+            <th>{props.related.name}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{props.original.default_price}</td>
+            <td>Price</td>
+            <td>{props.related.default_price}</td>
+          </tr>
+        </tbody>
       </table>
     </div> : null,
     modalElement

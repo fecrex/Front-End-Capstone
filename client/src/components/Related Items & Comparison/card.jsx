@@ -1,11 +1,48 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useState, useRef, forwardRef, useImperativeHandle} from 'react';
 import Modal from './cardModal.jsx';
 import axios from 'axios';
 
-function Card(props) {
+function Card(props, ref) {
   const modal = useRef(null);
   const [relatedList, setRelatedList] = useState([]);
   const [relatedDetails, setDetails] = useState([]);
+  const [relatedReviews, setRelatedReviews] = useState({});
+  const [slicedList, setSlicedList] = useState([]);
+  const [upperCards, setUpperCards] = useState(3);
+  const [lowerCards, setLowerCards] = useState(0);
+
+
+  useImperativeHandle(ref, () => ({
+    left: () => {
+      if (lowerCards !== 0) {
+        setLowerCards(lowerCards-1)
+        setUpperCards(upperCards-1)
+      }
+    },
+
+    right: () => {
+      if (upperCards !== relatedDetails.length) {
+        setLowerCards(lowerCards+1)
+        setUpperCards(upperCards+1)
+      }
+    }
+  }))
+
+
+  useEffect(() => {
+    relatedList.forEach(item => {
+      axios.post('http://localhost:3000/reviews/avg', {
+        id: item
+      })
+      .then(response => {
+        let newObj = {};
+        newObj[item] = response.data;
+        let pp = Object.assign(relatedReviews, newObj);
+        setRelatedReviews(pp);
+      })
+      .catch(err => {console.log('error setting state', err)});
+    })
+  }, [relatedList])
 
   useEffect(() => {
     if (props.relatedinfo[0]) {
@@ -27,26 +64,30 @@ function Card(props) {
         id: item
       })
       .then(response => {
-        setDetails(oldarray => [...oldarray, response])
+        setDetails(oldarray => [...oldarray, response.data])
       })
-      .catch(err => {console.log('error setting state', err)})
+      .catch(err => {console.log('error setting state', err)});
     })
   }, [relatedList])
 
+  useEffect(() => {
+    setSlicedList(relatedDetails.slice(lowerCards, upperCards));
+  }, [relatedDetails, upperCards])
+
   if (relatedDetails) {
     return (
-      relatedDetails.map((item, index) => {
+      slicedList.map((item, index) => {
         return(
           <>
           <button onClick={() => modal.current.open()}>x</button>
-          <Modal ref={modal} related={item.data} original={props.relatedinfo[0]}/>
+          <Modal ref={modal} related={item} original={props.relatedinfo[0]}/>
           <div className="related-item-card" key={index}>
-          <img src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1632925545-t-shirts-2021-jgt-ok-1632923427.jpg?crop=1xw:1xh;center,top&resize=768:*" />
+          <img className="related-img" src={props.styles[item.id][0].photos[0].thumbnail_url} />
           <div className="product-details">
-            <div>{item.data.category}</div>
-            <div>{item.data.description}</div>
-            <div>${item.data.default_price}</div>
-            <div>Star rating</div>
+            <div>{item.category}</div>
+            <div>{item.name}</div>
+            <div>${item.default_price}</div>
+            <div>{relatedReviews[item.id]}</div>
           </div>
           </div>
           </>
@@ -58,4 +99,4 @@ function Card(props) {
   }
 }
 
-export default Card;
+export default forwardRef(Card);
