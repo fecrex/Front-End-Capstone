@@ -220,6 +220,33 @@
   position: relative;
   left: 100px;
 }
+
+button.btn {
+  box-sizing: border-box;
+  border: none;
+  background-color: transparent;
+  padding: 0.25em 0.75em;
+  min-width: 10ch;
+  min-height: 44px;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.1;
+
+  background-color: coral;
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
+}
+
+button.btn:hover {
+  background-color: wheat;
+}
+
+
 /* questions answers css end */
 .related-container {
   display: flex;
