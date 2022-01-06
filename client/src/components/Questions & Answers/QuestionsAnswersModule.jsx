@@ -45,6 +45,7 @@ const QuestionsAnswers = function(props) {
   const [currQuestion, setCurrQuestion] = useState('');
   const [questionId, setCurrQuestionId] = useState('');
 
+  const [masterListQuestions, setMasterListQuestions] = useState('');
   const [page, setPage] = useState(2);
   const [questionCount, setQuestionCount] = useState(2);
 
@@ -78,30 +79,87 @@ const QuestionsAnswers = function(props) {
     }
   }
 
+  const validateQuestionForm = () => {
+
+    var isNotEmpty = function(field) {
+      var fieldData = field.value;
+      if (fieldData.length === 0 || fieldData.value === '' || fieldData == fieldData) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+    var question = document.getElementById('question');
+    var username = document.getElementById('username_question');
+    var email = document.getElementById('email_question');
+
+    if (isNotEmpty(question) && isNotEmpty(username) && isNotEmpty(email)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  const validateAnswerForm = () => {
+    var isNotEmpty = function(field) {
+      var fieldData = field.value;
+      if (fieldData.length === 0 || fieldData.value === '' || fieldData == fieldData) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+
+    var answer = document.getElementById('answer');
+    var username = document.getElementById('username_answer');
+    var email = document.getElementById('email_answer');
+
+    if (isNotEmpty(answer) && isNotEmpty(username) && isNotEmpty(email)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   const onQuestionSubmit = (event, {id}) => {
     event.preventDefault(event);
-    axios.post('http://localhost:3000/qa/questions', {
-        body: event.target.question.value,
-        name: event.target.username.value,
-        email: event.target.email.value,
-        product_id: id
-    })
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((err) => {
-      console.log(err);
-    })
+    if (validateQuestionForm()) {
+      axios.post('http://localhost:3000/qa/questions', {
+          body: event.target.question.value,
+          name: event.target.username.value,
+          email: event.target.email.value,
+          product_id: id
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    } else {
+      alert('Question not submitted. You must fill in all input fields.');
+    }
+
   }
 
   const onAnswerSubmit = (event, {id}) => {
     event.preventDefault(event);
-    axios.post('http://localhost:3000/qa/questions', {
-      question_id: questionId,
-      body: event.target.answer.value,
-      name: event.target.username.value,
-      email: event.target.email.value
-    })
+    if(validateAnswerForm()) {
+      axios.post('http://localhost:3000/qa/questions', {
+        question_id: questionId,
+        body: event.target.answer.value,
+        name: event.target.username.value,
+        email: event.target.email.value
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    } else {
+      alert('Answer not submitted. You must fill in all input fields.')
+    }
   }
 
   const openQuestionModal = () => question_modal.current.open();
@@ -158,15 +216,22 @@ const QuestionsAnswers = function(props) {
     // will have to filter through the questions based on what was just typed after 3 characters.
     // https://dev.to/shubhamtiwari909/real-time-searching-in-reactjs-3mfm
     // prolly will have to setState of the newly filtered questions
+
+
     setSearched(event.target.value);
     var filteredQuestions = questions.filter((question) => {
-      if (searched.length < 2) {
-        return question;
-      } else if (question.question_body.toLowerCase().includes(searched.toLowerCase())) {
+      // if (searched.length < 2) {
+      //   return question;
+      // }
+        if (question.question_body.toLowerCase().includes(searched.toLowerCase())) {
         return question;
       }
     })
-    setQuestions(filteredQuestions);
+    if (searched.length < 2) {
+      setQuestions(masterListQuestions);
+    } else {
+      setQuestions(filteredQuestions);
+    }
   }
 
 
@@ -177,6 +242,7 @@ const QuestionsAnswers = function(props) {
           id: props.product.id
         });
         setQuestions(questions.data.results);
+        setMasterListQuestions(questions.data.results);
         if (questions.length <= 2) {
           setIsThereMore(false);
         }
@@ -203,11 +269,13 @@ const QuestionsAnswers = function(props) {
         console.log(page);
         var newQuestions = [...questions, ...moreQuestions.data];
         setQuestions(newQuestions);
+        setMasterListQuestions(newQuestions);
         setQuestionCount(questionCount + 2);
         setPage(page+1);
       } else {
         var qs = [...questions];
         setQuestions(qs);
+        setMasterListQuestions(qs);
         setQuestionCount(qs.length);
         setIsThereMore(false);
       }
@@ -229,8 +297,8 @@ const QuestionsAnswers = function(props) {
           <AnswerModal ref={answer_modal}>
             <AddAnswer onSubmit={onAnswerSubmit} currQuestion={currQuestion} product={props.product}/>
           </AnswerModal>
-          <button onClick={() => question_modal.current.open()}>Add Question</button>
-          {isThereMore ? <button onClick={() => getMoreQuestions()}>Load More Questions</button> : <button onClick={() => {
+          <button className="btn btn-question-modal " onClick={() => question_modal.current.open()}>Add Question</button>
+          {isThereMore ? <button className="btn btn-load-more-questions" onClick={() => getMoreQuestions()}>Load More Questions</button> : <button className="btn" onClick={() => {
             setQuestionCount(2);
             setIsThereMore(true);
           }}>Hide Questions</button>}
