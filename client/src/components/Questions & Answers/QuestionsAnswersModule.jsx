@@ -79,20 +79,46 @@ const QuestionsAnswers = function(props) {
     }
   }
 
+  const validateQuestionForm = () => {
+
+    var isNotEmpty = function(field) {
+      var fieldData = field.value;
+      if (fieldData.length === 0 || fieldData.value === '' || fieldData == fieldData) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+    var question = document.getElementById('question');
+    var username = document.getElementById('username_question');
+    var email = document.getElementById('email_question');
+
+    if (isNotEmpty(question) && isNotEmpty(username) && isNotEmpty(email)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   const onQuestionSubmit = (event, {id}) => {
     event.preventDefault(event);
-    axios.post('http://localhost:3000/qa/questions', {
-        body: event.target.question.value,
-        name: event.target.username.value,
-        email: event.target.email.value,
-        product_id: id
-    })
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((err) => {
-      console.log(err);
-    })
+    if (validateQuestionForm()) {
+      axios.post('http://localhost:3000/qa/questions', {
+          body: event.target.question.value,
+          name: event.target.username.value,
+          email: event.target.email.value,
+          product_id: id
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    } else {
+      alert('Question not submitted. You must fill in all input fields.');
+    }
+
   }
 
   const onAnswerSubmit = (event, {id}) => {

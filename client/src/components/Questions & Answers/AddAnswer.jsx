@@ -4,7 +4,7 @@ const AddAnswer = function(props) {
   // probably should make a post request upon submission of the question
 
   return (
-    <form onSubmit={(event) => props.onSubmit(event, props.product)}>
+    <form className="add-answer-form" onSubmit={(event) => props.onSubmit(event, props.product)}>
       <div className="form-group title-bar">
         <h1>Submit your Answer</h1>
         <h3>{`${props.product.name} : ${props.currQuestion}`}</h3>
@@ -15,14 +15,14 @@ const AddAnswer = function(props) {
       </div>
       <div className="form-group">
         <label htmlFor="username">What is your nickname?</label>
-        <input className="form-control" id="username" placeholder="Example: jack543!" maxLength="60"></input>
+        <input className="form-control" id="username_answer" placeholder="Example: jack543!" maxLength="60"></input>
       </div>
       <div className="form-group">
         <span>For privary reasons, do not use your full name or email address</span>
       </div>
       <div className="form-group">
         <label htmlFor="email">Your email</label>
-        <input className="form-control" id="email" placeholder="Example: jack@email.com"></input>
+        <input className="form-control" id="email_answer" placeholder="Example: jack@email.com"></input>
       </div>
       <div className="form-group">
         <span>For authentication reasons, you will not be emailed</span>
