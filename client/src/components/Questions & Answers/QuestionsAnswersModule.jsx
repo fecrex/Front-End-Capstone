@@ -46,7 +46,7 @@ const QuestionsAnswers = function(props) {
   const [questionId, setCurrQuestionId] = useState('');
 
   const [page, setPage] = useState(2);
-  const [questionCount, setQuestionCount] = useState(4);
+  const [questionCount, setQuestionCount] = useState(2);
 
   const [count, setCount] = useState(2);
   const [message, setMessage] = useState('Load more answers');
@@ -142,6 +142,9 @@ const QuestionsAnswers = function(props) {
           id: props.product.id
         });
         setQuestions(questions.data.results);
+        if (questions.length <= 2) {
+          setIsThereMore(false);
+        }
         setLoading(true);
       } catch(err) {
         console.error('Error retrieving questions', err);
