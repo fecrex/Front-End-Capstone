@@ -45,6 +45,7 @@ const QuestionsAnswers = function(props) {
   const [currQuestion, setCurrQuestion] = useState('');
   const [questionId, setCurrQuestionId] = useState('');
 
+  const [masterListQuestions, setMasterListQuestions] = useState('');
   const [page, setPage] = useState(2);
   const [questionCount, setQuestionCount] = useState(2);
 
@@ -158,15 +159,22 @@ const QuestionsAnswers = function(props) {
     // will have to filter through the questions based on what was just typed after 3 characters.
     // https://dev.to/shubhamtiwari909/real-time-searching-in-reactjs-3mfm
     // prolly will have to setState of the newly filtered questions
+
+
     setSearched(event.target.value);
     var filteredQuestions = questions.filter((question) => {
-      if (searched.length < 2) {
-        return question;
-      } else if (question.question_body.toLowerCase().includes(searched.toLowerCase())) {
+      // if (searched.length < 2) {
+      //   return question;
+      // }
+        if (question.question_body.toLowerCase().includes(searched.toLowerCase())) {
         return question;
       }
     })
-    setQuestions(filteredQuestions);
+    if (searched.length < 2) {
+      setQuestions(masterListQuestions);
+    } else {
+      setQuestions(filteredQuestions);
+    }
   }
 
 
@@ -177,6 +185,7 @@ const QuestionsAnswers = function(props) {
           id: props.product.id
         });
         setQuestions(questions.data.results);
+        setMasterListQuestions(questions.data.results);
         if (questions.length <= 2) {
           setIsThereMore(false);
         }
@@ -203,11 +212,13 @@ const QuestionsAnswers = function(props) {
         console.log(page);
         var newQuestions = [...questions, ...moreQuestions.data];
         setQuestions(newQuestions);
+        setMasterListQuestions(newQuestions);
         setQuestionCount(questionCount + 2);
         setPage(page+1);
       } else {
         var qs = [...questions];
         setQuestions(qs);
+        setMasterListQuestions(qs);
         setQuestionCount(qs.length);
         setIsThereMore(false);
       }
