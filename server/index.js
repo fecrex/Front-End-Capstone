@@ -127,6 +127,24 @@ app.get('/qa/questions', function(req, res) {
   })
 })
 
+app.put('/qa/questions', function(req, res) {
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${req.query.question_id}/helpful`,{
+    question_helpfulness: req.body.q_helpfulness
+  }, {
+    headers: {
+      Authorization: key.TOKEN
+    }
+  })
+  .then((results) => {
+    console.log(results);
+    res.send(results);
+  })
+  .catch((error) => {
+    console.error(error);
+    res.send(error);
+  })
+})
+
 app.post('/reviews/avg', function(req, res) {
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${req.body.id}`, {
       headers: {

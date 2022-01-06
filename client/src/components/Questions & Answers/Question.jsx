@@ -7,6 +7,8 @@ const Question = function(props) {
   const [showButton, setShowButton] = useState(false);
   // const [count, setCount] = useState(2);
   // const [message, setMessage] = useState('Load more answers');
+  const [helpfulness, setQuestionHelpfulness] = useState(props.q_helpfulness);
+
 
 
 
@@ -30,7 +32,12 @@ const Question = function(props) {
   return (
     <div className="individual-question">
       <input type="radio" id={props.id} className="accordion" name="accordion_input" onClick={() => setShowButton(true)}/>
-      <label className="question-label" htmlFor={props.id}>Q: {props.question_body} <div onClick={() => props.handleHelpfulnessClick(props.id, props.q_helpfulness)} className="helpful-question">Helpful? Yes ({props.q_helpfulness})</div>
+      <label className="question-label" htmlFor={props.id}>Q: {props.question_body} <div  className="helpful-question">Helpful? {<button onClick={() => {
+        if (!props.markedQuestions.includes(props.id)) {
+          props.handleHelpfulnessClick(props.id, props.q_helpfulness)
+          setQuestionHelpfulness(helpfulness + 1);
+        }
+        }}>Yes</button>}({helpfulness})</div>
       <div className="add-answer" onClick={() => {
         props.addAnswer(props.question_body, props.id)
         props.openModal();

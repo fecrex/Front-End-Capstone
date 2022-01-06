@@ -54,6 +54,7 @@ const QuestionsAnswers = function(props) {
 
   const [isThereMore, setIsThereMore] = useState(true);
 
+  const [markedQuestions, setMarkedQuestions] = useState([]);
 
 
   const show = (message) => {
@@ -115,7 +116,23 @@ const QuestionsAnswers = function(props) {
   }
 
   const questionHelpfulnessClicked = (id, question_helpfulness) => {
-
+    if (!markedQuestions.includes(id)) {
+      var update = [...markedQuestions, id];
+      setMarkedQuestions(update);
+      axios.put('http://localhost:3000/qa/questions', {
+        question_helpfulness: question_helpfulness + 1
+      }, {
+        params: {
+          question_id: id
+        }
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+    }
   }
 
 
@@ -208,7 +225,7 @@ const QuestionsAnswers = function(props) {
           <h5>QUESTIONS & ANSWERS</h5>
           <Search handleChange={onSearchChange}/>
           <button className="btn-answer-modal" onClick={() => answer_modal.current.open()}>Add Answer</button>
-          {loading ? <QuestionsList question_count={questionCount} showAllAnswers={showAllAnswers} showAllMsg={showAll} show={show} message={message} setMessage={setMessage} count={count} setCount={setCount} handleHelpfulnessClick={questionHelpfulnessClicked} addAnswer={onAddAnswerClick} openAnswerModal={openAnswerModal} openModal={openQuestionModal} productQA={example.results} questions={questions}/> : null }
+          {loading ? <QuestionsList markedQuestions={markedQuestions} question_count={questionCount} showAllAnswers={showAllAnswers} showAllMsg={showAll} show={show} message={message} setMessage={setMessage} count={count} setCount={setCount} handleHelpfulnessClick={questionHelpfulnessClicked} addAnswer={onAddAnswerClick} openAnswerModal={openAnswerModal} openModal={openQuestionModal} productQA={example.results} questions={questions}/> : null }
           <Modal ref={question_modal}>
             <AddQuestion onSubmit={onQuestionSubmit} product={props.product}/>
           </Modal>
