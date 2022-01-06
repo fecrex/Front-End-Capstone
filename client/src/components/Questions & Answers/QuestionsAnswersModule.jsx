@@ -216,7 +216,10 @@ const QuestionsAnswers = function(props) {
             <AddAnswer onSubmit={onAnswerSubmit} currQuestion={currQuestion} product={props.product}/>
           </AnswerModal>
           <button onClick={() => question_modal.current.open()}>Add Question</button>
-          {isThereMore ? <button onClick={() => getMoreQuestions()}>Load More Questions</button> : null }
+          {isThereMore ? <button onClick={() => getMoreQuestions()}>Load More Questions</button> : <button onClick={() => {
+            setQuestionCount(2);
+            setIsThereMore(true);
+          }}>Hide Questions</button>}
           </>
 
         )
