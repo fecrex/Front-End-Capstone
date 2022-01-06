@@ -23,6 +23,7 @@ class ImageGallery extends React.Component {
     this.setShown = this.setShown.bind(this);
     this.nextSlide = this.nextSlide.bind(this);
     this.previousSlide = this.previousSlide.bind(this);
+    this.changeIndex = this.changeIndex.bind(this);
     // this.updateImageSet = this.updateImageSet.bind(this);
   }
 
@@ -75,6 +76,16 @@ class ImageGallery extends React.Component {
     });
   }
 
+  changeIndex() {
+    // console.log(event.target)
+    var index = this.state.styleSelectedImages.indexOf(event.target.src);
+    // console.log(index);
+    this.setState({
+      currentImageIndex: index
+    })
+  }
+
+
   // getStyles = async() => {
   //   try {
   //     var resp = await axios.post('http://localhost:3000/styles', {id: this.props.products.id});
@@ -99,7 +110,9 @@ class ImageGallery extends React.Component {
 
 
 
-        <ImageSlide url={ this.state.styleSelectedImages[this.state.currentImageIndex] } />
+        <ImageSlide url={ this.state.styleSelectedImages[this.state.currentImageIndex] }
+        thumbnails={this.state.styleSelectedImages} changeIndex={this.changeIndex}
+        />
 
         {/* <Arrow
           direction='left'

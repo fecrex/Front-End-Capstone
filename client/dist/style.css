@@ -266,15 +266,29 @@
 }
 
 .image-arrows {
-  margin-top: 10px
+  margin-top: 5px
 }
 
 .image-gallery-style-selector-container {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 100%;
   display: flex;
   margin-left: auto;
   margin-right: auto;
+}
+
+.thumbnail-overlay {
+  height: 10%;
+  width: 10%;
+  margin: 1px
+}
+
+.product-image-slide-thumbnail-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 300px;
+  align-items: flex-start
 }
 
 #product-image {
