@@ -40,9 +40,7 @@ class App extends React.Component {
       <>
       <h1>FEC - Project Catwalk</h1>
       <Overview products={this.state.products}/>
-      <div className="related-container">
-        <RelatedProducts relatedinfo={this.state.products}/>
-      </div>
+      <RelatedProducts relatedinfo={this.state.products}/>
       <QuestionsAnswers product={this.state.products[0]}/>
       <div id="review-modal-root">
       <ReviewList productId={this.state.products.map((product) => {

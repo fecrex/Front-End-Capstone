@@ -29,6 +29,8 @@ app.get('/home', function(req, res) {
     })
 });
 
+
+
 app.post('/related', (req, res) => {
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${req.body.id}/related`, {
     headers: {
@@ -106,6 +108,52 @@ app.post('/qa/questions', function(req, res) {
       console.error('Failed to retrieve questions from API: ', err);
     })
   }
+});
+
+app.get('/qa/questions', function(req, res) {
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=${req.query.product_id}&page=${req.query.page}&count=${req.query.count}`, {
+    headers: {
+      Authorization: key.TOKEN
+    }
+  })
+  .then((results) => {
+    res.send(results.data.results);
+  })
+  .catch((error) => {
+    console.error('Error loading more questions', error);
+  })
+})
+
+app.put('/qa/questions', function(req, res) {
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${req.query.question_id}/helpful`,{
+    question_helpfulness: req.body.q_helpfulness
+  }, {
+    headers: {
+      Authorization: key.TOKEN
+    }
+  })
+  .then((results) => {
+    console.log('Successfully updated question helpfulness rating for question: ',req.query.question_id);
+  })
+  .catch((error) => {
+    console.error('Error updating question helpfulness rating. ', error);
+  })
+})
+
+app.put('/qa/answers', function(req, res) {
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/answers/${req.query.answer_id}/helpful`, {
+    answer_helpfulness: req.body.answer_helpfulness
+  }, {
+    headers: {
+      Authorization: key.TOKEN
+    }
+  })
+  .then((results) => {
+    console.log('Successfully updated answer helpfulness rating for answer: ',req.query.answer_id);
+  })
+  .catch((err) =>  {
+    console.error('Error updating answer helpfulness rating. ', err);
+  })
 });
 
 app.post('/reviews/avg', function(req, res) {
