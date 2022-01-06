@@ -45,9 +45,14 @@ const QuestionsAnswers = function(props) {
   const [currQuestion, setCurrQuestion] = useState('');
   const [questionId, setCurrQuestionId] = useState('');
 
+  const [page, setPage] = useState(2);
+  const [questionCount, setQuestionCount] = useState(2);
+
   const [count, setCount] = useState(2);
   const [message, setMessage] = useState('Load more answers');
-  const [showAll, setShowAll] = useState('Show All Answers')
+  const [showAll, setShowAll] = useState('Show All Answers');
+
+  const [isThereMore, setIsThereMore] = useState(true);
 
 
 
@@ -137,6 +142,9 @@ const QuestionsAnswers = function(props) {
           id: props.product.id
         });
         setQuestions(questions.data.results);
+        if (questions.length <= 2) {
+          setIsThereMore(false);
+        }
         setLoading(true);
       } catch(err) {
         console.error('Error retrieving questions', err);
@@ -146,6 +154,35 @@ const QuestionsAnswers = function(props) {
     getQuestions();
   }
 }, [props.product])
+
+  const getMoreQuestions = async() => {
+    try {
+      var moreQuestions = await axios.get('http://localhost:3000/qa/questions', {
+        params: {
+          product_id: props.product.id,
+          page: page,
+          count: 10,
+        }
+      });
+      if (moreQuestions.data.length !== 0) {
+        console.log(page);
+        var newQuestions = [...questions, ...moreQuestions.data];
+        setQuestions(newQuestions);
+        setQuestionCount(questionCount + 2);
+        setPage(page+1);
+      } else {
+        var qs = [...questions];
+        setQuestions(qs);
+        setQuestionCount(qs.length);
+        setIsThereMore(false);
+      }
+
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+
 
 
   // const getQuestions = function(callback) {
@@ -171,7 +208,7 @@ const QuestionsAnswers = function(props) {
           <h5>QUESTIONS & ANSWERS</h5>
           <Search handleChange={onSearchChange}/>
           <button className="btn-answer-modal" onClick={() => answer_modal.current.open()}>Add Answer</button>
-          {loading ? <QuestionsList showAllAnswers={showAllAnswers} showAllMsg={showAll} show={show} message={message} setMessage={setMessage} count={count} setCount={setCount} handleHelpfulnessClick={questionHelpfulnessClicked} addAnswer={onAddAnswerClick} openAnswerModal={openAnswerModal} openModal={openQuestionModal} productQA={example.results} questions={questions}/> : null }
+          {loading ? <QuestionsList question_count={questionCount} showAllAnswers={showAllAnswers} showAllMsg={showAll} show={show} message={message} setMessage={setMessage} count={count} setCount={setCount} handleHelpfulnessClick={questionHelpfulnessClicked} addAnswer={onAddAnswerClick} openAnswerModal={openAnswerModal} openModal={openQuestionModal} productQA={example.results} questions={questions}/> : null }
           <Modal ref={question_modal}>
             <AddQuestion onSubmit={onQuestionSubmit} product={props.product}/>
           </Modal>
@@ -179,7 +216,12 @@ const QuestionsAnswers = function(props) {
             <AddAnswer onSubmit={onAnswerSubmit} currQuestion={currQuestion} product={props.product}/>
           </AnswerModal>
           <button onClick={() => question_modal.current.open()}>Add Question</button>
+          {isThereMore ? <button onClick={() => getMoreQuestions()}>Load More Questions</button> : <button onClick={() => {
+            setQuestionCount(2);
+            setIsThereMore(true);
+          }}>Hide Questions</button>}
           </>
+
         )
 }
 
