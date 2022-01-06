@@ -278,12 +278,45 @@ button.btn:hover {
   /* border: 1px solid black */
 }
 
+.parent-image-gallery-component{
+  height: 95%;
+  width: 95%;
+  /* overflow: hidden */
+}
+
+.product-image-slide {
+  height: 95%;
+  width: 95%;
+  background-size: 100% 100%;
+  display: inline-block;
+  margin-top: 10px
+}
+
+.image-arrows {
+  margin-top: 5px
+}
+
 .image-gallery-style-selector-container {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 100%;
   display: flex;
   margin-left: auto;
   margin-right: auto;
+}
+
+.thumbnail-overlay {
+  height: 10%;
+  width: 10%;
+  margin: 5px
+}
+
+.product-image-slide-thumbnail-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 300px;
+  align-items: flex-start;
+  margin-left: 15px
 }
 
 #product-image {
