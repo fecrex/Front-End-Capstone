@@ -256,6 +256,9 @@ button.btn:hover {
 
 
 /* ------- OVERVIEW COMPONENT CSS STYLES --------- */
+.project-title {
+  text-align: center;
+}
 
 .product-info {
   /* border: solid 1px #000; */
@@ -324,15 +327,30 @@ button.btn:hover {
   max-width: 100%
 }
 
+.product-info-header {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* border: 1px solid black */
+}
+
 .product-info-star-rating, #product-category, #product-title, #product-price {
   width: 40%;
   /* border: solid 1px #000; */
-  margin: auto
+  margin-left: auto
 }
 
 #product-title {
   font-size: 16px;
   font-size: 2.5vw
+}
+
+#share-social {
+  /* border: 1px solid black; */
+  /* text-align: center */
+  margin-top: 15px;
+  margin-left: 25px
 }
 
 .style-selector {

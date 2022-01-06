@@ -4,6 +4,9 @@ import Thumbnail from './Thumbnail.jsx';
 import AddToCart from './AddToCart.jsx';
 import ImageGallery from './ImageGallery.jsx';
 
+import FacebookIcon from '@mui/icons-material/Facebook';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import PinterestIcon from '@mui/icons-material/Pinterest';
 
 class StyleSelector extends React.Component {
   constructor(props) {
@@ -93,6 +96,15 @@ class StyleSelector extends React.Component {
           <AddToCart styles={this.state.styles} imageSelected={this.state.imageSelected}
           styleSelected={this.state.styleSelected}
           />
+
+          <div id='share-social'>
+            {/* Share on Social Media */}
+            <FacebookIcon fontSize='large' style={{ color: '1877F2'}}/>
+            <TwitterIcon fontSize='large' style={{ color: '1DA1F2'}} />
+            <PinterestIcon fontSize='large' style={{ color: 'BD081C'}} />
+
+          </div>
+
         </div>
       </div>
 
