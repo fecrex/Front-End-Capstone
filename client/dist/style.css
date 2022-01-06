@@ -247,6 +247,10 @@ img {
   /* border: 1px solid black */
 }
 
+.parent-image-gallery-component{
+  overflow: hidden
+}
+
 .image-gallery-style-selector-container {
   border: 1px solid black;
   width: 100%;
