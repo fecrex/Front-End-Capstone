@@ -1,5 +1,10 @@
 import React from 'react';
 import axios from 'axios';
+import ImageSlide from './ImageSlide.jsx';
+// import Arrow from './Arrow.jsx';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+
 
 class ImageGallery extends React.Component {
   constructor(props) {
@@ -9,12 +14,15 @@ class ImageGallery extends React.Component {
       loaded: false,
       imageShown: undefined,
       styleSelected: undefined,
-      styleSelectedImages: []
+      styleSelectedImages: [],
+      currentImageIndex: 0
     }
 
     // this.getStyles = this.getStyles.bind(this);
     // this.setSelected = this.setSelected.bind(this);
     this.setShown = this.setShown.bind(this);
+    this.nextSlide = this.nextSlide.bind(this);
+    this.previousSlide = this.previousSlide.bind(this);
     // this.updateImageSet = this.updateImageSet.bind(this);
   }
 
@@ -45,6 +53,28 @@ class ImageGallery extends React.Component {
     })
   }
 
+  previousSlide() {
+    var lastIndex = this.state.styleSelectedImages.length - 1;
+    var { currentImageIndex } = this.state;
+    var shouldResetIndex = currentImageIndex === 0;
+    var index = shouldResetIndex ? lastIndex : currentImageIndex - 1;
+
+    this.setState({
+      currentImageIndex: index
+    });
+  }
+
+  nextSlide() {
+    var lastIndex = this.state.styleSelectedImages.length - 1;
+    var { currentImageIndex } = this.state;
+    var shouldResetIndex = currentImageIndex === lastIndex;
+    var index = shouldResetIndex ? 0 : currentImageIndex + 1;
+
+    this.setState({
+      currentImageIndex: index
+    });
+  }
+
   // getStyles = async() => {
   //   try {
   //     var resp = await axios.post('http://localhost:3000/styles', {id: this.props.products.id});
@@ -63,8 +93,26 @@ class ImageGallery extends React.Component {
   render() {
     return (
       <div className='parent-image-gallery-component'>
-        <div className='slide-reel'>
+        {/* <div className='slide-reel'>
           <img id='product-image' src={this.state.imageShown}/>
+        </div> */}
+
+
+
+        <ImageSlide url={ this.state.styleSelectedImages[this.state.currentImageIndex] } />
+
+        {/* <Arrow
+          direction='left'
+          clickFunction={ this.previousSlide }
+          glyph='&#9664;' />
+
+        <Arrow
+          direction='right'
+          clickFunction={ this.nextSlide }
+          glyph='&#9654;' /> */}
+        <div className='image-arrows'>
+          <ChevronLeftIcon onClick={this.previousSlide}/>
+          <ChevronRightIcon onClick={this.nextSlide}/>
         </div>
       </div>
     );

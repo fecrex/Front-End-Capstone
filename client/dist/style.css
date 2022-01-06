@@ -252,7 +252,21 @@
 }
 
 .parent-image-gallery-component{
-  overflow: hidden
+  height: 95%;
+  width: 95%;
+  /* overflow: hidden */
+}
+
+.product-image-slide {
+  height: 95%;
+  width: 95%;
+  background-size: 100% 100%;
+  display: inline-block;
+  margin-top: 10px
+}
+
+.image-arrows {
+  margin-top: 10px
 }
 
 .image-gallery-style-selector-container {
