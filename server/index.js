@@ -117,13 +117,10 @@ app.get('/qa/questions', function(req, res) {
     }
   })
   .then((results) => {
-    console.log(results);
-    console.log(results.data.results);
     res.send(results.data.results);
   })
   .catch((error) => {
-    console.error(error);
-    res.send(error);
+    console.error('Error loading more questions', error);
   })
 })
 
@@ -136,14 +133,28 @@ app.put('/qa/questions', function(req, res) {
     }
   })
   .then((results) => {
-    console.log(results);
-    res.send(results);
+    console.log('Successfully updated question helpfulness rating for question: ',req.query.question_id);
   })
   .catch((error) => {
-    console.error(error);
-    res.send(error);
+    console.error('Error updating question helpfulness rating. ', error);
   })
 })
+
+app.put('/qa/answers', function(req, res) {
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/answers/${req.query.answer_id}/helpful`, {
+    answer_helpfulness: req.body.answer_helpfulness
+  }, {
+    headers: {
+      Authorization: key.TOKEN
+    }
+  })
+  .then((results) => {
+    console.log('Successfully updated answer helpfulness rating for answer: ',req.query.answer_id);
+  })
+  .catch((err) =>  {
+    console.error('Error updating answer helpfulness rating. ', err);
+  })
+});
 
 app.post('/reviews/avg', function(req, res) {
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${req.body.id}`, {

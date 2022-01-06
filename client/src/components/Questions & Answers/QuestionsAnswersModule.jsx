@@ -55,6 +55,7 @@ const QuestionsAnswers = function(props) {
   const [isThereMore, setIsThereMore] = useState(true);
 
   const [markedQuestions, setMarkedQuestions] = useState([]);
+  const [markedAnswers, setMarkedAnswers] = useState([]);
 
 
   const show = (message) => {
@@ -76,9 +77,6 @@ const QuestionsAnswers = function(props) {
       setShowAll('Show All Answers')
     }
   }
-
-
-
 
   const onQuestionSubmit = (event, {id}) => {
     event.preventDefault(event);
@@ -124,6 +122,26 @@ const QuestionsAnswers = function(props) {
       }, {
         params: {
           question_id: id
+        }
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+    }
+  }
+
+  const answerHelpfulnessClicked = (id, answer_helpfulness) => {
+    if(!markedAnswers.includes(id)) {
+      var update = [...markedAnswers, id];
+      setMarkedAnswers(update);
+      axios.put('http://localhost:3000/qa/answers', {
+        answer_helpfulness: answer_helpfulness + 1
+      }, {
+        params: {
+          answer_id: id
         }
       })
       .then((response) => {
@@ -199,33 +217,12 @@ const QuestionsAnswers = function(props) {
     }
   }
 
-
-
-
-  // const getQuestions = function(callback) {
-  //   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=${productId}`, {
-  //     headers: {
-  //       'Authorization': key.TOKEN,
-  //       'Content-Type': 'application/json'
-  //     }
-  //   })
-  //   .then((results) => {
-  //     console.log(results);
-  //     callback(results);
-  //     // setQuestions()
-  //   })
-  //   .catch((err) => {
-  //     console.error(err);
-  //   })
-  // }
-
-
   return (
           <>
           <h5>QUESTIONS & ANSWERS</h5>
           <Search handleChange={onSearchChange}/>
           <button className="btn-answer-modal" onClick={() => answer_modal.current.open()}>Add Answer</button>
-          {loading ? <QuestionsList markedQuestions={markedQuestions} question_count={questionCount} showAllAnswers={showAllAnswers} showAllMsg={showAll} show={show} message={message} setMessage={setMessage} count={count} setCount={setCount} handleHelpfulnessClick={questionHelpfulnessClicked} addAnswer={onAddAnswerClick} openAnswerModal={openAnswerModal} openModal={openQuestionModal} productQA={example.results} questions={questions}/> : null }
+          {loading ? <QuestionsList markedAnswers={markedAnswers} markedQuestions={markedQuestions} question_count={questionCount} showAllAnswers={showAllAnswers} showAllMsg={showAll} show={show} message={message} setMessage={setMessage} count={count} setCount={setCount} answerHelpfulnessClicked={answerHelpfulnessClicked} handleHelpfulnessClick={questionHelpfulnessClicked} addAnswer={onAddAnswerClick} openAnswerModal={openAnswerModal} openModal={openQuestionModal} productQA={example.results} questions={questions}/> : null }
           <Modal ref={question_modal}>
             <AddQuestion onSubmit={onQuestionSubmit} product={props.product}/>
           </Modal>
