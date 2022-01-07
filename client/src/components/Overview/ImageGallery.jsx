@@ -109,7 +109,6 @@ class ImageGallery extends React.Component {
         </div> */}
 
 
-
         <ImageSlide url={ this.state.styleSelectedImages[this.state.currentImageIndex] }
         thumbnails={this.state.styleSelectedImages} changeIndex={this.changeIndex}
         />

@@ -338,6 +338,8 @@ button.btn:focus {
   text-align: center;
 }
 
+/* *{border: 1px solid black} */
+
 .product-info {
   /* border: solid 1px #000; */
   display: flex;
@@ -346,14 +348,14 @@ button.btn:focus {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 50px;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
   max-height: 40%
 }
 
 .image-gallery-container {
   /* border: solid 1px #000; */
-  width: 60%;
+  width: 500px;
   height: 500px;
   text-align: center;
   /* border: 1px solid black */
@@ -368,7 +370,7 @@ button.btn:focus {
 .product-image-slide {
   height: 95%;
   width: 95%;
-  background-size: 100% 100%;
+  background-size: 450px;
   display: inline-block;
   margin-top: 10px
 }
@@ -397,7 +399,7 @@ button.btn:focus {
   justify-content: center;
   height: 300px;
   align-items: flex-start;
-  margin-left: 15px
+  margin-left: 15px;
 }
 
 #product-image {
@@ -410,6 +412,8 @@ button.btn:focus {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
+  /* margin-left: 250px; */
   /* border: 1px solid black */
 }
 
@@ -432,8 +436,14 @@ button.btn:focus {
 }
 
 .style-selector {
-  width: 33.4%;
-  overflow-y: hidden;
+  /* margin-left: auto; */
+  flex: 1;
+  flex-direction: column;
+  display: flex;
+  margin-left: 250px;
+
+  /* width: 33.4%; */
+  /* overflow-y: hidden; */
   /* border: 1px solid black */
 }
 
@@ -542,6 +552,9 @@ button.btn:focus {
 }
 
 /* ----- END OVERVIEW COMPONENT CSS STYLES ----- */
+
+
+/* ---------------------------------------------RATINGS & REVIEWS CSS STYLES ------------------------------------------- */
 
 /* .review-list-and-review-breakdown {
   display: flex;
@@ -696,6 +709,11 @@ button.btn:focus {
   z-index: 999999;
   box-sizing: border-box;
 }
+
+
+/* ------------------------------------------END OF RATINGS & REVIEWS CSS STYLES -------------------------------------- */
+
+
 
 .modal {
   position: absolute;
