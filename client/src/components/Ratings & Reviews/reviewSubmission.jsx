@@ -13,16 +13,16 @@ class ReviewSubmission extends React.Component {
     return (
       <form>
         <label>
-        <Rating className="user-review-star-rating" defaultValue={0} precision={0.5}/>
-        <div className="user-review-recommend">Do you recommend this product?
-          <div className="user-review-recommend-yes">
-            <button>Yes</button>
-          </div>
-          <div className="user-review-recommend-no">
-            <button>No</button>
-          </div>
+        <h1>Add Your Review</h1>
+        <Rating className="user-review-star-rating" defaultValue={0} precision={1}/>
+        <div className="user-review-recommend">{"Do you recommend this product? "}
+          <select>
+            <option>{null}</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
         </div>
-        <div className="user-review-characteristics">Characteristics
+        <div className="user-review-characteristics">
           <div className="user-review-size">{"Size "}
             <select>
               <option value="0">{null}</option>
@@ -84,12 +84,20 @@ class ReviewSubmission extends React.Component {
               <option value="5">Runs long</option>
             </select>
           </div>
-        <div className="user-review-summary">Review Summary</div>
-        <div className="user-review-body">Why did you like the product or not?</div>
+        <div className="user-review-summary">Review Summary
+          <input placeholder="Summarize your review." maxLength="60"></input>
+        </div>
+        <div className="user-review-body">Why did you like the product or not?
+          <input placeholder="Write your review here." maxLength="1000"></input>
+        </div>
         <div className="user-review-upload-photos">Upload Photos</div>
-        <div className="user-review-nickname">What's your nickname?</div>
-        <div className="user-review-email">Example: jackson11@email.com</div>
-        <div className="user-review-authentication">For authentication reasons, you will not be emailed” will appear</div>
+        <div className="user-review-nickname">What's your nickname?
+          <input placeholder="Example: jackson11!" maxLength="60"></input>
+        </div>
+        <div className="user-review-email">Your email
+          <input placeholder="Example: jackson11@email.com" maxLength="60"></input>
+        </div>
+        <div className="user-review-authentication">{'(For authentication reasons, you will not be emailed)'}</div>
         <button>Submit</button>
         </label>
       </form>

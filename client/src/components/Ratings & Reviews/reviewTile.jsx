@@ -13,7 +13,9 @@ class ReviewTile extends React.Component {
       showMoreText: 'Show More',
       isImgClicked: false,
       clickYesCount: null,
-      clickNoCount: null
+      clickNoCount: null,
+      hasYesVoted: false,
+      hasNoVoted: false
     };
     this.showFullReviewHandler = this.showFullReviewHandler.bind(this);
     this.handleImageClick = this.handleImageClick.bind(this);
@@ -53,7 +55,6 @@ reviewSummarizer = function(str) {
 }
 
 showFullReviewHandler = function(e) {
-  e.preventDefault();
   if (this.state.reviewShown === false) {
     this.setState({
       reviewText: this.props.reviewBody,
@@ -70,7 +71,6 @@ showFullReviewHandler = function(e) {
 }
 
 handleImageClick = function(e) {
-  e.preventDefault();
   if (this.state.isImgClicked === false) {
     this.setState({
       isImgClicked: true
@@ -83,17 +83,45 @@ handleImageClick = function(e) {
 }
 
 handleYesVote = function(e) {
-  e.preventDefault();
-  this.setState({
-    clickYesCount: this.state.clickYesCount + 1
-  })
+  if ((this.state.hasYesVoted === false) && (this.state.hasNoVoted === false)) {
+    this.setState({
+      clickYesCount: this.state.clickYesCount + 1,
+      hasYesVoted: true
+    })
+  } else if ((this.state.hasYesVoted === true) && (this.state.hasNoVoted === false)) {
+    this.setState({
+      clickYesCount: this.state.clickYesCount - 1,
+      hasYesVoted: false
+    })
+  } else if ((this.state.hasYesVoted === false) && (this.state.hasNoVoted === true)) {
+    this.setState({
+      clickYesCount: this.state.clickYesCount + 1,
+      clickNoCount: this.state.clickNoCount - 1,
+      hasYesVoted: true,
+      hasNoVoted: false
+    })
+  }
 }
 
 handleNoVote = function(e) {
-  e.preventDefault();
-  this.setState({
-    clickNoCount: this.state.clickNoCount + 1
-  })
+  if ((this.state.hasNoVoted === false) && (this.state.hasYesVoted === false)) {
+    this.setState({
+      clickNoCount: this.state.clickNoCount + 1,
+      hasNoVoted: true
+    })
+  } else if ((this.state.hasNoVoted === true) && (this.state.hasYesVoted === false)) {
+    this.setState({
+      clickNoCount: this.state.clickNoCount - 1,
+      hasNoVoted: false
+    })
+  } else if ((this.state.hasNoVoted === false) && (this.state.hasYesVoted === true)) {
+    this.setState({
+      clickNoCount: this.state.clickNoCount + 1,
+      clickYesCount: this.state.clickYesCount - 1,
+      hasNoVoted: true,
+      hasYesVoted: false
+    })
+  }
 }
 
   render () {

@@ -2,12 +2,16 @@ import React, {useState, useEffect, useRef} from 'react';
 import Card from './card.jsx';
 import axios from 'axios';
 import Outfit from './Outfit.jsx';
+import Larrow from '@material-ui/icons/ChevronLeft';
+import Rarrow from '@material-ui/icons/ChevronRight';
 
 function RelatedProducts (props) {
   const [test, setTest] = useState([]);
   const [mainStyle, setMainStyle] = useState();
   const [relatedStyles, setRelatedStyles] = useState();
   const carousel = useRef(null);
+  const [initUpperCards, setInitUpperCards] = useState(3);
+  const [initCards, setInitCards] = useState(0);
 
   useEffect(() => {
     if (props.relatedinfo[0]) {
@@ -52,15 +56,24 @@ function RelatedProducts (props) {
     }
   }, [test])
 
+
   if (relatedStyles) {
     return (
     <>
     <div className="related-container">
-      <button onClick={()=> carousel.current.left()}>left</button>
+
+      {initCards === 0 ? null : <Larrow onClick={()=> {carousel.current.left(); setInitCards(initCards - 1); setInitUpperCards(initUpperCards - 1)}} />}
+
       <Card ref={carousel} relatedinfo={props.relatedinfo} styles={relatedStyles}/>
-      <button onClick={()=> carousel.current.right()}>right</button>
+
+      {initUpperCards === test.length ? null : <Rarrow onClick={()=> {carousel.current.right(); setInitCards(initCards + 1); setInitUpperCards(initUpperCards + 1)}} />}
+
     </div>
+
+      <div className="outfit-container">
     <Outfit item={props.relatedinfo} style={mainStyle}/>
+      </div>
+
     </>
 
     )

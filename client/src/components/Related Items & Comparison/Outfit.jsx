@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import CloseIcon from '@material-ui/icons/Close';
 
 function Outfit(props) {
   const [outfits, setOutfits] = useState([])
@@ -25,9 +26,8 @@ function Outfit(props) {
   }
 
   const deleteHandler = (e) => {
-    outfits.forEach(item => {
-      if (item.id === Number(e.target.id)) {
-        let index = outfits.indexOf(item);
+    outfits.forEach((item, index) => {
+      if (item.id === Number(e)) {
         let newarr = [...outfits];
         newarr.splice(index, 1);
         setOutfits(newarr);
@@ -38,14 +38,14 @@ function Outfit(props) {
   return (
     <div className="wholeoutfit">
       <div className="outfit-card" onClick={() => clickHandler()}>
-        <div className="plus">+</div>
+        <div className="plus"><p id = "addicon">+</p></div>
         <div className="addfit">Add to Outfit</div>
       </div>
     {outfits.map((item, index) => {
     return (
       <>
-      <button onClick={deleteHandler} id={item.id}>x</button>
         <div className="related-item-card" key={index}>
+        <CloseIcon onClick={() => deleteHandler(item.id)} />
         <img className="related-img" src={props.style.results[0].photos[0].thumbnail_url} />
         <div className="product-details">
           <div>{item.category}</div>
