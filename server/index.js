@@ -46,7 +46,8 @@ app.post('/related', (req, res) => {
 })
 
 app.post('/reviews', function(req, res) {
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${req.body.id}`, {
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${req.body.id}&sort=${req.body.sort}
+  `, {
       headers: {
         Authorization: key.TOKEN
       }
@@ -56,6 +57,21 @@ app.post('/reviews', function(req, res) {
     })
     .catch(err => {
       console.log('There was a server error getting reviews from the API: ', err);
+    })
+});
+
+app.post('/metareviews', function(req, res) {
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=${req.body.id}
+`, {
+      headers: {
+        Authorization: key.TOKEN
+      }
+    })
+    .then(results => {
+      res.send(results.data);
+    })
+    .catch(err => {
+      console.log('There was a server error getting meta reviews from the API: ', err);
     })
 });
 

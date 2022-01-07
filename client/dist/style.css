@@ -387,8 +387,27 @@
 
 /* ----- END OVERVIEW COMPONENT CSS STYLES ----- */
 
+/* .review-list-and-review-breakdown {
+  display: flex;
+}
+
+.entire-review-list{
+  flex: 1;
+  margin-right: auto;
+}
+
+.review-rating-breakdown {
+  flex: 2;
+  margin-left: auto;
+} */
+
 .review-header {
   margin-bottom: 0px;
+}
+
+.review-sort {
+  margin-top: 1px;
+  margin-left: 2px;
 }
 
 .review-list {
