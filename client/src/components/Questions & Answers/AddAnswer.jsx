@@ -14,21 +14,21 @@ const AddAnswer = function(props) {
         <input className="form-control" id="answer" placeholder="Type your answer here." maxLength="1000"></input>
       </div>
       <div className="form-group">
-        <label htmlFor="username">What is your nickname?</label>
+        <label htmlFor="username_answer">What is your nickname?</label>
         <input className="form-control" id="username_answer" placeholder="Example: jack543!" maxLength="60"></input>
       </div>
       <div className="form-group">
         <span>For privary reasons, do not use your full name or email address</span>
       </div>
       <div className="form-group">
-        <label htmlFor="email">Your email</label>
+        <label htmlFor="email_answer">Your email</label>
         <input className="form-control" id="email_answer" placeholder="Example: jack@email.com"></input>
       </div>
       <div className="form-group">
         <span>For authentication reasons, you will not be emailed</span>
       </div>
       <div className="form-group">
-        <button className="form-control btn btn-primary" type="submit">
+        <button className="form-control btn btn-submit btn-primary" type="submit">
           Submit
         </button>
       </div>

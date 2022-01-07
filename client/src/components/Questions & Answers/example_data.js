@@ -35,7 +35,7 @@ var example = {
                   "body": "I wonder what will happen if I post this answer",
                   "date": "2021-11-12T00:00:00.000Z",
                   "answerer_name": "will",
-                  "helpfulness": 0,
+                  "helpfulness": 4,
                   "photos": [
                       "https://source.unsplash.com/random"
                   ]
@@ -45,7 +45,7 @@ var example = {
                   "body": "how about now",
                   "date": "2021-11-12T00:00:00.000Z",
                   "answerer_name": "asdf",
-                  "helpfulness": 0,
+                  "helpfulness": 7,
                   "photos": []
               },
               "5181205": {
@@ -53,7 +53,7 @@ var example = {
                   "body": "Why are samoyeds so cute!",
                   "date": "2021-11-13T00:00:00.000Z",
                   "answerer_name": "Carlos",
-                  "helpfulness": 0,
+                  "helpfulness": 11,
                   "photos": [
                       "https://images.saymedia-content.com/.image/t_share/MTc0NDY3ODIzMTU2ODY0NjQ2/the-samoyed-snow-dog-in-winter-and-in-summer.jpg"
                   ]
