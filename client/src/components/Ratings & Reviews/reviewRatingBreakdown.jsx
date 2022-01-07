@@ -1,6 +1,7 @@
 import React from 'react';
 import Rating from '@mui/material/Rating';
 import LinearProgress from '@mui/material/LinearProgress';
+import Slider from '@mui/material/Slider';
 
 class ReviewRatingBreakdown extends React.Component {
   constructor(props) {
@@ -12,6 +13,8 @@ class ReviewRatingBreakdown extends React.Component {
       loaded: false
     }
     this.getBarPercent = this.getBarPercent.bind(this);
+    this.getBreakdownRating = this.getBreakdownRating.bind(this);
+    this.getBreakDownValue = this.getBreakDownValue.bind(this);
   }
 
   componentDidMount() {
@@ -75,6 +78,59 @@ class ReviewRatingBreakdown extends React.Component {
     return Math.round((trueVal/totalVal) * 100);
   }
 
+  getBreakdownRating = function(str) {
+    var strVal = Number(str);
+    return Math.round((strVal/5) * 100);
+  }
+
+  getBreakDownValue = function(str, num) {
+    var fitObj = {
+      size: {
+        1: 'A size too small',
+        2: '½ a size too small',
+        3: 'Perfect',
+        4: '½ a size too big',
+        5: 'A size too wide'
+      },
+      width: {
+        1: 'Too narrow',
+        2: 'Slightly narrow',
+        3: 'Perfect',
+        4: 'Slightly wide',
+        5: 'Too wide'
+      },
+      comfort: {
+        1: 'Uncomfortable',
+        2: 'Slightly uncomfortable',
+        3: 'Ok',
+        4: 'Comfortable',
+        5: 'Perfect'
+      },
+      quality: {
+        1: 'Poor',
+        2: 'Below average',
+        3: 'What I expected',
+        4: 'Pretty great',
+        5: 'Perfect'
+      },
+      length: {
+        1: 'Runs Short',
+        2: 'Runs slightly short',
+        3: 'Perfect',
+        4: 'Runs slightly long',
+        5: 'Runs long'
+      },
+      fit: {
+        1: 'Runs tight',
+        2: 'Runs slightly tight',
+        3: 'Perfect',
+        4: 'Runs slightly long',
+        5: 'Runs long'
+      }
+    }
+    return fitObj[str][num.toString()];
+  }
+
   render () {
     return (
       <div>
@@ -85,23 +141,49 @@ class ReviewRatingBreakdown extends React.Component {
         <div>{this.state.numberOfReviews} Total Reviews</div>
         </div>
       <div>Rating Breakdown
-        <div className="progress-5-star">{this.getBarPercent(this.props.reviewRatings['5'], this.state.numberOfReviews)}
+        <div className="progress-5-star">
+        <Rating className="review-star-breakdown" defaultValue={5} precision={0.25} readOnly />
+        {this.props.reviewRatings['5']}
         <LinearProgress color="primary" variant="determinate" value={this.getBarPercent(this.props.reviewRatings['5'], this.state.numberOfReviews)} />
         </div>
-        <div className="progress-4-star">{this.getBarPercent(this.props.reviewRatings['4'], this.state.numberOfReviews)}
+        <div className="progress-4-star">
+        <Rating className="review-star-breakdown" defaultValue={4} precision={0.25} readOnly />
+          {this.props.reviewRatings['4']}
           <LinearProgress color="primary" variant="determinate" value={this.getBarPercent(this.props.reviewRatings['4'], this.state.numberOfReviews)} />
         </div>
-        <div className="progress-3-star">{this.getBarPercent(this.props.reviewRatings['3'], this.state.numberOfReviews)}
+        <div className="progress-3-star">
+        <Rating className="review-star-breakdown" defaultValue={3} precision={0.25} readOnly />
+          {this.props.reviewRatings['3']}
           <LinearProgress color="primary" variant="determinate" value={this.getBarPercent(this.props.reviewRatings['3'], this.state.numberOfReviews)} />
         </div>
-        <div className="progress-2-star">{this.getBarPercent(this.props.reviewRatings['2'], this.state.numberOfReviews)}
+        <div className="progress-2-star">
+        <Rating className="review-star-breakdown" defaultValue={2} precision={0.25} readOnly />
+          {this.props.reviewRatings['2']}
           <LinearProgress color="primary" variant="determinate" value={this.getBarPercent(this.props.reviewRatings['2'], this.state.numberOfReviews)} />
         </div>
-        <div className="progress-1-star">{this.getBarPercent(this.props.reviewRatings['1'], this.state.numberOfReviews)}
+        <div className="progress-1-star">
+        <Rating className="review-star-breakdown" defaultValue={1} precision={0.25} readOnly />
+          {this.props.reviewRatings['1']}
           <LinearProgress color="primary" variant="determinate" value={this.getBarPercent(this.props.reviewRatings['1'], this.state.numberOfReviews)} />
         </div>
       </div>
       <div>{this.state.percentRecommend}% recommend this product</div>
+      <div>{' '}</div>
+      <div className="product-breakdown-block">
+        <h1>Product Breakdown</h1>
+      <div>Comfort: {this.getBreakDownValue('comfort', Math.floor(this.props.characteristics.Comfort.value))}
+      <Slider defaultValue={this.getBreakdownRating(this.props.characteristics.Comfort.value)} disabled />
+      </div>
+      <div>Fit: {this.getBreakDownValue('fit', Math.floor(this.props.characteristics.Fit.value))}
+      <Slider defaultValue={this.getBreakdownRating(this.props.characteristics.Fit.value)} disabled />
+      </div>
+      <div>Length: {this.getBreakDownValue('length', Math.floor(this.props.characteristics.Length.value))}
+      <Slider defaultValue={this.getBreakdownRating(this.props.characteristics.Length.value)} disabled />
+      </div>
+      <div>Quality: {this.getBreakDownValue('quality', Math.floor(this.props.characteristics.Quality.value))}
+      <Slider defaultValue={this.getBreakdownRating(this.props.characteristics.Quality.value)} disabled />
+      </div>
+      </div>
     </div>
     )
   }
