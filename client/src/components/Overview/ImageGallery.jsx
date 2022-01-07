@@ -124,8 +124,8 @@ class ImageGallery extends React.Component {
           clickFunction={ this.nextSlide }
           glyph='&#9654;' /> */}
         <div className='image-arrows'>
-          <ChevronLeftIcon onClick={this.previousSlide}/>
-          <ChevronRightIcon onClick={this.nextSlide}/>
+          <ChevronLeftIcon fontSize='large' onClick={this.previousSlide}/>
+          <ChevronRightIcon fontSize='large' onClick={this.nextSlide}/>
         </div>
       </div>
     );
