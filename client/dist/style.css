@@ -588,6 +588,7 @@ button.btn:focus {
 .size-selector {
   margin-left: 5px;
   margin-right: 5px;
+  width: 175px
 }
 
 /* .quantity-selector-container {
@@ -597,15 +598,18 @@ button.btn:focus {
 } */
 
 .quantity-selector {
-  width: 75px
+  width: 200px;
+  border: 1px solid black
 }
 
 .add-to-cart-button {
   margin-left: 5px;
   margin-top: 20px;
-  width: 150px;
-  height: 25px
+  width: 300px;
+  height: 50px;
+  font-size: 16px
 }
+
 
 #product-title {
   font-size: 16px;
