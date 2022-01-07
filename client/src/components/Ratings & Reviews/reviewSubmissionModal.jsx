@@ -1,6 +1,6 @@
 import React from 'react';
 import { PortalWithState } from 'react-portal';
-
+import FocusTrap from 'focus-trap-react';
 
 class ReviewSubmitModal extends React.Component {
   constructor(props) {
@@ -18,12 +18,14 @@ class ReviewSubmitModal extends React.Component {
               Add Review
             </button>
             {portal(
-              <div className="review-modal">
-                <React.Fragment >
-                {this.props.children}
-                <button className="review-modal-close" onClick={closePortal}>Close</button>
-                </React.Fragment>
-              </div>
+              <FocusTrap>
+                <div className="review-modal">
+                  <React.Fragment >
+                  {this.props.children}
+                  <button className="review-modal-close" onClick={closePortal}>Close</button>
+                  </React.Fragment>
+                </div>
+              </FocusTrap>
             )}
           </React.Fragment>
         )}
