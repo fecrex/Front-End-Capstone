@@ -658,7 +658,7 @@ button.btn:focus {
 
 /* ---------------------------------------------RATINGS & REVIEWS CSS STYLES ------------------------------------------- */
 
-/* .review-list-and-review-breakdown {
+.review-list-and-review-breakdown {
   display: flex;
 }
 
@@ -670,7 +670,7 @@ button.btn:focus {
 .review-rating-breakdown {
   flex: 2;
   margin-left: auto;
-} */
+}
 
 .review-header {
   margin-bottom: 0px;
@@ -811,6 +811,10 @@ button.btn:focus {
   z-index: 999999;
   box-sizing: border-box;
 }
+
+/* .progress-5-star {
+  color: coral;
+} */
 
 
 /* ------------------------------------------END OF RATINGS & REVIEWS CSS STYLES -------------------------------------- */
