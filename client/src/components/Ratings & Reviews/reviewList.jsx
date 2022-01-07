@@ -87,8 +87,16 @@ class ReviewList extends React.Component {
   render () {
       return (
     <div className="ratings-and-reviews">
-      <h1 className="review-header">Reviews</h1>
-        <div className="review-sort">
+        <div className="review-list-and-review-breakdown">
+          <div className="review-rating-breakdown">
+            <h1>Reviews at a Glance</h1>
+            {this.state.metaLoading ?
+            <ReviewRatingBreakdown key={this.state.reviewMetaData.product_id} characteristics={this.state.reviewMetaData.characteristics} reviewRatings={this.state.reviewMetaData.ratings} reviewRecommendations={this.state.reviewMetaData.recommended}/>
+             : null}
+          </div>
+          <div className="entire-review-list">
+          <h1 className="review-header">Reviews List</h1>
+          <div className="review-sort">
           <select onChange={this.handleReviewSort}>
             <option>{null}</option>
             <option value="helpful">Helpful</option>
@@ -96,13 +104,6 @@ class ReviewList extends React.Component {
             <option value="relevant">Relevant</option>
           </select>
         </div>
-        <div className="review-list-and-review-breakdown">
-          <div className="review-rating-breakdown">
-            {this.state.metaLoading ?
-            <ReviewRatingBreakdown key={this.state.reviewMetaData.product_id} characteristics={this.state.reviewMetaData.characteristics} reviewRatings={this.state.reviewMetaData.ratings} reviewRecommendations={this.state.reviewMetaData.recommended}/>
-             : null}
-          </div>
-          <div className="entire-review-list">
           <div className="review-list">
             {this.state.loading ? this.state.displayData.map((review, index) => {
             return <ReviewTile key={index} starRating={review.rating} reviewDate={review.date} reviewSummary={review.summary} reviewBody={review.body} reviewRecommendation={review.recommend} reviewerName={review.reviewer_name} reviewResponse={review.response} reviewHelpfulness={review.helpfulness} reviewImages={review.photos}/>

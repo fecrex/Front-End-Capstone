@@ -109,7 +109,6 @@ class ImageGallery extends React.Component {
         </div> */}
 
 
-
         <ImageSlide url={ this.state.styleSelectedImages[this.state.currentImageIndex] }
         thumbnails={this.state.styleSelectedImages} changeIndex={this.changeIndex}
         />
@@ -124,8 +123,8 @@ class ImageGallery extends React.Component {
           clickFunction={ this.nextSlide }
           glyph='&#9654;' /> */}
         <div className='image-arrows'>
-          <ChevronLeftIcon fontSize='large' onClick={this.previousSlide}/>
-          <ChevronRightIcon fontSize='large' onClick={this.nextSlide}/>
+          <ChevronLeftIcon  onClick={this.previousSlide}/>
+          <ChevronRightIcon  onClick={this.nextSlide}/>
         </div>
       </div>
     );
