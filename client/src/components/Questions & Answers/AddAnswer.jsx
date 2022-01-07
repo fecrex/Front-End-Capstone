@@ -28,7 +28,7 @@ const AddAnswer = function(props) {
         <span>For authentication reasons, you will not be emailed</span>
       </div>
       <div className="form-group">
-        <button className="form-control btn btn-primary" type="submit">
+        <button className="form-control btn btn-submit btn-primary" type="submit">
           Submit
         </button>
       </div>

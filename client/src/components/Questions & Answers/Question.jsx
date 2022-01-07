@@ -12,17 +12,16 @@ const Question = function(props) {
 
     <div className="individual-question">
       <input type="radio" id={props.id} className="accordion" name="accordion_input" onClick={() => props.setShowButton(true)}/>
-      <label className="question-label" htmlFor={props.id}>Q: {props.question_body} <div  className="helpful-question">Helpful? {<button onClick={() => {
+      <label className="question-label" htmlFor={props.id}>Q: {props.question_body} <div  className="helpful-question">Helpful? {<button id="mark-question-helpful" onClick={() => {
         if (!props.markedQuestions.includes(props.id)) {
           props.handleHelpfulnessClick(props.id, props.q_helpfulness)
           setQuestionHelpfulness(helpfulness + 1);
         }
-        }}>Yes</button>}({helpfulness})</div>
+        }}>Yes</button>} ({helpfulness}) |</div>
       <div className="add-answer" onClick={() => {
         props.addAnswer(props.question_body, props.id)
         props.openModal();
-      }
-      }>| Add Answer</div> </label>
+      }}>Add Answer</div> </label>
       <div className="answer-content">
         {/* {showButton ? <button id="show-answers" onClick={() => props.show(props.message)}>{props.message}</button> : null} */}
         {props.showButton && (props.message === 'Show Less' || props.message === 'Show All Answers') ? <button id="show-all-answers" onClick={() => props.showAllAnswers(props.showAllMsg, Object.keys(props.answers).length)}>{props.showAllMsg}</button> : null}
