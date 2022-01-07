@@ -72,8 +72,8 @@ const QuestionsAnswers = function(props) {
   const showAllAnswers = (showAll, max) => {
     if (showAll === 'Show All Answers') {
       setCount(max)
-      setShowAll('Show Less')
-    } else if (showAll === 'Show Less') {
+      setShowAll('Show Four Answers')
+    } else if (showAll === 'Show Four Answers') {
       setCount(4)
       setShowAll('Show All Answers')
     }

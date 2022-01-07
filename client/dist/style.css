@@ -100,7 +100,60 @@
 
 #show-answers {
   position: relative;
-  left: 550px;
+  left: 75px;
+
+  box-sizing: border-box;
+  border: none;
+  background-color: transparent;
+  padding: 0.25em 0.75em;
+  min-width: 10ch;
+  min-height: 35px;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.1;
+
+  background-color: coral;
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
+  transition: 220ms all ease-in-out;
+}
+
+#show-all-answers {
+  position: relative;
+  left: 490px;
+
+  box-sizing: border-box;
+  border: none;
+  background-color: transparent;
+  padding: 0.25em 0.75em;
+  min-width: 10ch;
+  min-height: 35px;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.1;
+
+  background-color: coral;
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
+  transition: 220ms all ease-in-out;
+}
+
+#show-all-answers:hover, #show-all-answers:focus {
+  background-color: orangered;
+}
+
+#show-answers:hover, #show-answers:focus {
+  background-color: orangered;
 }
 
 .questions-list {
@@ -119,7 +172,7 @@
   border: 1px solid black;
 
   width: 100%;
-  background: grey;
+  background: coral;
   overflow: hidden;
   /* flex-direction: column; */
 }
@@ -136,7 +189,7 @@
 
 .question-label {
   display: block;
-  color: black;
+  color: white;
   font-weight: 500;
   cursor: pointer;
   position: relative;
@@ -170,12 +223,14 @@
 
 .answer {
   position: relative;
-
+  font-size: 1.75em;
+  height: 50px;
 }
 
 .from-user {
   position: relative;
   /* top: 80px; */
+  font-size: 1em;
   top: 10px;
 }
 
@@ -194,14 +249,16 @@
 
 .helpful-answer {
   position: relative;
-  bottom: 5px;
-  left: 270px;
+  bottom: 7px;
+  left: 540px;
+  font-size: 1.25em;
 }
 
 .report-answer {
   position: relative;
-  bottom: 20px;
-  left: 380px;
+  bottom: 29px;
+  left: 680px;
+  font-size: 1.25em;
 }
 
 .question {
@@ -236,14 +293,31 @@ button.btn {
   text-align: center;
   line-height: 1.1;
 
+  position: relative;
+
   background-color: coral;
   color: #fff;
   border-radius: 8px;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
+  transition: 220ms all ease-in-out;
 }
 
-button.btn:hover {
-  background-color: wheat;
+button.btn-question-modal {
+  left: 500px;
+}
+
+button.btn-load-more-questions {
+  left: 150px;
+}
+
+button.btn:hover, button.btn:active {
+  background-color: orangered;
+}
+
+button.btn:focus {
+  outline-style: solid;
+  outline-color: transparent;
+  box-shadow: 0 0 0 4px orangered;
 }
 
 
