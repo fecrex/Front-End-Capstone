@@ -1,5 +1,6 @@
 .related-item-card {
   width: 200px;
+  height: 300px;
   border: 1px solid black;
 }
 
@@ -250,7 +251,10 @@ button.btn:hover {
 /* questions answers css end */
 .related-container {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
+  padding-bottom: 20px;
 }
 
 
@@ -638,6 +642,7 @@ button.btn:hover {
 }
 
 table, th, td {
+  background-color: white;
   border: 1px solid black;
 }
 
@@ -647,18 +652,32 @@ table, th, td {
   justify-content: center;
   align-items: center;
   width: 200px;
-  height: 400px;
+  height: 300px;
   border: 1px solid black;
 }
 
 .plus {
-  align-self: center;
+  text-align: center;
   width: 50px;
   height: 50px;
   border: 1px solid gray;
-  border-radius: 1px;
+  border-radius: 100px;
 }
 
 .wholeoutfit {
   display: flex;
+}
+
+.bigrelatedcontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.outfit-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
