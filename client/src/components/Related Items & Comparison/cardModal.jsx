@@ -43,9 +43,9 @@ function Modal (props, ref) {
         </thead>
         <tbody>
           <tr>
-            <td>{props.original.default_price}</td>
+            <td>${props.original.default_price}</td>
             <td>Price</td>
-            <td>{props.related.default_price}</td>
+            <td>${props.related.default_price}</td>
           </tr>
           {props.original.features.map(item => {
             bool = false;
