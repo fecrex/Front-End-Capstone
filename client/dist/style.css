@@ -689,6 +689,11 @@ button.btn:focus {
   margin-left: 2px;
 }
 
+.review-rating-breakdown {
+  max-width: auto;
+  max-height: 625px;
+}
+
 .review-list {
   max-width: auto;
   max-height: 625px;
@@ -871,6 +876,16 @@ button.btn:focus {
 
 .quality-slider {
   width: 50%;
+}
+
+.average-star-rating {
+  font-weight: bolder;
+  font-size: larger;
+}
+
+.total-review-count {
+  font-weight: lighter;
+  font-size: medium;
 }
 
 /* ------------------------------------------END OF RATINGS & REVIEWS CSS STYLES -------------------------------------- */
