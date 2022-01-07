@@ -542,7 +542,9 @@ button.btn:focus {
   flex: 1;
   flex-direction: column;
   display: flex;
-  margin-left: 250px;
+  margin-right: 160px;
+  align-items: center;
+  justify-content: space-between
 
   /* width: 33.4%; */
   /* overflow-y: hidden; */
@@ -588,7 +590,8 @@ button.btn:focus {
 .size-selector {
   margin-left: 5px;
   margin-right: 5px;
-  width: 175px
+  width: 175px;
+  border: 2px solid black
 }
 
 /* .quantity-selector-container {
@@ -607,7 +610,8 @@ button.btn:focus {
   margin-top: 20px;
   width: 300px;
   height: 50px;
-  font-size: 16px
+  font-size: 16px;
+  border: 1px solid black
 }
 
 
