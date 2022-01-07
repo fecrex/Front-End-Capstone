@@ -134,11 +134,11 @@ class ReviewRatingBreakdown extends React.Component {
   render () {
     return (
       <div>
-        <div>{this.state.averageRating + '  '}
+        <div className="average-star-rating">{this.state.averageRating + '  '}
           {this.state.loaded ?
           <Rating className="review-star-breakdown" defaultValue={this.state.averageRating} precision={0.25} readOnly />
           : null}
-        <div>{this.state.numberOfReviews} Total Reviews</div>
+        <div className="total-review-count">{this.state.numberOfReviews} Total Reviews</div>
         </div>
       <div className="review-rating-breakdown-block">Rating Breakdown
         <div className="progress-5-star">

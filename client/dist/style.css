@@ -8,9 +8,16 @@
   padding: 5px;
 }
 
+#invis {
+  background: transparent;
+  border: none !important;
+  font-size:0;
+}
+
 .related-img {
-  max-width: 100%;
-  height: auto;
+  object-fit: cover;
+  height: 150px;
+  width: 200px;
 }
 
 /* ------------------- questions and answers styling ----------------- */
@@ -510,13 +517,19 @@ button.btn:focus {
   max-width: 100%
 }
 
+#product-overview {
+  margin-left: 30%;
+}
+
 .product-info-header {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  margin-right: 160px
+  /* margin-right: 160px */
+  margin-right: 15%;
+
   /* margin-left: 250px; */
   /* border: 1px solid black */
 }
@@ -526,6 +539,8 @@ button.btn:focus {
   /* border: solid 1px #000; */
   margin-left: auto
 }
+
+
 
 #product-title {
   font-size: 16px;
@@ -604,7 +619,7 @@ button.btn:focus {
 
 .quantity-selector {
   width: 200px;
-  border: 1px solid black
+  border: 2px solid black
 }
 
 .add-to-cart-button {
@@ -613,7 +628,7 @@ button.btn:focus {
   width: 300px;
   height: 50px;
   font-size: 16px;
-  border: 1px solid black
+  border: 2px solid black
 }
 
 
@@ -663,6 +678,13 @@ button.btn:focus {
   max-width: 50px
 }
 
+.product-info-style-selector {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
 /* ----- END OVERVIEW COMPONENT CSS STYLES ----- */
 
 
@@ -695,6 +717,11 @@ button.btn:focus {
   margin-left: 2px;
 }
 
+.review-rating-breakdown {
+  max-width: auto;
+  max-height: 625px;
+}
+
 .review-list {
   max-width: auto;
   max-height: 625px;
@@ -708,6 +735,7 @@ button.btn:focus {
 .individual-review {
   margin-top: 10px;
   border:1px solid grey;
+  max-width: auto;
 }
 
 .review-star-rating {
@@ -879,6 +907,16 @@ button.btn:focus {
   width: 50%;
 }
 
+.average-star-rating {
+  font-weight: bolder;
+  font-size: larger;
+}
+
+.total-review-count {
+  font-weight: lighter;
+  font-size: medium;
+}
+
 /* ------------------------------------------END OF RATINGS & REVIEWS CSS STYLES -------------------------------------- */
 
 
@@ -940,4 +978,5 @@ table, th, td {
   align-items: center;
   justify-content: center;
   gap: 10px;
+  padding: 10px;
 }
