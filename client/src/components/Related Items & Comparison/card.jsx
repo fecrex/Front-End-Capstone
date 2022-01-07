@@ -1,9 +1,11 @@
 import React, {useEffect, useState, useRef, forwardRef, useImperativeHandle} from 'react';
 import Modal from './cardModal.jsx';
 import axios from 'axios';
+import Rating from '@mui/material/Rating';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 
 function Card(props, ref) {
-  const modal = useRef(null);
+  const modal = useRef([]);
   const [relatedList, setRelatedList] = useState([]);
   const [relatedDetails, setDetails] = useState([]);
   const [relatedReviews, setRelatedReviews] = useState({});
@@ -79,15 +81,15 @@ function Card(props, ref) {
       slicedList.map((item, index) => {
         return(
           <>
-          <button onClick={() => modal.current.open()}>x</button>
-          <Modal ref={modal} related={item} original={props.relatedinfo[0]}/>
+          <Modal ref={s => modal.current[index] = s} related={slicedList[index]} original={props.relatedinfo[0]}/>
           <div className="related-item-card" key={index}>
+          <StarBorderIcon onClick={() => modal.current[index].open()}/>
           <img className="related-img" src={props.styles[item.id][0].photos[0].thumbnail_url} />
           <div className="product-details">
             <div>{item.category}</div>
             <div>{item.name}</div>
-            <div>${item.default_price}</div>
-            <div>{relatedReviews[item.id]}</div>
+            <div>${props.styles[item.id][0].sale_price ? props.styles[item.id][0].sale_price : props.styles[item.id][0].original_price}</div>
+            <Rating className="review-star-rating" key={item.id} defaultValue={relatedReviews[item.id] ? relatedReviews[item.id] : 0} precision={0.25} readOnly />
           </div>
           </div>
           </>

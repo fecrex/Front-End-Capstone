@@ -1,5 +1,6 @@
 .related-item-card {
   width: 200px;
+  height: 300px;
   border: 1px solid black;
 }
 
@@ -324,12 +325,18 @@ button.btn:focus {
 /* questions answers css end */
 .related-container {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
+  padding-bottom: 20px;
 }
 
 
 
 /* ------- OVERVIEW COMPONENT CSS STYLES --------- */
+.project-title {
+  text-align: center;
+}
 
 .product-info {
   /* border: solid 1px #000; */
@@ -352,12 +359,45 @@ button.btn:focus {
   /* border: 1px solid black */
 }
 
+.parent-image-gallery-component{
+  height: 95%;
+  width: 95%;
+  /* overflow: hidden */
+}
+
+.product-image-slide {
+  height: 95%;
+  width: 95%;
+  background-size: 100% 100%;
+  display: inline-block;
+  margin-top: 10px
+}
+
+.image-arrows {
+  margin-top: 5px
+}
+
 .image-gallery-style-selector-container {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 100%;
   display: flex;
   margin-left: auto;
   margin-right: auto;
+}
+
+.thumbnail-overlay {
+  height: 10%;
+  width: 10%;
+  margin: 5px
+}
+
+.product-image-slide-thumbnail-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 300px;
+  align-items: flex-start;
+  margin-left: 15px
 }
 
 #product-image {
@@ -365,15 +405,30 @@ button.btn:focus {
   max-width: 100%
 }
 
+.product-info-header {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* border: 1px solid black */
+}
+
 .product-info-star-rating, #product-category, #product-title, #product-price {
   width: 40%;
   /* border: solid 1px #000; */
-  margin: auto
+  margin-left: auto
 }
 
 #product-title {
   font-size: 16px;
   font-size: 2.5vw
+}
+
+#share-social {
+  /* border: 1px solid black; */
+  /* text-align: center */
+  margin-top: 15px;
+  margin-left: 25px
 }
 
 .style-selector {
@@ -488,8 +543,27 @@ button.btn:focus {
 
 /* ----- END OVERVIEW COMPONENT CSS STYLES ----- */
 
+/* .review-list-and-review-breakdown {
+  display: flex;
+}
+
+.entire-review-list{
+  flex: 1;
+  margin-right: auto;
+}
+
+.review-rating-breakdown {
+  flex: 2;
+  margin-left: auto;
+} */
+
 .review-header {
   margin-bottom: 0px;
+}
+
+.review-sort {
+  margin-top: 1px;
+  margin-left: 2px;
 }
 
 .review-list {
@@ -642,6 +716,7 @@ button.btn:focus {
 }
 
 table, th, td {
+  background-color: white;
   border: 1px solid black;
 }
 
@@ -651,18 +726,32 @@ table, th, td {
   justify-content: center;
   align-items: center;
   width: 200px;
-  height: 400px;
+  height: 300px;
   border: 1px solid black;
 }
 
 .plus {
-  align-self: center;
+  text-align: center;
   width: 50px;
   height: 50px;
   border: 1px solid gray;
-  border-radius: 1px;
+  border-radius: 100px;
 }
 
 .wholeoutfit {
   display: flex;
+}
+
+.bigrelatedcontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.outfit-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }

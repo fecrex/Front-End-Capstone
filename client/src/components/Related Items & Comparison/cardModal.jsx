@@ -5,6 +5,10 @@ const modalElement = document.getElementById('modal-root');
 
 function Modal (props, ref) {
   const [isOpen, setIsOpen] = useState(false);
+  const [orgFeat, setOrgFeat] = useState();
+  const [relFeat, setRelFeat] = useState();
+  let storing = [];
+  let bool = false;
 
   useImperativeHandle(ref, () => ({
     open: () => setIsOpen(true),
@@ -22,6 +26,8 @@ function Modal (props, ref) {
     }
   }, [handleEscape, isOpen])
 
+
+
   return createPortal(
     isOpen ? <div className="modal">
       <table>
@@ -38,6 +44,39 @@ function Modal (props, ref) {
             <td>Price</td>
             <td>{props.related.default_price}</td>
           </tr>
+          {props.original.features.map(item => {
+            bool = false;
+            return (
+              <>
+              <tr>
+              <td>{item.value ? item.value : 'True'}</td>
+              <td>{item.feature}</td>
+              {props.related.features.map(thingy => {
+                if (thingy.feature === item.feature) {
+                  storing.push(thingy.feature);
+                  bool = true;
+                  return <td> {thingy.value ? thingy.value : 'True'} </td>
+                }
+              })}
+              {bool ? null : <td></td>}
+              </tr>
+              </>
+            )
+          })}
+
+          {props.related.features.map(rdtwo => {
+            if (!storing.includes(rdtwo.feature)) {
+              return (
+                <>
+                  <tr>
+                  <td></td>
+                  <td>{rdtwo.feature}</td>
+                  <td>{rdtwo.value ? rdtwo.value : 'True'}</td>
+                  </tr>
+                </>
+              )
+            }
+          })}
         </tbody>
       </table>
     </div> : null,
