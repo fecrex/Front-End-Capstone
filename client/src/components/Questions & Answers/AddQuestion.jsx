@@ -11,8 +11,8 @@ const AddQuestion = function(props) {
         <h3>{`About the ${props.product.name}`}</h3>
       </div>
       <div className="form-group">
-        <label htmlFor="question">Your Question</label>
-        <input className="form-control" id="question" placeholder="Type your question here." maxLength="1000"></input>
+        <label htmlFor="question_input">Your Question</label>
+        <input className="form-control" id="question_input" placeholder="Type your question here." maxLength="1000"></input>
       </div>
       <div className="form-group">
         <label htmlFor="username">What is your nickname?</label>
@@ -23,7 +23,7 @@ const AddQuestion = function(props) {
       </div>
       <div className="form-group">
         <label htmlFor="email_question">Your email</label>
-        <input className="form-control" id="email" placeholder="Why did you like this product or not?" maxLength="60"></input>
+        <input className="form-control" id="email_question" placeholder="Why did you like this product or not?" maxLength="60"></input>
       </div>
       <div className="form-group">
         <button className="form-control btn btn-primary" type="submit">

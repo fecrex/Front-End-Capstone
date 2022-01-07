@@ -72,8 +72,8 @@ const QuestionsAnswers = function(props) {
   const showAllAnswers = (showAll, max) => {
     if (showAll === 'Show All Answers') {
       setCount(max)
-      setShowAll('Show Less')
-    } else if (showAll === 'Show Less') {
+      setShowAll('Show Four Answers')
+    } else if (showAll === 'Show Four Answers') {
       setCount(4)
       setShowAll('Show All Answers')
     }
@@ -82,14 +82,17 @@ const QuestionsAnswers = function(props) {
   const validateQuestionForm = () => {
 
     var isNotEmpty = function(field) {
-      var fieldData = field.value;
-      if (fieldData.length === 0 || fieldData.value === '' || fieldData == fieldData) {
-        return false;
-      } else {
-        return true;
+      debugger;
+      if(field) {
+        var fieldData = field.value;
+        if (fieldData.length === 0 || fieldData === '') {
+          return false;
+        } else {
+          return true;
+        }
       }
     }
-    var question = document.getElementById('question');
+    var question = document.getElementById('question_input');
     var username = document.getElementById('username_question');
     var email = document.getElementById('email_question');
 
@@ -103,7 +106,7 @@ const QuestionsAnswers = function(props) {
   const validateAnswerForm = () => {
     var isNotEmpty = function(field) {
       var fieldData = field.value;
-      if (fieldData.length === 0 || fieldData.value === '' || fieldData == fieldData) {
+      if (fieldData.length === 0 || fieldData === '') {
         return false;
       } else {
         return true;
@@ -125,12 +128,13 @@ const QuestionsAnswers = function(props) {
     event.preventDefault(event);
     if (validateQuestionForm()) {
       axios.post('http://localhost:3000/qa/questions', {
-          body: event.target.question.value,
-          name: event.target.username.value,
-          email: event.target.email.value,
+          body: event.target.question_input.value,
+          name: event.target.username_question.value,
+          email: event.target.email_question.value,
           product_id: id
       })
       .then((response) => {
+        question_modal.current.close();
         console.log(response);
       })
       .catch((err) => {
@@ -148,10 +152,11 @@ const QuestionsAnswers = function(props) {
       axios.post('http://localhost:3000/qa/questions', {
         question_id: questionId,
         body: event.target.answer.value,
-        name: event.target.username.value,
-        email: event.target.email.value
+        name: event.target.username_answer.value,
+        email: event.target.email_answer.value
       })
       .then((response) => {
+        answer_modal.current.close();
         console.log(response);
       })
       .catch((err) => {
