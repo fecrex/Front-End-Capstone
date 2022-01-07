@@ -1,5 +1,6 @@
 import React, {useState, forwardRef, useImperativeHandle, useCallback, useEffect} from 'react';
 import {createPortal} from 'react-dom';
+import FocusTrap from 'focus-trap-react';
 
 const modalElement = document.getElementById('modal-root');
 
@@ -29,7 +30,9 @@ function Modal (props, ref) {
 
 
   return createPortal(
-    isOpen ? <div className="modal">
+    isOpen ?
+    <FocusTrap>
+    <div className="modal">
       <table>
         <thead>
           <tr>
@@ -79,7 +82,9 @@ function Modal (props, ref) {
           })}
         </tbody>
       </table>
-    </div> : null,
+      <button id="invis"></button>
+    </div>
+    </FocusTrap>: null,
     modalElement
   )
 }

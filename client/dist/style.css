@@ -8,9 +8,16 @@
   padding: 5px;
 }
 
+#invis {
+  background: transparent;
+  border: none !important;
+  font-size:0;
+}
+
 .related-img {
-  max-width: 100%;
-  height: auto;
+  object-fit: cover;
+  height: 150px;
+  width: 200px;
 }
 
 /* questions and answers styling */
@@ -754,4 +761,5 @@ table, th, td {
   align-items: center;
   justify-content: center;
   gap: 10px;
+  padding: 10px;
 }
