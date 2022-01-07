@@ -385,6 +385,7 @@ button.btn:focus {
   display: flex;
   margin-left: auto;
   margin-right: auto;
+  justify-content: center;
 }
 
 .thumbnail-overlay {
@@ -413,6 +414,7 @@ button.btn:focus {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  margin-right: 160px
   /* margin-left: 250px; */
   /* border: 1px solid black */
 }
