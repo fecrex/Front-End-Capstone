@@ -5,7 +5,7 @@ const AddQuestion = function(props) {
 
 
   return (
-    <form onSubmit={(event) => props.onSubmit(event, props.product)}>
+    <form className="add-question-form" onSubmit={(event) => props.onSubmit(event, props.product)}>
       <div className="form-group title-bar">
         <h1>Ask Your Question</h1>
         <h3>{`About the ${props.product.name}`}</h3>
@@ -16,13 +16,13 @@ const AddQuestion = function(props) {
       </div>
       <div className="form-group">
         <label htmlFor="username">What is your nickname?</label>
-        <input className="form-control" id="username" placeholder="Example: jackson11!" maxLength="60"></input>
+        <input className="form-control" id="username_question" placeholder="Example: jackson11!" maxLength="60"></input>
       </div>
       <div className="form-group">
         <span>For privary reasons, do not use your full name or email address</span>
       </div>
       <div className="form-group">
-        <label htmlFor="email">Your email</label>
+        <label htmlFor="email_question">Your email</label>
         <input className="form-control" id="email" placeholder="Why did you like this product or not?" maxLength="60"></input>
       </div>
       <div className="form-group">

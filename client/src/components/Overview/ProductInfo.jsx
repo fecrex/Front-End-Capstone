@@ -3,6 +3,9 @@ import axios from 'axios';
 import ImageGallery from './ImageGallery.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import Rating from '@mui/material/Rating';
+// import FacebookIcon from '@mui/icons-material/Facebook';
+// import TwitterIcon from '@mui/icons-material/Twitter';
+// import PinterestIcon from '@mui/icons-material/Pinterest';
 
 class ProductInfo extends React.Component {
   constructor(props) {
@@ -44,35 +47,45 @@ class ProductInfo extends React.Component {
     return (
       <div className='product-info'>
 
-        <div className='product-info-star-rating'>
-          { this.state.numberRatings ?
-          <Rating defaultValue={Number(this.state.rating)} precision={0.25} readOnly/> : null}
-        </div>
-        <div id='product-category'>
-          {this.props.products ? this.props.products.map((product) => {
-            return product.category
-          }) : 'Product Category'}
-        </div>
-        <div id='product-title'>
-          {this.props.products ? this.props.products.map((product) => {
-              return product.name
-            }) : 'Product Title'}
-        </div>
-        <div id='product-price'>
-          {this.props.products ? this.props.products.map((product) => {
-                return '$' + product.default_price
-              }) : 'Product Price'}
+        <div className='product-info-header'>
+          <div className='product-info-star-rating'>
+            { this.state.numberRatings ?
+            <Rating defaultValue={Number(this.state.rating)} precision={0.25} readOnly/> : null}
+          </div>
+          <div id='product-category'>
+            {this.props.products ? this.props.products.map((product) => {
+              return product.category
+            }) : 'Product Category'}
+          </div>
+          <div id='product-title'>
+            {this.props.products ? this.props.products.map((product) => {
+                return product.name
+              }) : 'Product Title'}
+          </div>
+          <div id='product-price'>
+            {this.props.products ? this.props.products.map((product) => {
+                  return '$' + product.default_price
+                }) : 'Product Price'}
+          </div>
         </div>
 
-        <ImageGallery products={this.props.products[0]}/>
+        {/* <ImageGallery products={this.props.products[0]}/> */}
         <StyleSelector products={this.props.products[0]}/>
 
         <div id='product-overview'>
           {this.props.products ? this.props.products.map((product) => {
                   return product.description
                 }) : 'Product Description'}
+
+          {/* <div id='share-social'>
+            Share on Social Media
+            <FacebookIcon fontSize='large' style={{ color: '1877F2'}}/>
+            <TwitterIcon fontSize='large' style={{ color: '1DA1F2'}} />
+            <PinterestIcon fontSize='large' style={{ color: 'BD081C'}} />
+
+          </div> */}
         </div>
-        <div id='share-social'>Share on Social Media</div>
+
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React, { useState, useImperativeHandle, forwardRef, useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
+import FocusTrap from 'focus-trap-react';
 
 const aModal = document.getElementById('question-modal');
 
@@ -29,13 +30,17 @@ const AnswerModal = function({ children, fade = false, defaultOpened = false }, 
 
   return createPortal(
   isOpen ? (
+    <FocusTrap >
     <div className={`modal ${fade ? 'modal-fade' : ''}`}>
       <div className="modal-overlay" onClick={close} />
         <span role="button" className="modal-close" aria-label="close" onClick={() => close()}>
           x
         </span>
       <div className="modal-body">{children}</div>
-    </div>)  : null,
+    </div>
+     </FocusTrap>
+  )
+    : null,
   aModal)
 
 }

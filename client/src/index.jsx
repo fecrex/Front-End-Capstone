@@ -38,11 +38,12 @@ class App extends React.Component {
   render() {
     return (
       <>
-      <h1>FEC - Project Catwalk</h1>
-      <Overview products={this.state.products}/>
-      <div className="related-container">
-        <RelatedProducts relatedinfo={this.state.products}/>
+      <div className='project-title'>
+        <h1>FEC - Project Catwalk</h1>
       </div>
+
+      <Overview products={this.state.products}/>
+      <RelatedProducts relatedinfo={this.state.products}/>
       <QuestionsAnswers product={this.state.products[0]}/>
       <div id="review-modal-root">
       <ReviewList productId={this.state.products.map((product) => {

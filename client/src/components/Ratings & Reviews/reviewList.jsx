@@ -64,9 +64,9 @@ class ReviewList extends React.Component {
     <div className="ratings-and-reviews">
       <h1 className="review-header">Reviews</h1>
         <div className="review-list">
-        {this.state.loading ? this.state.displayData.map((review, index) => {
-        return <ReviewTile key={index}starRating={review.rating} reviewDate={review.date} reviewSummary={review.summary} reviewBody={review.body} reviewRecommendation={review.recommend} reviewerName={review.reviewer_name} reviewResponse={review.response} reviewHelpfulness={review.helpfulness} reviewImages={review.photos}/>
-          }) : null }
+          {this.state.loading ? this.state.displayData.map((review, index) => {
+          return <ReviewTile key={index}starRating={review.rating} reviewDate={review.date} reviewSummary={review.summary} reviewBody={review.body} reviewRecommendation={review.recommend} reviewerName={review.reviewer_name} reviewResponse={review.response} reviewHelpfulness={review.helpfulness} reviewImages={review.photos}/>
+            }) : null }
         </div>
         <div className="show-and-submit-review-buttons">
           <div className="review-button-child">
