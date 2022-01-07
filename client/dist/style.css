@@ -718,6 +718,7 @@ button.btn:focus {
 .individual-review {
   margin-top: 10px;
   border:1px solid grey;
+  max-width: auto;
 }
 
 .review-star-rating {
