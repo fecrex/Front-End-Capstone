@@ -13,10 +13,10 @@
   height: auto;
 }
 
-/* questions and answers styling */
+/* ------------------- questions and answers styling ----------------- */
 
 
-/* /////////////// start testing modal css ////////////// */
+/* ---------------- start testing modal css ------------- */
 
 .modal {
   position: fixed;
@@ -99,6 +99,14 @@
 }
 /* */
 
+.q-a-container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
 #show-answers {
   position: relative;
   left: 75px;
@@ -158,7 +166,7 @@
 }
 
 .questions-list {
-  width: auto;
+  width: 100%;
   border-radius: 5px;
   /* overflow: hidden; */
   box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
@@ -272,11 +280,60 @@
   outline: none;
 } */
 
-.search-form-control {
+/* .search-form-control {
+  box-sizing: border-box;
+  font-size: 14px;
   width: 600px;
   height: 30px;
   position: relative;
   left: 100px;
+} */
+
+.search-field {
+  box-sizing: border-box;
+  font-size: 14px;
+  /* width: 600px;
+  height: 30px; */
+  position: relative;
+  --field-padding: 12px;
+  border-top: 20px solid transparent;
+}
+
+.search-field input {
+  border: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: #f2f2f2;
+  padding: var(--field-padding);
+  border-radius: 3px;
+  width: 250px;
+  font-size: 14px;
+}
+
+.search-field input:not(:placeholder-shown) + .placeholder,
+.search-field input:focus + .placeholder {
+  top: -10px;
+  font-size: 10px;
+  color: #222;
+}
+
+.search-field .placeholder {
+  position: absolute;
+  left: var(--field-padding);
+  bottom: 50%;
+  top: 22px;
+  transform: translateY(-50%);
+  width: calc(100% - (var(--field-padding) * 2));
+  color: #aaa;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  transition:
+    top 0.3s ease,
+    color 0.3s ease,
+    font-size 0.3s ease;
 }
 
 button.btn {
@@ -304,11 +361,11 @@ button.btn {
 }
 
 button.btn-question-modal {
-  left: 500px;
+  /* left: 500px; */
 }
 
 button.btn-load-more-questions {
-  left: 150px;
+  /* left: 150px; */
 }
 
 button.btn:hover, button.btn:active {
