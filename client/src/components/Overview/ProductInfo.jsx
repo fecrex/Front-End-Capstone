@@ -47,30 +47,35 @@ class ProductInfo extends React.Component {
     return (
       <div className='product-info'>
 
-        <div className='product-info-header'>
-          <div className='product-info-star-rating'>
-            { this.state.numberRatings ?
-            <Rating defaultValue={Number(this.state.rating)} precision={0.25} readOnly/> : null}
-          </div>
-          <div id='product-category'>
-            {this.props.products ? this.props.products.map((product) => {
-              return product.category
-            }) : 'Product Category'}
-          </div>
-          <div id='product-title'>
-            {this.props.products ? this.props.products.map((product) => {
-                return product.name
-              }) : 'Product Title'}
-          </div>
-          <div id='product-price'>
-            {this.props.products ? this.props.products.map((product) => {
-                  return '$' + product.default_price
-                }) : 'Product Price'}
-          </div>
-        </div>
+        <div className='product-info-style-selector'>
 
-        {/* <ImageGallery products={this.props.products[0]}/> */}
-        <StyleSelector products={this.props.products[0]}/>
+          <div className='product-info-header'>
+            <div className='product-info-star-rating'>
+              { this.state.numberRatings ?
+              <Rating defaultValue={Number(this.state.rating)} precision={0.25} readOnly/> : null}
+            </div>
+            <div id='product-category'>
+              {this.props.products ? this.props.products.map((product) => {
+                return product.category
+              }) : 'Product Category'}
+            </div>
+            <div id='product-title'>
+              {this.props.products ? this.props.products.map((product) => {
+                  return product.name
+                }) : 'Product Title'}
+            </div>
+            <div id='product-price'>
+              {this.props.products ? this.props.products.map((product) => {
+                    return '$' + product.default_price
+                  }) : 'Product Price'}
+            </div>
+          </div>
+
+          <StyleSelector products={this.props.products[0]}/>
+
+
+
+
 
         <div id='product-overview'>
           {this.props.products ? this.props.products.map((product) => {
@@ -84,6 +89,7 @@ class ProductInfo extends React.Component {
             <PinterestIcon fontSize='large' style={{ color: 'BD081C'}} />
 
           </div> */}
+        </div>
         </div>
 
       </div>
