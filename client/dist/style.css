@@ -676,7 +676,11 @@ button.btn:focus {
   margin-left: auto;
 }
 
-.review-header {
+.review-list-header {
+  margin-bottom: 0px;
+}
+
+.reviews-glance-header {
   margin-bottom: 0px;
 }
 
@@ -820,6 +824,54 @@ button.btn:focus {
   color: coral;
 } */
 
+.five-star-bar {
+  width: 50%;
+  height: 10px;
+}
+
+.four-star-bar {
+  width: 50%;
+  height: 10px;
+}
+
+.three-star-bar {
+  width: 50%;
+  height: 10px;
+}
+
+.two-star-bar {
+  width: 50%;
+  height: 10px;
+}
+
+.one-star-bar {
+  width: 50%;
+  height: 10px;
+}
+
+/* .percent-who-recommend {
+  font-weight: bold;
+} */
+
+.review-rating-breakdown-block {
+  margin-top: 10px;
+}
+
+.comfort-slider {
+  width: 50%;
+}
+
+.fit-slider {
+  width: 50%;
+}
+
+.length-slider {
+  width: 50%;
+}
+
+.quality-slider {
+  width: 50%;
+}
 
 /* ------------------------------------------END OF RATINGS & REVIEWS CSS STYLES -------------------------------------- */
 
