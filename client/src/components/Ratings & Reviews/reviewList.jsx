@@ -89,13 +89,13 @@ class ReviewList extends React.Component {
     <div className="ratings-and-reviews">
         <div className="review-list-and-review-breakdown">
           <div className="review-rating-breakdown">
-            <h1>Reviews at a Glance</h1>
+            <h1 className="reviews-glance-header">Reviews at a Glance</h1>
             {this.state.metaLoading ?
             <ReviewRatingBreakdown key={this.state.reviewMetaData.product_id} characteristics={this.state.reviewMetaData.characteristics} reviewRatings={this.state.reviewMetaData.ratings} reviewRecommendations={this.state.reviewMetaData.recommended}/>
              : null}
           </div>
           <div className="entire-review-list">
-          <h1 className="review-header">Reviews List</h1>
+          <h1 className="review-list-header">Reviews List</h1>
           <div className="review-sort">
           <select onChange={this.handleReviewSort}>
             <option>{null}</option>

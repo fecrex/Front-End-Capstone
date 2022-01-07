@@ -549,7 +549,9 @@ button.btn:focus {
   flex: 1;
   flex-direction: column;
   display: flex;
-  margin-left: 250px;
+  margin-right: 160px;
+  align-items: center;
+  justify-content: space-between
 
   /* width: 33.4%; */
   /* overflow-y: hidden; */
@@ -595,6 +597,8 @@ button.btn:focus {
 .size-selector {
   margin-left: 5px;
   margin-right: 5px;
+  width: 175px;
+  border: 2px solid black
 }
 
 /* .quantity-selector-container {
@@ -604,15 +608,19 @@ button.btn:focus {
 } */
 
 .quantity-selector {
-  width: 75px
+  width: 200px;
+  border: 1px solid black
 }
 
 .add-to-cart-button {
   margin-left: 5px;
   margin-top: 20px;
-  width: 150px;
-  height: 25px
+  width: 300px;
+  height: 50px;
+  font-size: 16px;
+  border: 1px solid black
 }
+
 
 #product-title {
   font-size: 16px;
@@ -679,13 +687,22 @@ button.btn:focus {
   margin-left: auto;
 }
 
-.review-header {
+.review-list-header {
+  margin-bottom: 0px;
+}
+
+.reviews-glance-header {
   margin-bottom: 0px;
 }
 
 .review-sort {
   margin-top: 1px;
   margin-left: 2px;
+}
+
+.review-rating-breakdown {
+  max-width: auto;
+  max-height: 625px;
 }
 
 .review-list {
@@ -823,6 +840,64 @@ button.btn:focus {
   color: coral;
 } */
 
+.five-star-bar {
+  width: 50%;
+  height: 10px;
+}
+
+.four-star-bar {
+  width: 50%;
+  height: 10px;
+}
+
+.three-star-bar {
+  width: 50%;
+  height: 10px;
+}
+
+.two-star-bar {
+  width: 50%;
+  height: 10px;
+}
+
+.one-star-bar {
+  width: 50%;
+  height: 10px;
+}
+
+/* .percent-who-recommend {
+  font-weight: bold;
+} */
+
+.review-rating-breakdown-block {
+  margin-top: 10px;
+}
+
+.comfort-slider {
+  width: 50%;
+}
+
+.fit-slider {
+  width: 50%;
+}
+
+.length-slider {
+  width: 50%;
+}
+
+.quality-slider {
+  width: 50%;
+}
+
+.average-star-rating {
+  font-weight: bolder;
+  font-size: larger;
+}
+
+.total-review-count {
+  font-weight: lighter;
+  font-size: medium;
+}
 
 /* ------------------------------------------END OF RATINGS & REVIEWS CSS STYLES -------------------------------------- */
 

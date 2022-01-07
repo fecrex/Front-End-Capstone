@@ -134,53 +134,63 @@ class ReviewRatingBreakdown extends React.Component {
   render () {
     return (
       <div>
-        <div>{this.state.averageRating + '  '}
+        <div className="average-star-rating">{this.state.averageRating + '  '}
           {this.state.loaded ?
           <Rating className="review-star-breakdown" defaultValue={this.state.averageRating} precision={0.25} readOnly />
           : null}
-        <div>{this.state.numberOfReviews} Total Reviews</div>
+        <div className="total-review-count">{this.state.numberOfReviews} Total Reviews</div>
         </div>
-      <div>Rating Breakdown
+      <div className="review-rating-breakdown-block">Rating Breakdown
         <div className="progress-5-star">
         <Rating className="review-star-breakdown" defaultValue={5} precision={0.25} readOnly />
         {this.props.reviewRatings['5']}
-        <LinearProgress color="primary" variant="determinate" value={this.getBarPercent(this.props.reviewRatings['5'], this.state.numberOfReviews)} />
+        <div className="five-star-bar">
+        <LinearProgress color="primary" variant="determinate" value={this.getBarPercent(this.props.reviewRatings['5'], this.state.numberOfReviews) ? this.getBarPercent(this.props.reviewRatings['5'], this.state.numberOfReviews) : null} />
+        </div>
         </div>
         <div className="progress-4-star">
         <Rating className="review-star-breakdown" defaultValue={4} precision={0.25} readOnly />
           {this.props.reviewRatings['4']}
-          <LinearProgress color="primary" variant="determinate" value={this.getBarPercent(this.props.reviewRatings['4'], this.state.numberOfReviews)} />
+          <div className="four-star-bar">
+          <LinearProgress color="primary" variant="determinate" value={this.getBarPercent(this.props.reviewRatings['4'], this.state.numberOfReviews) ? this.getBarPercent(this.props.reviewRatings['4'], this.state.numberOfReviews) : null} />
+          </div>
         </div>
         <div className="progress-3-star">
         <Rating className="review-star-breakdown" defaultValue={3} precision={0.25} readOnly />
           {this.props.reviewRatings['3']}
-          <LinearProgress color="primary" variant="determinate" value={this.getBarPercent(this.props.reviewRatings['3'], this.state.numberOfReviews)} />
+          <div className="three-star-bar">
+          <LinearProgress color="primary" variant="determinate" value={this.getBarPercent(this.props.reviewRatings['3'], this.state.numberOfReviews) ? this.getBarPercent(this.props.reviewRatings['3'], this.state.numberOfReviews) : null} />
+          </div>
         </div>
         <div className="progress-2-star">
         <Rating className="review-star-breakdown" defaultValue={2} precision={0.25} readOnly />
           {this.props.reviewRatings['2']}
-          <LinearProgress color="primary" variant="determinate" value={this.getBarPercent(this.props.reviewRatings['2'], this.state.numberOfReviews)} />
+          <div className="two-star-bar">
+          <LinearProgress color="primary" variant="determinate" value={this.getBarPercent(this.props.reviewRatings['2'], this.state.numberOfReviews) ? this.getBarPercent(this.props.reviewRatings['2'], this.state.numberOfReviews) : null} />
+          </div>
         </div>
         <div className="progress-1-star">
         <Rating className="review-star-breakdown" defaultValue={1} precision={0.25} readOnly />
           {this.props.reviewRatings['1']}
-          <LinearProgress color="primary" variant="determinate" value={this.getBarPercent(this.props.reviewRatings['1'], this.state.numberOfReviews)} />
+          <div className="one-star-bar">
+          <LinearProgress color="primary" variant="determinate" value={this.getBarPercent(this.props.reviewRatings['1'], this.state.numberOfReviews) ? this.getBarPercent(this.props.reviewRatings['1'], this.state.numberOfReviews) : null} />
+          </div>
         </div>
       </div>
-      <div>{this.state.percentRecommend}% recommend this product</div>
+      <div className="percent-who-recommend">{this.state.percentRecommend}% recommend this product</div>
       <div>{' '}</div>
       <div className="product-breakdown-block">
         <h1>Product Breakdown</h1>
-      <div>Comfort: {this.getBreakDownValue('comfort', Math.floor(this.props.characteristics.Comfort.value))}
+      <div className="comfort-slider">Comfort: {this.getBreakDownValue('comfort', Math.floor(this.props.characteristics.Comfort.value))}
       <Slider defaultValue={this.getBreakdownRating(this.props.characteristics.Comfort.value)} disabled />
       </div>
-      <div>Fit: {this.getBreakDownValue('fit', Math.floor(this.props.characteristics.Fit.value))}
+      <div className="fit-slider">Fit: {this.getBreakDownValue('fit', Math.floor(this.props.characteristics.Fit.value))}
       <Slider defaultValue={this.getBreakdownRating(this.props.characteristics.Fit.value)} disabled />
       </div>
-      <div>Length: {this.getBreakDownValue('length', Math.floor(this.props.characteristics.Length.value))}
+      <div className="length-slider">Length: {this.getBreakDownValue('length', Math.floor(this.props.characteristics.Length.value))}
       <Slider defaultValue={this.getBreakdownRating(this.props.characteristics.Length.value)} disabled />
       </div>
-      <div>Quality: {this.getBreakDownValue('quality', Math.floor(this.props.characteristics.Quality.value))}
+      <div className="quality-slider">Quality: {this.getBreakDownValue('quality', Math.floor(this.props.characteristics.Quality.value))}
       <Slider defaultValue={this.getBreakdownRating(this.props.characteristics.Quality.value)} disabled />
       </div>
       </div>
