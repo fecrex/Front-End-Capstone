@@ -95,7 +95,7 @@ class ReviewList extends React.Component {
              : null}
           </div>
           <div className="entire-review-list">
-          <h1 className="review-header">Reviews</h1>
+          <h1 className="review-header">Reviews List</h1>
           <div className="review-sort">
           <select onChange={this.handleReviewSort}>
             <option>{null}</option>
