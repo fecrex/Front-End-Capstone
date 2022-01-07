@@ -1,5 +1,6 @@
 import React from 'react';
 import Rating from '@mui/material/Rating';
+import LinearProgress from '@mui/material/LinearProgress';
 
 class ReviewRatingBreakdown extends React.Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class ReviewRatingBreakdown extends React.Component {
       percentRecommend: null,
       loaded: false
     }
+    this.getBarPercent = this.getBarPercent.bind(this);
   }
 
   componentDidMount() {
@@ -67,6 +69,12 @@ class ReviewRatingBreakdown extends React.Component {
     })
   }
 
+  getBarPercent = function(str, num) {
+    var trueVal = Number(str);
+    var totalVal = num;
+    return Math.round((trueVal/totalVal) * 100);
+  }
+
   render () {
     return (
       <div>
@@ -76,7 +84,23 @@ class ReviewRatingBreakdown extends React.Component {
           : null}
         <div>{this.state.numberOfReviews} Total Reviews</div>
         </div>
-      <div>Rating Breakdown</div>
+      <div>Rating Breakdown
+        <div className="progress-5-star">{this.getBarPercent(this.props.reviewRatings['5'], this.state.numberOfReviews)}
+        <LinearProgress color="primary" variant="determinate" value={this.getBarPercent(this.props.reviewRatings['5'], this.state.numberOfReviews)} />
+        </div>
+        <div className="progress-4-star">{this.getBarPercent(this.props.reviewRatings['4'], this.state.numberOfReviews)}
+          <LinearProgress color="primary" variant="determinate" value={this.getBarPercent(this.props.reviewRatings['4'], this.state.numberOfReviews)} />
+        </div>
+        <div className="progress-3-star">{this.getBarPercent(this.props.reviewRatings['3'], this.state.numberOfReviews)}
+          <LinearProgress color="primary" variant="determinate" value={this.getBarPercent(this.props.reviewRatings['3'], this.state.numberOfReviews)} />
+        </div>
+        <div className="progress-2-star">{this.getBarPercent(this.props.reviewRatings['2'], this.state.numberOfReviews)}
+          <LinearProgress color="primary" variant="determinate" value={this.getBarPercent(this.props.reviewRatings['2'], this.state.numberOfReviews)} />
+        </div>
+        <div className="progress-1-star">{this.getBarPercent(this.props.reviewRatings['1'], this.state.numberOfReviews)}
+          <LinearProgress color="primary" variant="determinate" value={this.getBarPercent(this.props.reviewRatings['1'], this.state.numberOfReviews)} />
+        </div>
+      </div>
       <div>{this.state.percentRecommend}% recommend this product</div>
     </div>
     )
