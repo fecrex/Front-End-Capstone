@@ -543,6 +543,9 @@ button.btn:focus {
 
 /* ----- END OVERVIEW COMPONENT CSS STYLES ----- */
 
+
+/* ---------------------------------------------RATINGS & REVIEWS CSS STYLES ------------------------------------------- */
+
 /* .review-list-and-review-breakdown {
   display: flex;
 }
@@ -696,6 +699,11 @@ button.btn:focus {
   z-index: 999999;
   box-sizing: border-box;
 }
+
+
+/* ------------------------------------------END OF RATINGS & REVIEWS CSS STYLES -------------------------------------- */
+
+
 
 .modal {
   position: absolute;
