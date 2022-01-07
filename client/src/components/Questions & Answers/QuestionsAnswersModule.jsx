@@ -67,6 +67,11 @@ const QuestionsAnswers = function(props) {
         }
       }
     }
+
+    // var validEmail = function(email) {
+    //   if (email.value.includes('@') && email.value.includes('@'))
+    // }
+
     var question = document.getElementById('question_input');
     var username = document.getElementById('username_question');
     var email = document.getElementById('email_question');
@@ -109,7 +114,7 @@ const QuestionsAnswers = function(props) {
           product_id: id
       })
       .then((response) => {
-        question_modal.current.close();
+        () => question_modal.current.close();
         console.log(response);
       })
       .catch((err) => {
@@ -131,7 +136,7 @@ const QuestionsAnswers = function(props) {
         email: event.target.email_answer.value
       })
       .then((response) => {
-        answer_modal.current.close();
+        () => answer_modal.current.close();
         console.log(response);
       })
       .catch((err) => {

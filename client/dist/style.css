@@ -154,7 +154,8 @@
 #show-all-answers {
   position: relative;
   bottom: 7px;
-  left: 24.65em;
+  /* left: 24.65em; */
+
 
   box-sizing: border-box;
   border: none;
@@ -182,7 +183,8 @@
 
 
 .questions-list {
-  width: 65%;
+  width: 100%;
+  margin: auto auto;
   border-radius: 5px;
   /* overflow: hidden; */
   box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
@@ -259,11 +261,11 @@
 .individual-answer {
   display:flex;
   flex-direction: column;
-  width: 775px;
+  width: 100%;
   border-top: double;
   border-bottom: double;
-  border-top-color: whitesmoke;
-  border-bottom-color: whitesmoke;
+  border-top-color: white;
+  border-bottom-color: white;
 }
 
 .from-user {
@@ -290,14 +292,14 @@
 .helpful-answer {
   position: relative;
   bottom: 35px;
-  left: 78%;
+  left: 82%;
   font-size: 1.25em;
 }
 
 .report-answer {
   position: relative;
   bottom: 37px;
-  left: 85%;
+  left: 86%;
   font-size: 1.25em;
 }
 
