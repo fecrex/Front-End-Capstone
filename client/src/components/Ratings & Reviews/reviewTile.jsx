@@ -15,7 +15,8 @@ class ReviewTile extends React.Component {
       clickYesCount: null,
       clickNoCount: null,
       hasYesVoted: false,
-      hasNoVoted: false
+      hasNoVoted: false,
+      isLoaded: false
     };
     this.showFullReviewHandler = this.showFullReviewHandler.bind(this);
     this.handleImageClick = this.handleImageClick.bind(this);
@@ -26,7 +27,8 @@ class ReviewTile extends React.Component {
   componentDidMount() {
     if ((this.state.clickYesCount === null) && (this.props.reviewHelpfulness)) {
       this.setState({
-        clickYesCount: this.props.reviewHelpfulness
+        clickYesCount: this.props.reviewHelpfulness,
+        isLoaded: true
       })
     }
   }

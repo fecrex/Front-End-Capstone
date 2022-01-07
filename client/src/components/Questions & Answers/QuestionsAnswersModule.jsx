@@ -9,29 +9,6 @@ import example from'./example_data.js';
 import key from '../../../../config.js';
 import axios from 'axios';
 
-// class QuestionsAnswers extends React.Component {
-//   constructor(props) {
-//     super(props);
-//   }
-
-
-//   const modal = useRef(null);
-
-//   render() {
-//     return (
-//       <>
-//       <h5>QUESTIONS & ANSWERS</h5>
-//       <button onClick={() => modal.current.open()}></button>
-//       <QuestionsList productQA={example.results}/>
-//       <Modal ref={modal}>
-//         Hello World
-//       </Modal>
-//       </>
-//     )
-//   }
-
-// }
-
 const QuestionsAnswers = function(props) {
   const question_modal = useRef(null);
   const answer_modal = useRef(null);
@@ -80,9 +57,7 @@ const QuestionsAnswers = function(props) {
   }
 
   const validateQuestionForm = () => {
-
     var isNotEmpty = function(field) {
-      debugger;
       if(field) {
         var fieldData = field.value;
         if (fieldData.length === 0 || fieldData === '') {
@@ -271,7 +246,6 @@ const QuestionsAnswers = function(props) {
         }
       });
       if (moreQuestions.data.length !== 0) {
-        console.log(page);
         var newQuestions = [...questions, ...moreQuestions.data];
         setQuestions(newQuestions);
         setMasterListQuestions(newQuestions);
@@ -291,10 +265,9 @@ const QuestionsAnswers = function(props) {
   }
 
   return (
-          <>
+          <div className="q-a-container">
           <h5>QUESTIONS & ANSWERS</h5>
           <Search handleChange={onSearchChange}/>
-          <button className="btn-answer-modal" onClick={() => answer_modal.current.open()}>Add Answer</button>
           {loading ? <QuestionsList markedAnswers={markedAnswers} markedQuestions={markedQuestions} question_count={questionCount} showAllAnswers={showAllAnswers} showAllMsg={showAll} show={show} message={message} setMessage={setMessage} count={count} setCount={setCount} answerHelpfulnessClicked={answerHelpfulnessClicked} handleHelpfulnessClick={questionHelpfulnessClicked} addAnswer={onAddAnswerClick} openAnswerModal={openAnswerModal} openModal={openQuestionModal} productQA={example.results} questions={questions}/> : null }
           <Modal ref={question_modal}>
             <AddQuestion onSubmit={onQuestionSubmit} product={props.product}/>
@@ -307,7 +280,7 @@ const QuestionsAnswers = function(props) {
             setQuestionCount(2);
             setIsThereMore(true);
           }}>Hide Questions</button>}
-          </>
+          </div>
 
         )
 }
