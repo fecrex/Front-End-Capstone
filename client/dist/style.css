@@ -109,7 +109,6 @@
 
 #show-answers {
   position: relative;
-  left: 75px;
 
   box-sizing: border-box;
   border: none;
@@ -134,7 +133,8 @@
 
 #show-all-answers {
   position: relative;
-  left: 490px;
+  bottom: 7px;
+  left: 24.65em;
 
   box-sizing: border-box;
   border: none;
@@ -143,12 +143,6 @@
   min-width: 10ch;
   min-height: 35px;
   cursor: pointer;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  line-height: 1.1;
 
   background-color: coral;
   color: #fff;
@@ -166,7 +160,7 @@
 }
 
 .questions-list {
-  width: 100%;
+  width: 65%;
   border-radius: 5px;
   /* overflow: hidden; */
   box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
@@ -213,7 +207,7 @@
   background: lightgray;
   position: relative;
   overflow-x: scroll;
-  height: 240px;
+  height: 220px;
   width: 100%;
   /* line-height: 1.6; */
   font-size: 0.85em;
@@ -227,20 +221,35 @@
 }
 
 .accordion:checked ~ .answer-content {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .answer {
   position: relative;
   font-size: 1.75em;
+  top: 30px;
+  left: 15px;
   height: 50px;
+}
+
+.individual-answer {
+  display:flex;
+  flex-direction: column;
+  width: 775px;
+  border-top: double;
+  border-bottom: double;
+  border-top-color: whitesmoke;
+  border-bottom-color: whitesmoke;
 }
 
 .from-user {
   position: relative;
-  /* top: 80px; */
-  font-size: 1em;
+  top: 80px;
   top: 10px;
+  font-size: 1em;
+  left: 15px;
 }
 
 .helpful-question {
@@ -258,15 +267,15 @@
 
 .helpful-answer {
   position: relative;
-  bottom: 7px;
-  left: 540px;
+  bottom: 35px;
+  left: 80%;
   font-size: 1.25em;
 }
 
 .report-answer {
   position: relative;
-  bottom: 29px;
-  left: 680px;
+  bottom: 37px;
+  left: 85%;
   font-size: 1.25em;
 }
 
