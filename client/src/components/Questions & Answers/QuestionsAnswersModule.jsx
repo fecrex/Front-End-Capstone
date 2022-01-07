@@ -294,7 +294,6 @@ const QuestionsAnswers = function(props) {
           <>
           <h5>QUESTIONS & ANSWERS</h5>
           <Search handleChange={onSearchChange}/>
-          <button className="btn-answer-modal" onClick={() => answer_modal.current.open()}>Add Answer</button>
           {loading ? <QuestionsList markedAnswers={markedAnswers} markedQuestions={markedQuestions} question_count={questionCount} showAllAnswers={showAllAnswers} showAllMsg={showAll} show={show} message={message} setMessage={setMessage} count={count} setCount={setCount} answerHelpfulnessClicked={answerHelpfulnessClicked} handleHelpfulnessClick={questionHelpfulnessClicked} addAnswer={onAddAnswerClick} openAnswerModal={openAnswerModal} openModal={openQuestionModal} productQA={example.results} questions={questions}/> : null }
           <Modal ref={question_modal}>
             <AddQuestion onSubmit={onQuestionSubmit} product={props.product}/>

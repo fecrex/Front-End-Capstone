@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import Answer from './Answer.jsx';
-
+import _ from 'underscore';
 const Question = function(props) {
 
   // no real use for this, was using it to manipulate how many questions showed
   const [showButton, setShowButton] = useState(false);
   const [helpfulness, setQuestionHelpfulness] = useState(props.q_helpfulness);
 
+
   return (
+
     <div className="individual-question">
       <input type="radio" id={props.id} className="accordion" name="accordion_input" onClick={() => setShowButton(true)}/>
       <label className="question-label" htmlFor={props.id}>Q: {props.question_body} <div  className="helpful-question">Helpful? {<button onClick={() => {
