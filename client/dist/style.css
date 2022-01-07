@@ -546,7 +546,7 @@ button.btn:focus {
 
 /* ---------------------------------------------RATINGS & REVIEWS CSS STYLES ------------------------------------------- */
 
-/* .review-list-and-review-breakdown {
+.review-list-and-review-breakdown {
   display: flex;
 }
 
@@ -558,7 +558,7 @@ button.btn:focus {
 .review-rating-breakdown {
   flex: 2;
   margin-left: auto;
-} */
+}
 
 .review-header {
   margin-bottom: 0px;
