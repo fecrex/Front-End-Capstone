@@ -33,7 +33,7 @@ function Card(props, ref) {
 
   useEffect(() => {
     relatedList.forEach(item => {
-      axios.post('http://localhost:3000/reviews/avg', {
+      axios.post('54.172.117.137:3000/reviews/avg', {
         id: item
       })
       .then(response => {
@@ -48,7 +48,7 @@ function Card(props, ref) {
 
   useEffect(() => {
     if (props.relatedinfo[0]) {
-      axios.post('http://localhost:3000/related', {
+      axios.post('54.172.117.137:3000/related', {
         id: props.relatedinfo[0].id
       })
       .then(relprod => {
@@ -62,7 +62,7 @@ function Card(props, ref) {
 
   useEffect(() => {
     relatedList.forEach(item => {
-      axios.post('http://localhost:3000/details', {
+      axios.post('54.172.117.137:3000/details', {
         id: item
       })
       .then(response => {

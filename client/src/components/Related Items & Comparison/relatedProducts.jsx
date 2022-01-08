@@ -15,7 +15,7 @@ function RelatedProducts (props) {
 
   useEffect(() => {
     if (props.relatedinfo[0]) {
-      axios.post('http://localhost:3000/related', {
+      axios.post('54.172.117.137:3000/related', {
         id: props.relatedinfo[0].id
       })
       .then(relprod => {
@@ -25,7 +25,7 @@ function RelatedProducts (props) {
         console.log('error getting related list: ', err);
       })
 
-      axios.post('http://localhost:3000/styles', {
+      axios.post('54.172.117.137:3000/styles', {
         id: props.relatedinfo[0].id
       })
       .then(resp => {
@@ -40,7 +40,7 @@ function RelatedProducts (props) {
   useEffect(() => {
     if (test.length !== 0) {
       let calls = test.map(item => {
-        return axios.post('http://localhost:3000/styles', {
+        return axios.post('54.172.117.137:3000/styles', {
           id: item
         })
       })
