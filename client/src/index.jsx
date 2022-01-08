@@ -29,7 +29,7 @@ class App extends React.Component {
   }
 
   getProducts() {
-    axios.get('http://localhost:3000/home')
+    axios.get('54.172.117.137:3000/home')
     .then(results => {
       this.setState({
         products: results.data
