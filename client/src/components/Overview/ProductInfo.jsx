@@ -27,7 +27,7 @@ class ProductInfo extends React.Component {
 
   getStarRating = async() => {
     try {
-      var resp = await axios.post('http://localhost:3000/reviews', {id: this.props.products[0].id});
+      var resp = await axios.post('54.172.117.137:3000/reviews', {id: this.props.products[0].id});
       var countRatings = resp.data.count;
       var ratingTotal = 0;
       for (var i = 0; i < resp.data.results.length; i++) {
