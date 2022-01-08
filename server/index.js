@@ -1,9 +1,11 @@
 const express = require('express');
 const key = require('../config');
 const axios = require('axios');
+const compression = require('compression');
 
 let app = express();
 
+app.use(compression());
 
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*');
