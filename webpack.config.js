@@ -2,6 +2,7 @@ const path = require("path");
 const SRC_DIR = path.join(__dirname, "/client/src");
 const DIST_DIR = path.join(__dirname, "/client/dist");
 const CompressionPlugin = require('compression-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   plugins: [new CompressionPlugin()],
@@ -19,6 +20,13 @@ module.exports = {
           loader: 'babel-loader',
         },
       },
+    ],
+  },
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        test: /\.js(\?.*)?$/i,
+      }),
     ],
   },
 };
