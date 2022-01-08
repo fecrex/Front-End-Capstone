@@ -33,7 +33,7 @@ class StyleSelector extends React.Component {
 
   getStyles = async() => {
     try {
-      var resp = await axios.post('http://localhost:3000/styles', { id: this.props.products.id});
+      var resp = await axios.post('54.172.117.137:3000/styles', { id: this.props.products.id});
 
       var defaultPhotos = [];
       for (var i = 0; i < resp.data.results[0].photos.length; i++) {
