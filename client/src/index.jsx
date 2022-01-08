@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import loadable from '@loadable/component';
+// import loadable from '@loadable/component';
 
 import QuestionsAnswers from './components/Questions & Answers/QuestionsAnswersModule.jsx';
 import ProductInfo from './components/Overview/ProductInfo.jsx';
 
-// import Overview from './components/Overview/Overview.jsx';
-const Overview = loadable(() => import('./components/Overview/Overview.jsx'));
+import Overview from './components/Overview/Overview.jsx';
+// const Overview = loadable(() => import('./components/Overview/Overview.jsx'));
 
 import Card from './components/Related Items & Comparison/card.jsx';
 import ReviewList from './components/Ratings & Reviews/reviewList.jsx';
