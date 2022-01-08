@@ -6,7 +6,7 @@ function Outfit(props) {
   const [outfits, setOutfits] = useState([])
 
   const clickHandler = () => {
-    axios.post('54.172.117.137:3000/details', {
+    axios.post('/details', {
       id: props.item[0].id
     })
     .then(resp => {
