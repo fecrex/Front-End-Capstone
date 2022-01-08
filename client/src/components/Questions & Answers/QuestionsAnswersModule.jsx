@@ -107,7 +107,7 @@ const QuestionsAnswers = function(props) {
   const onQuestionSubmit = (event, {id}) => {
     event.preventDefault(event);
     if (validateQuestionForm()) {
-      axios.post('54.172.117.137:3000/qa/questions', {
+      axios.post('/qa/questions', {
           body: event.target.question_input.value,
           name: event.target.username_question.value,
           email: event.target.email_question.value,
@@ -129,7 +129,7 @@ const QuestionsAnswers = function(props) {
   const onAnswerSubmit = (event, {id}) => {
     event.preventDefault(event);
     if(validateAnswerForm()) {
-      axios.post('54.172.117.137:3000/qa/questions', {
+      axios.post('/qa/questions', {
         question_id: questionId,
         body: event.target.answer.value,
         name: event.target.username_answer.value,
@@ -160,7 +160,7 @@ const QuestionsAnswers = function(props) {
     if (!markedQuestions.includes(id)) {
       var update = [...markedQuestions, id];
       setMarkedQuestions(update);
-      axios.put('54.172.117.137:3000/qa/questions', {
+      axios.put('/qa/questions', {
         question_helpfulness: question_helpfulness + 1
       }, {
         params: {
@@ -180,7 +180,7 @@ const QuestionsAnswers = function(props) {
     if(!markedAnswers.includes(id)) {
       var update = [...markedAnswers, id];
       setMarkedAnswers(update);
-      axios.put('54.172.117.137:3000/qa/answers', {
+      axios.put('/qa/answers', {
         answer_helpfulness: answer_helpfulness + 1
       }, {
         params: {
@@ -223,7 +223,7 @@ const QuestionsAnswers = function(props) {
   useEffect(() => {
     const getQuestions = async() => {
       try {
-        var questions = await axios.post('54.172.117.137:3000/qa/questions', {
+        var questions = await axios.post('/qa/questions', {
           id: props.product.id
         });
         setQuestions(questions.data.results);
@@ -243,7 +243,7 @@ const QuestionsAnswers = function(props) {
 
   const getMoreQuestions = async() => {
     try {
-      var moreQuestions = await axios.get('54.172.117.137:3000/qa/questions', {
+      var moreQuestions = await axios.get('/qa/questions', {
         params: {
           product_id: props.product.id,
           page: page,

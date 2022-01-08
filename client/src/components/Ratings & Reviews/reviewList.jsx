@@ -36,7 +36,7 @@ class ReviewList extends React.Component {
 
   getReviews = async(inputSort) => {
     try {
-      var resp = await axios.post(`54.172.117.137:3000/reviews`, { id: this.props.productId[0], sort: inputSort});
+      var resp = await axios.post(`/reviews`, { id: this.props.productId[0], sort: inputSort});
       this.setState({
         reviewData: resp.data,
         displayData: resp.data.results.slice(0, 2),
@@ -51,7 +51,7 @@ class ReviewList extends React.Component {
 
   getMetaReviewData = async() => {
     try {
-      var resp = await axios.post(`54.172.117.137:3000/metareviews`, { id: this.props.productId[0]});
+      var resp = await axios.post(`/metareviews`, { id: this.props.productId[0]});
       this.setState({
         reviewMetaData: resp.data,
         metaLoading: true
